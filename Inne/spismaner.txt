@@ -1,0 +1,93 @@
+1. Podzia³ na zadania i organizacja grupy: Mateusz Manerowski
+
+2. Stworzenie systemu logowania i rejestracji: Mateusz Manerowski
+2.1  projekt graficzny Mateusz Manerowski
+2.2 css CSS formularzy Mateusz Manerowski
+2.3 Wstepna optymalizacja Mateusz Manerowski
+
+
+
+
+	
+
+3. 3. Opracowanie ogólnego wygl¹du strony i jej dzia³ania: Mateusz Manerowski
+
+3.4 Zaprojektowanie funkcji dodawania ocen Mateusz Manerowski
+
+3.6 Zaprojektowanie funkcji usuwania ocen Mateusz Manerowski
+
+3.8 Zaprojektowanie funkcji zmiany konta z ucznia na teachera   Mateusz Manerowski
+
+3.10 Wykonanie  wygladu dodawanych ocen   Mateusz Manerowski
+3.11 Wykonanie  funkcji zliczania srednich  (srednia ucznia,srednia klasy,srednia szkoly) Mateusz Manerowski
+3.12 wykonanie funkcji dodawania ocen
+
+//Propozycja
+1) Jako nauczyciel, wybierajac ucznia ¿eby pokazywa³o jego oceny wzgledem do jakiego przedmiotu, nowa ocena ma byc dodana (np. zaznaczmy ucznia->PRZEDMIOT i pokazuje jakie ma juz oceny)
+
+2) Jako uczen dodac ilosc nieobecnoœci i spoŸnieñ (ktore sa dodawane jako nauczyciel)//Bartek Trzepa³kowski
+
+//Propozycja
+Mo¿liwoœæ poprawy / edycji ocen -- JA!
+
+//Propozycja XD
+no to zrób tam œredni¹ z ka¿dego przedmiotu bo brakuje //szymeks suchorabeks xD
+
+//PROPOZYCJA
+-BRAK SKALOWALNOŒCI (Dawid P³ocharski)
+(Naprawienie login.php linia 66-72,80-86)
+(admin.php linia 33,59-60)
+
+-Przycisk wyloguj wyje¿d¿a Dawid P³ocharski
+-Brak szyfrowania has³a w bazie danych Dawid P³ocharski
+
+Dodaæ mo¿liwoœæ usuniêcia u¿ytkownika z roli "teacher" -papis
+Administrator opcja zmiany hase³ innych u¿ytwników w razie zapomnienia has³a -papis
+Teacher: wysy³anie wiadomoœci do uczniów, np informuj¹cy o przysz³ym sprawdzianie (ka¿dy uczeñ zobaczy wiadomoœæ w swoim profilu) -papis
+Teacher: Akceptowanie uczniów(¿eby ka¿dy nie móg³ dodawaæ kont i udawaæ uczniów) - papis
+Dodawanie przynale¿noœci uczniów do np. 1TI/1TB itp.w panelu nauczyciela - papis
+Kiedy œrednia ucznia jest wy¿sza od klasowej to kolor s³upka zmienia siê na inny -papis
+
+zmienic wlasciciela i projektanta - krystyna czubówna
+
+(Maner) gdy uczen dostanie slab¹ ocene (1) zostanie wyswietlony uczniowi komunikat o tej ocenie ;
+
+
+// ZMIEN CZCIONKE
+JAK MASZ KOLORKI OD OCEN, TO ZMIEN KOLORY ZE 6 TO TAM JASNY ZIELONY, 5 ZIELONY, 4 ZIELONY ITD
+//HUBI
+
+//propozycja
+-wrzuc wykres z prawej strony ocen /gorgon
+to se wrzuc / maner
+
+ziolek na panelu admina wybiera ostatniego uzytkownika z listy by zostal nauczycielem
+
+Wasik - po b³êdnym logowaniu nic siê nie wyœwietla
+Wiecej kreatyny i buty za ma³e - Marcin Opa³ka 
+
+Wasik - po b³êdnym logowaniu nic siê nie wyœwietla, w przypadku d³u¿szego opisu oceny, napis wyje¿d¿a poza pole
+nie daj bo¿e z tym css /WUJA
+
+(dominik) jak sie nie wybiera oceny , tylko przdmiot to uczen dostaje ocene "0" (dominik [zrobione])
+
+Kalendarz z wydarzeniami np spr z pszyrki z zakresem materia³ów normalnie dodaje nauczyciel //wuja 
+WUja ma zawsze dobre pomys³y.
+wysy³anie wiadmosci z kont (wywiawódka) //wuja 
+
+ mo¿liwoœæ dodawania ocen z plusem i minusem// wuja
+sumowanie plusów i minusów ³acznie ze œredni¹ ocen wynikiem bedzie ocena pó³roczna jesli plusy zrównowa¿a minusy bez zmian 
+jesli wiecej minusów ocena z minusem jesli wiecej plusów ocena z plusem //wuja
+
+
+WUJA==Konrad EF Falkowski
+(Maner) Redukcja i optymalizacja kodu. W pliku index1.php podczas wyswietlania ocen   = ; 2017.10.01
+(Maner) =Dodanie 2 nowych tabel; 2017.09.27	
+ (Maner) = dodanie funkcji dla admina dodawanie nowych kategorii 2017.09.27
+
+(Maner) =dodanie funkcja dla admina przydzielenie nauczycieli do wybranych przedmiotow  ; 2017.09.27	
+
+
+(Maner) =dodanie funkcja dla teachera wybranie przedmiotu ktory aktualnie uczy  ; 2017.09.27
+(Bartek) - System uwag dla ucznia.
+
