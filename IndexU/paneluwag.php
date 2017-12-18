@@ -73,7 +73,7 @@ require "baza.php";
 
 $klasa=$_SESSION['kl'];
 
-
+// test
 	
 echo $klasa; 
 	    if ($result = $wynik->query("SELECT * FROM loginy WHERE typ <> 'admin' and typ <> 'teacher' and klasa='$klasa'")) {
