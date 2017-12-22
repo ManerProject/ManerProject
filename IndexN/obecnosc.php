@@ -1,9 +1,15 @@
 <?php 
 session_start();
-
+$klasa= $_SESSION['kl'];
 require "baza.php";
+$data= date('Y.m.d');
 
-
+for($j=0;$j<strlen($data);$j++)
+{
+	if($data[$j]=='.')
+		$data[$j]='-';
+	
+}
 
 
  ?>
@@ -89,13 +95,13 @@ SEMESTR1
 <form method="POST" action="obecnoscskrypt.php">
  
 <?php
-$data= date('Y.m.d');
+
 echo $data;
 $_SESSION['data']=$data;
 ?>
 <br>
  Data  <input type="date" value=""  style =""name="" > <br>
- Numer lekcji <input type="number" placeholder="  <?php      ?>         " name="numer_lekcji">
+ Numer lekcji <input type="number" value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji">
  
  
 
@@ -112,10 +118,10 @@ $_SESSION['data']=$data;
 <?php
 
 
-$klasa= $_SESSION['kl'];
+
  
  $lekcja=$_SESSION['xdlekcja'];
- echo  $_SESSION['kl'];
+ 
  
 
  

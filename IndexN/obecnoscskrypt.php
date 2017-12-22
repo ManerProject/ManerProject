@@ -40,7 +40,7 @@ $i=0;
 	 $uczen=$w['id'];
 	
 
-	 	 $wynik->query("INSERT INTO `obeconsc` (`id`, `data`, `obecnosc`, `numer_lekcji`,`uczen`) VALUES (NULL, '$data', '$obecnosc', '$nl', '$uczen')");
+	 	 $wynik->query("INSERT INTO `obeconsc` (`id`, `data`, `obecnosc`, `numer_lekcji`,`uczen`,`klasa`) VALUES (NULL, '$data', '$obecnosc', '$nl', '$uczen',$kl)");
 	 
 
 $i++;

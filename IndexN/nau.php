@@ -107,7 +107,7 @@ SEMESTR1
 require "baza.php";
 
 $klasa= $_SESSION['kl'];
- echo $_SESSION['kl'];
+
  $lekcja=$_SESSION['xdlekcja'];
  
 
