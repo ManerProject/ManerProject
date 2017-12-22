@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-
+require "baza.php";
 
 
 
@@ -95,7 +95,7 @@ $_SESSION['data']=$data;
 ?>
 <br>
  Data  <input type="date" value=""  style =""name="" > <br>
- Numer lekcji <input type="number"  name="numer_lekcji">
+ Numer lekcji <input type="number" placeholder="  <?php      ?>         " name="numer_lekcji">
  
  
 
@@ -110,11 +110,12 @@ $_SESSION['data']=$data;
 
     <div style="cleat:both" id="clear"> </div>
 <?php
-require "baza.php";
+
 
 $klasa= $_SESSION['kl'];
  
  $lekcja=$_SESSION['xdlekcja'];
+ echo  $_SESSION['kl'];
  
 
  
@@ -125,6 +126,7 @@ $klasa= $_SESSION['kl'];
     while($w=$result->fetch_assoc()){
 		$_SESSION['loginy']=$w['login'];
 		$login=$w['login'];
+		$id=$w['id']
       ?>
 	  
 	  <div style="float:left;background-color:;width:19%;min-height:30px;border:1px dotted black" id="login"> <?php  echo $w['login']; ?>     </div>

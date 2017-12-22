@@ -47,7 +47,7 @@ $i++;
 	 }
    }
    
-echo $_SESSION['data'];
+ header ('Location:obecnosc.php');
 
 
 
