@@ -81,6 +81,10 @@ SEMESTR 2
 
   <input  type="submit" name="uwagi" value="uwagi" >
   </form>
+   <form method="POST" action="braklekcji.php">
+
+  <input  type="submit" name="brak lekcji" value="brak lekcji" >
+  </form>
   <form method="POST" action="obecnosc.php">
 
   <input  type="submit" name="obecnosc" value="obecnosc" >

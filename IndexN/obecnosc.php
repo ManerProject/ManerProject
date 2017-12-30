@@ -91,7 +91,10 @@ SEMESTR1
 
   <input  type="submit" name="obecnosc" value="obecnosc" >
   </form>
+ <form method="POST" action="braklekcji.php">
 
+  <input  type="submit" name="brak lekcji" value="brak lekcji" >
+  </form>
 <form method="POST" action="obecnoscskrypt.php">
  
 <?php
@@ -165,9 +168,7 @@ $_SESSION['data']=$data;
 </div>
 
    </form>
-<?php
-   
- ?>
+
  </div>
     
  </div>

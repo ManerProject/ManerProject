@@ -1,11 +1,6 @@
 <?php 
 session_start();
 
-
-
-
-
-
  ?>
 <!DOCTYPE html>
 
@@ -57,7 +52,7 @@ session_start();
 
 <div id="all">
 <div id="logo">
-SEMESTR1
+
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
 <form action="../wyloguj.php" method="_POST" >
  
@@ -73,7 +68,7 @@ SEMESTR1
 
   <input  type="submit" name="seme" value="semestr2" >
   </form>
-  <form method="POST" action="nau.php">
+   <form method="POST" action="nau.php">
 
   <input  type="submit" name="seme" value="semestr1" >
   </form>
@@ -81,55 +76,79 @@ SEMESTR1
 
   <input  type="submit" name="uwagi" value="uwagi" >
   </form>
+   <form method="POST" action="braklekcji.php">
+
+  <input  type="submit" name="brak lekcji" value="brak lekcji" >
+  </form>
   <form method="POST" action="obecnosc.php">
 
   <input  type="submit" name="obecnosc" value="obecnosc" >
   </form>
-  <form method="POST" action="braklekcji.php">
-
-  <input  type="submit" name="brak lekcji" value="brak lekcji" >
-  </form>
-
-<form method="POST" action="nau2.php">
+ 
+ <form method="POST" action="skryptskryptsprobecnosci.php">
  
 
-  za co  <input  style =""name="zaco" >
+ 
  
  
 
 <br>
-
+Lista Nieobecnosci ucznia 
 <div style="background-color:;"id="panel">
 
  <div style="float:left;background-color:;width:20%;min-height:30px" > Login    </div>
 	  <div style="float:left;background-color:;width:10%;min-height:30px" >    Klasa  </div>
-	  <div style="float:left;background-color:;min-width:35%;min-height:30px" > Przedmiot   </div>
-	  <div style="float:left;background-color:;width:35%;min-height:30px" >   Oceny   </div>
+	  <div style="float:left;background-color:;min-width:35%;min-height:30px" > Numer_lekcji   </div>
+	  <div style="float:left;background-color:;width:35%;min-height:30px" >   Data   </div>
 
     <div style="cleat:both" id="clear"> </div>
 <?php
 require "baza.php";
 
-$klasa= $_SESSION['kl'];
-
- $lekcja=$_SESSION['xdlekcja'];
+$klasa=$_SESSION['kl'];
+$uczen=$_SESSION['uczenxdxd'];
  
-
- 
-
- $i=0;
- if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$klasa'")) {
+$lekcja= $_SESSION['xdlekcja'];
+if ($result = $wynik->query("SELECT * FROM `loginy` WHERE id='$uczen'")) {
    
     while($w=$result->fetch_assoc()){
 		$login=$w['login'];
-		$login=$w['login'];
+}
+}
+
+ if ($result = $wynik->query("SELECT * FROM `klasy` WHERE id='$klasa'")) {
+   
+    while($w=$result->fetch_assoc()){
+		$klasssa=$w['klasa'];
+}
+}
+ 
+
+ $i=0;
+ 
+ if ($result = $wynik->query("SELECT * FROM `obeconsc` WHERE `obecnosc`=2 and `uczen`='$uczen' ORDER by `DATA`,`numer_lekcji`")) {
+   
+    while($w=$result->fetch_assoc()){
+		if($i==0)
+			$pom=$w['data'];
+			
+		if($w['data']!=$pom)
+		{
+			?> </br>  </br> </br> <?php
+			$pom=$w['data'];
+		}
+		$i=1;
+		
       ?>
 	  
-	  <div style="float:left;background-color:;width:19%;min-height:30px;border:1px dotted black" id="login"> <?php  echo $w['login']; ?>     </div>
-	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $klasa ?>     </div>
-	   <div style="float:left;background-color:;width:25%;min-height:30px;border:1px dotted black" id="przedmiot"> <?php  echo $lekcja ?>     </div>
-	  <div style="float:left;background-color;min-width:39%;min-height:40px;border:1px dotted black" id="Oceny">  <?php $oceny="oceny"; require "Skryptocen.php"; ?>    </div>
-	  <div style="float:left;background-color;width:4%;min-height:30px;border:1px dotted black" id="Input">  <input maxlength="1" placeholder="0" style ="width:30px;"name="hej[]" >    </div>
+	  <div style="float:left;background-color:;width:19%;min-height:30px;border:1px dotted black" id="login"> <?php  echo $login; ?>     </div>
+	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $klasssa; ?>     </div>
+	   <div style="float:left;background-color:;width:25%;min-height:30px;border:1px dotted black" id="przedmiot"> <?php  echo $w['numer_lekcji']; ?>     </div>
+	  <div style="float:left;background-color;min-width:39%;min-height:40px;border:1px dotted black" id="Oceny">  <?php   echo $w['data']; ?>    </div>
+	 <div style="float:left;background-color;width:5.5%;min-height:30px;border:1px dotted black" id="Input">  <select name="obecnosc[]">
+		<option>1 Nie obecny</option>
+		<option>2 Usprawliwione</option>
+	</select>    </div>
 	
 	  <div style="cleat:both" id="clear">      </div>
 	 <?php 
@@ -151,11 +170,12 @@ $klasa= $_SESSION['kl'];
 </div>
 
    </form>
-<?php
-   
- ?>
+ 
+ 
  </div>
-    
- </div>
+
+
+
+
 </body>
 </html>
