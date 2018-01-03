@@ -5,7 +5,6 @@ require "baza.php";
 
 
 
-
 $data=$_SESSION['data'];
 $nl=$_POST['numer_lekcji'];
 
@@ -22,13 +21,24 @@ for($j=0;$j<strlen($data);$j++)
 	
 }
 $i=0;
+$xx=date('N');
+if ($result = $wynik->query("SELECT * FROM `planlekcji` WHERE klasa='$kl' and dzien='$xx'")) {
+   
+    while($w=$result->fetch_assoc()){
+		$xd=$w['id'];
+		
+		
+	}
+	
+}
 
+     
    if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$kl'")) {
    
     while($w=$result->fetch_assoc()){
      
 	 
-	 echo " ";
+	
 	 
 	 
 	 if($_POST['obecnosc'][$i]=="1 Obecny")
@@ -40,7 +50,8 @@ $i=0;
 	 $uczen=$w['id'];
 	
 
-	 	 $wynik->query("INSERT INTO `obeconsc` (`id`, `data`, `obecnosc`, `numer_lekcji`,`uczen`,`klasa`) VALUES (NULL, '$data', '$obecnosc', '$nl', '$uczen',$kl)");
+
+	 	 $wynik->query("INSERT INTO `obeconsc` (`id`, `data`, `obecnosc`, `numer_lekcji`,`uczen`,`klasa`,`dzienTygodnia`) VALUES (NULL, '$data', '$obecnosc', '$nl', '$uczen','$kl','$xd')");
 	 
 
 $i++;
