@@ -82,7 +82,7 @@ echo $login;
 	
 		<form   method="post" action="tonau.php" style="font-size:15px;">
 			<br>
- Kl I<input type='radio' name="KL" style="width:100px; height:50px;border-radius:400px;margin-left:5%"value="I" >
+
  <?php
 	$i=0;
 
