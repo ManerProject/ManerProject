@@ -28,9 +28,17 @@ if ($result131 = $wynik->query("SELECT * FROM `$oceny` where nick='$login' and l
 		
 			<ul style=" list-style-type:none;padding:0;
   margin:0;">
-		<li id="d<?php echo $s['id'] ?>" style="width:100px;height:30px;background-color:#BDBDBD;z-index:1;font-size:19px;line-height:1.5em;border:2px white solid;border-radius:10px;text-align: center;margin-top:5px;">
+		<li id="d<?php echo $s['id'] ?>" style="width:200px;height:90px;background-color:#BDBDBD;z-index:1;font-size:19px;line-height:1.5em;border:2px white solid;border-radius:10px;text-align: center;margin-top:5px;">
 		
-		<?php  echo $s['zaco'] ;   ?>
+		<?php echo "Zaco "; echo '"';echo $s['zaco'] ;echo '"'; echo "</br>" ;
+
+		echo "Nauczyciel "; echo '"';echo $s['nauczyciel'] ;echo '"'; echo "</br>" ;
+		echo "Data "; echo '"';echo $s['Data'] ;echo '"'; echo "</br>" ;
+		
+		
+
+
+		?>
 		
 		 
 		</li>
