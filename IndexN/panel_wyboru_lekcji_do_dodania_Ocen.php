@@ -78,6 +78,7 @@ echo $login;
     }
 	}
 	echo $id;
+	$_SESSION['nauczycielid']= $id;
 	?>
 	
 		<form   method="post" action="tonau.php" style="font-size:15px;">
@@ -122,41 +123,33 @@ echo $przedmiot1;
 
 	$result134->close();
 }
+ ?>
+<select style="width:120px;height:30px;border-radius:400px;" name='tak'>
+    <?php
+require "baza.php";
+ 
+ 
+
+ 
+ 
+if ($result = $wynik->query("SELECT lekcje.lekcja,lekcje.id from lekcje,nau where nau.nau='$id' and nau.przedmiot1=lekcje.id")) {
+   
+    while($w=$result->fetch_assoc()){
+        echo "<option value=".$w['id'].">".$w['lekcja']."</option>";      
+        
+		
+       
+    }
+ 
+ 
+  $result->close();
+  $wynik->close();
+}
  
 ?>
-	<?php
-	$i=0;
 
-		 if ($result1 = $wynik->query("SELECT lekcje.lekcja from lekcje,nau where nau.nau='$id' and nau.przedmiot1=lekcje.id")) {
-   
-    while($w=$result1->fetch_assoc()){
-			 $przedmiot1=$w['lekcja'];
-     
-  ?>
-		<br>
-<input type='submit' name="tak" style="width:100px; height:50px;border-radius:400px;margin-left:15%"value="<?php 
-
-
-echo $przedmiot1;
-
-
- ?>">
-<?php
-
-	 $i++;
-	 echo  $i;
-    }
-	
-	if(isset($_SESSION['blad1']) )
- { 
-echo "</br>";
-
-	 echo  $_SESSION['blad1'];
-	 unset($_SESSION['blad1']);
-	 
- }
-	?>
-
+    </select>
+	<input type='submit' style="width:40px; height:30px;"value="ok ">
 </form>
 		
 	
@@ -169,7 +162,7 @@ echo "</br>";
 <?php
 
 	$result1->close();
-}
+
  
 ?>
 

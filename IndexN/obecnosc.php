@@ -129,7 +129,12 @@ $_SESSION['data']=$data;
  
  
 
- 
+ if ($result = $wynik->query("SELECT * FROM `klasy` WHERE id='$klasa'")) {
+   
+    while($w=$result->fetch_assoc()){
+		$klasssa=$w['klasa'];
+}
+}
 
  $i=0;
  if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$klasa'")) {
@@ -141,7 +146,7 @@ $_SESSION['data']=$data;
       ?>
 	  
 	  <div style="float:left;background-color:;width:19%;min-height:30px;border:1px dotted black" id="login"> <?php  echo $w['login']; ?>     </div>
-	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $klasa ?>     </div>
+	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $klasssa ?>     </div>
 	   <div style="float:left;background-color:;width:25%;min-height:30px;border:1px dotted black" id="przedmiot">   <?php  echo $data ?>     </div>
 	  <div style="float:left;background-color;min-width:39%;min-height:40px;border:1px dotted black" id="Oceny">    <?php  require "skryptsprobecnosci.php"; ?>  </div>
 	  <div style="float:left;background-color;width:5.5%;min-height:30px;border:1px dotted black" id="Input">  <select name="obecnosc[]">

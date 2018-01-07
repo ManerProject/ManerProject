@@ -6,7 +6,7 @@
  
  
  $i=2;
-if ($result131 = $wynik->query("SELECT * FROM `$oceny` where nick='$login' and lekcja='$lekcja'")) {
+if ($result131 = $wynik->query("SELECT * FROM `$oceny`,loginy where idlogin='$login' and idlekcja='$lekcja' and `$oceny`.idnauczyciel=loginy.id")) {
   
     while($s=$result131->fetch_assoc()){
 		?>
@@ -32,7 +32,7 @@ if ($result131 = $wynik->query("SELECT * FROM `$oceny` where nick='$login' and l
 		
 		<?php echo "Zaco "; echo '"';echo $s['zaco'] ;echo '"'; echo "</br>" ;
 
-		echo "Nauczyciel "; echo '"';echo $s['nauczyciel'] ;echo '"'; echo "</br>" ;
+		echo "Nauczyciel "; echo '"';echo $s['login'] ;echo '"'; echo "</br>" ;
 		echo "Data "; echo '"';echo $s['Data'] ;echo '"'; echo "</br>" ;
 		
 		

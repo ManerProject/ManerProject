@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Sty 2018, 16:51
--- Wersja serwera: 10.1.19-MariaDB
--- Wersja PHP: 5.5.38
+-- Czas generowania: 07 Sty 2018, 14:40
+-- Wersja serwera: 10.1.29-MariaDB
+-- Wersja PHP: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -192,7 +194,37 @@ INSERT INTO `obeconsc` (`id`, `data`, `obecnosc`, `numer_lekcji`, `uczen`, `klas
 (360, '2018-01-03', 1, '7', 37, 10, '23'),
 (361, '2018-01-03', 1, '8', 35, 10, '23'),
 (362, '2018-01-03', 3, '8', 36, 10, '23'),
-(363, '2018-01-03', 3, '8', 37, 10, '23');
+(363, '2018-01-03', 3, '8', 37, 10, '23'),
+(364, '2018-01-06', 1, '1', 35, 10, '23'),
+(365, '2018-01-06', 1, '1', 36, 10, '23'),
+(366, '2018-01-06', 1, '1', 37, 10, '23'),
+(367, '2018-01-06', 1, '2', 35, 10, '23'),
+(368, '2018-01-06', 1, '2', 36, 10, '23'),
+(369, '2018-01-06', 1, '2', 37, 10, '23'),
+(370, '2018-01-06', 1, '3', 35, 10, '23'),
+(371, '2018-01-06', 1, '3', 36, 10, '23'),
+(372, '2018-01-06', 1, '3', 37, 10, '23'),
+(373, '2018-01-06', 1, '4', 35, 10, '23'),
+(374, '2018-01-06', 1, '4', 36, 10, '23'),
+(375, '2018-01-06', 1, '4', 37, 10, '23'),
+(376, '2018-01-06', 1, '5', 35, 10, '23'),
+(377, '2018-01-06', 1, '5', 36, 10, '23'),
+(378, '2018-01-06', 1, '5', 37, 10, '23'),
+(379, '2018-01-06', 1, '6', 35, 10, '23'),
+(380, '2018-01-06', 1, '6', 36, 10, '23'),
+(381, '2018-01-06', 1, '6', 37, 10, '23'),
+(382, '2018-01-06', 1, '7', 35, 10, '23'),
+(383, '2018-01-06', 1, '7', 36, 10, '23'),
+(384, '2018-01-06', 1, '7', 37, 10, '23'),
+(385, '2018-01-06', 1, '8', 35, 10, '23'),
+(386, '2018-01-06', 1, '8', 36, 10, '23'),
+(387, '2018-01-06', 1, '8', 37, 10, '23'),
+(388, '2018-01-06', 1, '9', 35, 10, '23'),
+(389, '2018-01-06', 1, '9', 36, 10, '23'),
+(390, '2018-01-06', 1, '9', 37, 10, '23'),
+(391, '2018-01-07', 1, '1', 35, 10, '23'),
+(392, '2018-01-07', 1, '1', 36, 10, '23'),
+(393, '2018-01-07', 1, '1', 37, 10, '23');
 
 -- --------------------------------------------------------
 
@@ -203,70 +235,32 @@ INSERT INTO `obeconsc` (`id`, `data`, `obecnosc`, `numer_lekcji`, `uczen`, `klas
 CREATE TABLE `oceny` (
   `id` int(11) NOT NULL,
   `oceny` int(11) NOT NULL,
-  `lekcja` text NOT NULL,
-  `nick` text NOT NULL,
+  `idlekcja` text NOT NULL,
+  `idlogin` text NOT NULL,
   `zaco` text NOT NULL,
-  `kl` text NOT NULL
+  `idklasa` text NOT NULL,
+  `Data` date NOT NULL,
+  `idnauczyciel` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `oceny`
 --
 
-INSERT INTO `oceny` (`id`, `oceny`, `lekcja`, `nick`, `zaco`, `kl`) VALUES
-(136, 1, 'Polski', 'uczenkl1', '', '9'),
-(137, 2, 'Polski', 'uczenkl12', '', '9'),
-(138, 3, 'Polski', 'uczenkl2', '', '9'),
-(139, 1, 'Polski', 'uczenkl1', '', '9'),
-(140, 1, 'Polski', 'uczenkl12', '', '9'),
-(141, 1, 'Polski', 'uczenkl2', '', '9'),
-(142, 2, 'Polski', 'uczenkl1', '', '9'),
-(143, 3, 'Polski', 'uczenkl12', '', '9'),
-(144, 4, 'Polski', 'uczenkl2', '', '9'),
-(145, 4, 'Polski', 'uczenkl1', '', '9'),
-(146, 4, 'Polski', 'uczenkl12', '', '9'),
-(147, 4, 'Polski', 'uczenkl2', '', '9'),
-(148, 5, 'Polski', 'uczenkl1', '', '9'),
-(149, 5, 'Polski', 'uczenkl12', '', '9'),
-(150, 5, 'Polski', 'uczenkl2', '', '9'),
-(151, 5, 'Polski', 'uczenkl2', '', '9'),
-(152, 5, 'Polski', 'uczenkl2', '', '9'),
-(153, 2, 'W-f', 'uczenkl1', '', '9'),
-(154, 2, 'W-f', 'uczenkl12', '', '9'),
-(155, 2, 'W-f', 'uczenkl2', '', '9'),
-(156, 3, 'W-f', 'uczenkl1', '', '9'),
-(157, 3, 'W-f', 'uczenkl12', '', '9'),
-(158, 3, 'W-f', 'uczenkl2', '', '9'),
-(159, 5, 'Nazwa', 'uczenkl2id2', '', '10'),
-(160, 5, 'Nazwa', 'uczenkl3', '', '10'),
-(161, 5, 'Nazwa', 'uczenkl3id1', '', '10'),
-(162, 6, 'Nazwa', 'uczenkl2id2', '', '10'),
-(163, 6, 'Nazwa', 'uczenkl3', '', '10'),
-(164, 6, 'Nazwa', 'uczenkl3id1', '', '10'),
-(165, 1, 'Nazwa', 'uczenkl2id2', '', '10'),
-(166, 1, 'Nazwa', 'uczenkl3', '', '10'),
-(167, 1, 'Nazwa', 'uczenkl3id1', '', '10'),
-(168, 2, 'Nazwa', 'uczenkl2id2', '', '10'),
-(169, 2, 'Nazwa', 'uczenkl3', '', '10'),
-(170, 2, 'Nazwa', 'uczenkl3id1', '', '10'),
-(171, 1, 'hejakj', 'uczenkl2id2', '', '10'),
-(172, 1, 'hejakj', 'uczenkl3', '', '10'),
-(173, 1, 'hejakj', 'uczenkl3id1', '', '10'),
-(174, 5, 'hejakj', 'uczenkl2id2', 'za gÃ³wno', '10'),
-(175, 5, 'polaczek', 'uczenkl2id2', '', '10'),
-(176, 5, 'polaczek', 'uczenkl3', '', '10'),
-(177, 5, 'polaczek', 'uczenkl3id1', '', '10'),
-(178, 6, 'polaczek', 'uczenkl2id2', '', '10'),
-(179, 3, 'polaczek', 'uczenkl3', '', '10'),
-(180, 5, 'polaczek', 'uczenkl3id1', '', '10'),
-(181, 1, 'polaczek', 'uczenkl2id2', '', '10'),
-(182, 2, 'polaczek', 'uczenkl3', '', '10'),
-(183, 3, 'polaczek', 'uczenkl3id1', '', '10'),
-(184, 5, 'polaczek', 'uczenkl3', '', '10'),
-(185, 5, 'polaczek', 'uczenkl3', '', '10'),
-(186, 1, 'polaczek', 'uczenkl2id2', '', '10'),
-(187, 1, 'polaczek', 'uczenkl2id2', '', '10'),
-(188, 2, 'polaczek', 'uczenkl2id2', '', '10');
+INSERT INTO `oceny` (`id`, `oceny`, `idlekcja`, `idlogin`, `zaco`, `idklasa`, `Data`, `idnauczyciel`) VALUES
+(204, 5, '3', '35', '', '10', '2018-01-06', '30'),
+(205, 6, '3', '36', '', '10', '2018-01-06', '30'),
+(206, 5, '3', '37', '', '10', '2018-01-06', '30'),
+(207, 1, '3', '36', '', '10', '2018-01-06', '30'),
+(208, 2, '3', '35', '', '10', '2018-01-06', '30'),
+(209, 3, '3', '37', '', '10', '2018-01-06', '30'),
+(210, 2, '3', '36', '', '10', '2018-01-06', '30'),
+(211, 1, '3', '37', '', '10', '2018-01-06', '30'),
+(212, 1, '3', '35', '', '10', '2018-01-06', '30'),
+(213, 2, '3', '36', '', '10', '2018-01-06', '30'),
+(214, 3, '3', '37', '', '10', '2018-01-06', '30'),
+(215, 2, '21', '36', '', '10', '2018-01-07', '30'),
+(216, 3, '21', '36', '', '10', '2018-01-07', '30');
 
 -- --------------------------------------------------------
 
@@ -277,26 +271,28 @@ INSERT INTO `oceny` (`id`, `oceny`, `lekcja`, `nick`, `zaco`, `kl`) VALUES
 CREATE TABLE `ocenys2` (
   `id` int(11) NOT NULL,
   `oceny` int(11) NOT NULL,
-  `lekcja` text NOT NULL,
-  `nick` text NOT NULL,
+  `idlekcja` int(11) NOT NULL,
+  `idlogin` int(11) NOT NULL,
   `zaco` text NOT NULL,
-  `kl` int(11) NOT NULL
+  `idklasa` int(11) NOT NULL,
+  `Data` date NOT NULL,
+  `idnauczyciel` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `ocenys2`
 --
 
-INSERT INTO `ocenys2` (`id`, `oceny`, `lekcja`, `nick`, `zaco`, `kl`) VALUES
-(3, 1, 'Polski', 'uczenkl1', '', 9),
-(4, 1, 'Polski', 'uczenkl12', '', 9),
-(5, 2, 'Polski', 'uczenkl2', '', 9),
-(6, 3, 'Polski', 'uczenkl1', '', 9),
-(7, 2, 'Polski', 'uczenkl12', '', 9),
-(8, 3, 'Polski', 'uczenkl2', '', 9),
-(9, 1, 'Polski', 'uczenkl1', '', 9),
-(10, 2, 'Polski', 'uczenkl12', '', 9),
-(11, 3, 'Polski', 'uczenkl2', '', 9);
+INSERT INTO `ocenys2` (`id`, `oceny`, `idlekcja`, `idlogin`, `zaco`, `idklasa`, `Data`, `idnauczyciel`) VALUES
+(12, 1, 3, 35, '', 10, '2018-01-06', 30),
+(13, 2, 3, 36, '', 10, '2018-01-06', 30),
+(14, 3, 3, 37, '', 10, '2018-01-06', 30),
+(15, 1, 3, 35, '', 10, '2018-01-06', 30),
+(16, 2, 3, 36, '', 10, '2018-01-06', 30),
+(17, 3, 3, 37, '', 10, '2018-01-06', 30),
+(18, 5, 3, 35, 'semestr2', 10, '2018-01-06', 30),
+(19, 6, 3, 36, 'semestr2', 10, '2018-01-06', 30),
+(20, 5, 3, 37, 'semestr2', 10, '2018-01-06', 30);
 
 -- --------------------------------------------------------
 
@@ -427,46 +423,56 @@ ALTER TABLE `uwagi`
 --
 ALTER TABLE `klasy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT dla tabeli `lekcje`
 --
 ALTER TABLE `lekcje`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT dla tabeli `loginy`
 --
 ALTER TABLE `loginy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
 --
 -- AUTO_INCREMENT dla tabeli `nau`
 --
 ALTER TABLE `nau`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
 --
 -- AUTO_INCREMENT dla tabeli `obeconsc`
 --
 ALTER TABLE `obeconsc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=364;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=394;
+
 --
 -- AUTO_INCREMENT dla tabeli `oceny`
 --
 ALTER TABLE `oceny`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+
 --
 -- AUTO_INCREMENT dla tabeli `ocenys2`
 --
 ALTER TABLE `ocenys2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT dla tabeli `planlekcji`
 --
 ALTER TABLE `planlekcji`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
 -- AUTO_INCREMENT dla tabeli `uwagi`
 --
 ALTER TABLE `uwagi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

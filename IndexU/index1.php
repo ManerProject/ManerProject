@@ -66,6 +66,19 @@ if(!isset($_SESSION['zaloguj']))
 	header ('Location:../login.php');
 	exit();
 }
+
+if ($result89 = $wynik->query("SELECT * FROM `loginy` where login='$login'")) {
+   
+    while($s=$result89->fetch_assoc()){
+      
+       $_SESSION['uczenid']=$s['id'];
+      $uczenid=$s['id'];
+    }
+	
+	
+}
+echo  $uczenid;
+
 $result69 = $wynik->query("select typ from loginy where login='$login' and typ='admin'");
 	if($result69->num_rows==1 )
 	{
@@ -97,7 +110,7 @@ $result69 = $wynik->query("select typ from loginy where login='$login' and typ='
 echo $login;
 $sumat=0;
 $poms=0;
-if ($result89 = $wynik->query("SELECT `oceny` FROM `oceny` where nick='$login'")) {
+if ($result89 = $wynik->query("SELECT `oceny` FROM `oceny` where idlogin='$uczenid'")) {
    
     while($s=$result89->fetch_assoc()){
       $sumat=$sumat + $s['oceny'];
@@ -152,9 +165,7 @@ if ($result11 = $wynik->query("SELECT oceny.oceny from loginy,oceny where loginy
 }
  $sua=round($sua,2); 
 
-$result1->close();
 
-$result11->close();
 
  ?></h1>
  
@@ -167,13 +178,14 @@ $result11->close();
 
 
 <?php
-$lekcja;
+
 
 if ($result1 = $wynik->query("SELECT * FROM `lekcje` WHERE id!=0")) {
    
     while($w=$result1->fetch_assoc()){
 			 
 			$lekcja= $w['lekcja'];
+			$lekcjaid=$w['id'];
 			 
 			 
 			 
@@ -189,7 +201,7 @@ if ($result1 = $wynik->query("SELECT * FROM `lekcje` WHERE id!=0")) {
  
  
  
-if ($result131 = $wynik->query("SELECT * FROM `oceny` where nick='$login' and lekcja='$lekcja'")) {
+if ($result131 = $wynik->query("SELECT * FROM `oceny`,loginy where idlogin='$uczenid' and idlekcja='$lekcjaid' and `oceny`.idnauczyciel=loginy.id")) {
   
     while($s=$result131->fetch_assoc()){
 		?>
@@ -204,9 +216,12 @@ if ($result131 = $wynik->query("SELECT * FROM `oceny` where nick='$login' and le
 		
 			<ul style=" list-style-type:none;padding:0;
   margin:0;">
-		<li id="d<?php echo $s['id'] ?>" style="width:100px;height:30px;background-color:#BDBDBD;z-index:1;font-size:19px;line-height:1.5em;border:2px white solid;border-radius:10px;text-align: center;margin-top:5px;">
+		<li id="d<?php echo $s['id'] ?>" style="width:200px;height:90px;background-color:#BDBDBD;z-index:1;font-size:19px;line-height:1.5em;border:2px white solid;border-radius:10px;text-align: center;margin-top:5px;">
 		
-		<?php  echo $s['zaco'] ;   ?>
+		<?php  echo "Zaco "; echo '"';echo $s['zaco'] ;echo '"'; echo "</br>" ;
+
+		echo "Nauczyciel "; echo '"';echo $s['login'] ;echo '"'; echo "</br>" ;
+		echo "Data "; echo '"';echo $s['Data'] ;echo '"'; echo "</br>" ;   ?>
 		
 		 
 		</li>

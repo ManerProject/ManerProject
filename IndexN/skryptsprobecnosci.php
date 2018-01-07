@@ -27,7 +27,7 @@ if ($result131 = $wynik->query("SELECT * FROM `loginy` INNER JOIN (`planlekcji` 
 		
 		$nr=$s['numer_lekcji'];
 		$lekcja[6]=$nr;
-		$lekcjanr=$lekcja+$nr;
+		
 		?>
 		<?php if($i%14==0) 
 			

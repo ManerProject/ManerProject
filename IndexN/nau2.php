@@ -42,7 +42,7 @@ for($j=0;$j<strlen($data);$j++)
 
 
  
-  $nau= $_SESSION['login'];
+  $nau= $_SESSION['nauczycielid'];
    if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$kl'")) {
    
     while($w=$result->fetch_assoc()){
@@ -67,16 +67,17 @@ if(  $_POST['hej'][$i]<7  )
 	 {
 		
 		$ocena=$_POST['hej'][$i];
-		$nick=$w['login'];
+		$nick=$w['id'];
 		
 	 
 		
-	 $wynik->query("INSERT INTO `oceny` (`id`, `oceny`, `lekcja`, `nick`, `zaco`,`kl`,`Data`,`nauczyciel`) VALUES (NULL, '$ocena', '$lek', '$nick', '$zaco','$kl','$data','$nau')");
+	 $wynik->query("INSERT INTO `oceny` (`id`, `oceny`, `idlekcja`, `idlogin`, `zaco`,`idklasa`,`Data`,`idnauczyciel`) VALUES (NULL, '$ocena', '$lek', '$nick', '$zaco','$kl','$data','$nau')");
 	 
  
 	 }
    
 }
+$i++;
 
    
    }}
