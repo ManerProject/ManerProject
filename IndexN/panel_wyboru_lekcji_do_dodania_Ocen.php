@@ -67,23 +67,49 @@ session_start();
 <?php
 require "baza.php";
 $login= $_SESSION['login'];
- 
 echo $login;
- 
- if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
+if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
    
     while($w=$result1->fetch_assoc()){
 			 $id=$w['id'];
       
     }
 	}
-	echo $id;
-	$_SESSION['nauczycielid']= $id;
+ echo "<br>";
+ if ($resultt = $wynik->query("SELECT * FROM wychowawcy WHERE nauczyciel='$id'")) {
+   $_SESSION['div']="none";
+    if($w=$resultt->fetch_assoc()){
+			 if($w>0)
+			 {
+				 $kl=$w['klasa'];
+				  if ($resultw = $wynik->query("SELECT * FROM klasy WHERE id='$kl'")) {
+   
+						if($ww=$resultw->fetch_assoc()){
+							echo "Jestes wychowawca klasy ".$ww['numer']." ".$ww['nazwa'];
+							$_SESSION['nr']=$ww['numer'];
+							$_SESSION['nazwa']=$ww['nazwa'];
+							$_SESSION['login']=$login;
+							$_SESSION['klasa']=$kl;
+							$_SESSION['div']="block";
+						}
+					}
+			 }
+      
+    }
+	}
 	?>
-	
+	<div style="display: <?php echo $_SESSION['div']; ?>">
+<form action='klasa.php' method='post'>
+						<input type='submit' name='tak' style='width:100px; height:50px;border-radius:400px;' value='twoja klasa'>
+						</form>
+						<form action='panel_dodawania_ucznia_do_klas.php' method='post'>
+						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='dodaj uczniow'>
+						</form>
+</div>
+<hr>
 		<form   method="post" action="tonau.php" style="font-size:15px;">
 			<br>
-
+ Kl I<input type='radio' name="KL" style="width:100px; height:50px;border-radius:400px;margin-left:5%"value="I" >
  <?php
 	$i=0;
 
@@ -91,7 +117,6 @@ echo $login;
    
     while($w=$result134->fetch_assoc()){
 			 $przedmiot1=$w['id'];
-     
   ?>
 		<br>
 <input type='radio' name="KL" style="width:100px; height:50px;border-radius:400px;margin-left:15%"value="<?php 
@@ -105,7 +130,8 @@ echo $przedmiot1;
 
 	 
 	 
-	 echo   $w['klasa'];
+	 echo   $w['numer'];
+	 echo	$w['nazwa'];
     }
 	
 	?>
@@ -123,33 +149,41 @@ echo $przedmiot1;
 
 	$result134->close();
 }
- ?>
-<select style="width:120px;height:30px;border-radius:400px;" name='tak'>
-    <?php
-require "baza.php";
- 
- 
-
- 
- 
-if ($result = $wynik->query("SELECT lekcje.lekcja,lekcje.id from lekcje,nau where nau.nau='$id' and nau.przedmiot1=lekcje.id")) {
-   
-    while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['id'].">".$w['lekcja']."</option>";      
-        
-		
-       
-    }
- 
- 
-  $result->close();
-  $wynik->close();
-}
  
 ?>
+	<?php
+	$i=0;
 
-    </select>
-	<input type='submit' style="width:40px; height:30px;"value="ok ">
+		 if ($result1 = $wynik->query("SELECT lekcje.lekcja from lekcje,nau where nau.nau='$id' and nau.przedmiot1=lekcje.id")) {
+   
+    while($w=$result1->fetch_assoc()){
+			 $przedmiot1=$w['lekcja'];
+     
+  ?>
+		<br>
+<input type='submit' name="tak" style="width:100px; height:50px;border-radius:400px;margin-left:15%"value="<?php 
+
+
+echo $przedmiot1;
+
+
+ ?>">
+<?php
+
+	 $i++;
+	 echo  $i;
+    }
+	
+	if(isset($_SESSION['blad1']) )
+ { 
+echo "</br>";
+
+	 echo  $_SESSION['blad1'];
+	 unset($_SESSION['blad1']);
+	 
+ }
+	?>
+
 </form>
 		
 	
@@ -162,7 +196,7 @@ if ($result = $wynik->query("SELECT lekcje.lekcja,lekcje.id from lekcje,nau wher
 <?php
 
 	$result1->close();
-
+}
  
 ?>
 

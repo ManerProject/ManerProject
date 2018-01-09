@@ -1,22 +1,5 @@
 <?php 
 session_start();
-$klasa= $_SESSION['kl'];
-require "baza.php";
-if($result = $wynik->query("SELECT * from klasy WHERE id='$klasa'") ){
-   
-		$w=$result->fetch_assoc();
-			 $numer=$w['numer'];
-			 $nazwa=$w['nazwa'];
-     }
-$data= date('Y.m.d');
-
-for($j=0;$j<strlen($data);$j++)
-{
-	if($data[$j]=='.')
-		$data[$j]='-';
-	
-}
-
 
  ?>
 <!DOCTYPE html>
@@ -80,7 +63,7 @@ SEMESTR1
  
  </form>
 </div>
-
+Informacje na temat twojej klasy
 <form method="POST" action="naus1.php">
 
   <input  type="submit" name="seme" value="semestr2" >
@@ -95,19 +78,13 @@ SEMESTR1
   </form>
   <form method="POST" action="obecnosc.php">
 
-  <input  type="submit" name="obecnosc" value="obecnosc" >
+  <input  type="submit" name="obecnosc" value="obecnosci" >
   </form>
 
-<form method="POST" action="obecnoscskrypt.php">
+<form method="POST" action="nau2.php">
  
-<?php
 
-echo $data;
-$_SESSION['data']=$data;
-?>
-<br>
- Data  <input type="date" value=""  style =""name="" > <br>
- Numer lekcji <input type="number" value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji">
+  za co  <input  style =""name="zaco" >
  
  
 
@@ -116,18 +93,21 @@ $_SESSION['data']=$data;
 <div style="background-color:;"id="panel">
 
  <div style="float:left;background-color:;width:20%;min-height:30px" > Login    </div>
-	  <div style="float:left;background-color:;width:10%;min-height:30px" >    Klasa  </div>
-	  <div style="float:left;background-color:;min-width:35%;min-height:30px" >  Data </div>
-	  <div style="float:left;background-color:;width:35%;min-height:30px" >   Obecność  </div>
+	  <div style="float:left;background-color:;min-width:35%;min-height:30px" > Przedmiot   </div>
+	  <div style="float:left;background-color:;width:35%;min-height:30px" >   Oceny   </div>
 
     <div style="cleat:both" id="clear"> </div>
 <?php
+require "baza.php";
+$klasa=$_SESSION['kl'];
+	 if($result = $wynik->query("SELECT * from klasy WHERE id='$klasa'") ){
+   
+		$w=$result->fetch_assoc();
+			 $numer=$w['numer'];
+			 $nazwa=$w['nazwa'];
+     }	
 
-
-
- 
  $lekcja=$_SESSION['xdlekcja'];
- 
  
 
  
@@ -136,20 +116,14 @@ $_SESSION['data']=$data;
  if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$klasa'")) {
    
     while($w=$result->fetch_assoc()){
-		$_SESSION['loginy']=$w['login'];
 		$login=$w['login'];
-		$id=$w['id']
+		$login=$w['login'];
       ?>
 	  
 	  <div style="float:left;background-color:;width:19%;min-height:30px;border:1px dotted black" id="login"> <?php  echo $w['login']; ?>     </div>
-	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $numer;echo " ";echo $nazwa; ?>     </div>
-	   <div style="float:left;background-color:;width:25%;min-height:30px;border:1px dotted black" id="przedmiot">   <?php  echo $data ?>     </div>
-	  <div style="float:left;background-color;min-width:39%;min-height:40px;border:1px dotted black" id="Oceny">    <?php  require "skryptsprobecnosci.php"; ?>  </div>
-	  <div style="float:left;background-color;width:5.5%;min-height:30px;border:1px dotted black" id="Input">  <select name="obecnosc[]">
-		<option>1 Obecny</option>
-		<option>2 Nie obecny</option>
-		<option>3 Spoznienie</option>
-	</select>    </div>
+	   <div style="float:left;background-color:;width:25%;min-height:30px;border:1px dotted black" id="przedmiot"> <?php  echo $lekcja ?>     </div>
+	  <div style="float:left;background-color;min-width:39%;min-height:40px;border:1px dotted black" id="Oceny">  <?php $oceny="oceny"; require "Skryptocen.php"; ?>    </div>
+	  <div style="float:left;background-color;width:4%;min-height:30px;border:1px dotted black" id="Input">  <input maxlength="1" placeholder="0" style ="width:30px;"name="hej[]" >    </div>
 	
 	  <div style="cleat:both" id="clear">      </div>
 	 <?php 

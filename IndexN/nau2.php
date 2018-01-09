@@ -16,14 +16,6 @@ session_start()
 
    
  <?php
- $data= date('Y.m.d');
-
-for($j=0;$j<strlen($data);$j++)
-{
-	if($data[$j]=='.')
-		$data[$j]='-';
-	
-}
  require "baza.php";
  $kl= $_SESSION['kl'];
  echo $kl;
@@ -42,7 +34,7 @@ for($j=0;$j<strlen($data);$j++)
 
 
  
-  $nau= $_SESSION['nauczycielid'];
+   
    if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$kl'")) {
    
     while($w=$result->fetch_assoc()){
@@ -67,20 +59,29 @@ if(  $_POST['hej'][$i]<7  )
 	 {
 		
 		$ocena=$_POST['hej'][$i];
-		$nick=$w['id'];
+		$nick=$w['login'];
 		
 	 
 		
-	 $wynik->query("INSERT INTO `oceny` (`id`, `oceny`, `idlekcja`, `idlogin`, `zaco`,`idklasa`,`Data`,`idnauczyciel`) VALUES (NULL, '$ocena', '$lek', '$nick', '$zaco','$kl','$data','$nau')");
+	 $wynik->query("INSERT INTO `oceny` (`id`, `oceny`, `lekcja`, `nick`, `zaco`,`kl`) VALUES (NULL, '$ocena', '$lek', '$nick', '$zaco','$kl')");
 	 
  
 	 }
    
 }
-$i++;
-
+else
+{
+  
+  $_SESSION['blad1']="Bład w dodawaniu ocen podaj ocene z zakersu 1-6";
+  header("location:nau.php");
+}
+	 
+	  $i++;
+	 
+   }
+   }
    
-   }}
+   
 
    
 
