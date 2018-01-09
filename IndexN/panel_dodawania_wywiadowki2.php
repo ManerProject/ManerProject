@@ -79,7 +79,7 @@ echo $klasa;
 	    if ($result = $wynik->query("SELECT * FROM klasy")) {
    
     while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['ID'].">".$w['klasa']."</option>";      
+        echo "<option value=".$w['id'].">".$w['klasa']."</option>";      
       
 		
        
