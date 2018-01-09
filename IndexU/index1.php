@@ -58,6 +58,10 @@ Semestr 1
 
   <input  type="submit" name="seme" value="semestr2" >
   </form>
+  <form method="POST" action="wiadomosci.php">
+
+  <input  type="submit" name="seme" value="wiadomosc" >
+  </form>
  <?php  
 $login= $_SESSION['login'];
 require "baza.php";
