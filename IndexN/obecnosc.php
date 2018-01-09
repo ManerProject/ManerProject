@@ -106,8 +106,8 @@ $_SESSION['data']=$data;
 ?>
 <br>
  Data  <input type="date" value=""  style =""name="" > <br>
- Numer lekcji <input type="number" min="1" max="9" value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji">
- 
+ Numer lekcji <input type="number" min="1" max="9" value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji"> <br>
+ Temat lekcji <input type="text" name="temat">
  
 
 <br>

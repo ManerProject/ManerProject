@@ -7,7 +7,7 @@ require "baza.php";
 
 $data=$_SESSION['data'];
 $nl=$_POST['numer_lekcji'];
-
+$temat=$_POST['temat'];
 
 $kl= $_SESSION['kl'];
 
@@ -31,10 +31,11 @@ if ($result = $wynik->query("SELECT * FROM `planlekcji` WHERE klasa='$kl' and dz
 	}
 	
 }
-
-     
+ if ($result=$wynik->query("SELECT * FROM `loginy` WHERE klasa='$kl'")) {
+	 $wynik->query("INSERT INTO `tematy` (`id`, `idklasa`, `idlekcja`,`data`,`temat`) VALUES (NULL, '$kl', '$nl','$data','$temat')");
+ }
    if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$kl'")) {
-   
+	 
     while($w=$result->fetch_assoc()){
      
 	 
@@ -52,7 +53,7 @@ if ($result = $wynik->query("SELECT * FROM `planlekcji` WHERE klasa='$kl' and dz
 
 
 	 	 $wynik->query("INSERT INTO `obeconsc` (`id`, `data`, `obecnosc`, `numer_lekcji`,`uczen`,`klasa`,`dzienTygodnia`) VALUES (NULL, '$data', '$obecnosc', '$nl', '$uczen','$kl','$xd')");
-	 
+	     
 
 $i++;
 	 }
