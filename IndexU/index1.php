@@ -370,6 +370,61 @@ ol > li:hover > ul {
 	}
 		?>
 		
+		tu bendom wywiadowek
+		<?php
+  if ($result69 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
+			
+				 
+    while($w=$result69->fetch_assoc()){
+			 $klasa=$w['Klasa'];
+      
+    }
+  }
+			 if ($result1 = $wynik->query("SELECT * FROM wywiadowka WHERE klasa='$klasa'")) {
+				
+				 
+    while($w=$result1->fetch_assoc()){
+			 $wywiadowka=$w['klasa'];
+    }
+	}
+	
+		 if ($result1 = $wynik->query("SELECT * FROM wywiadowka WHERE $wywiadowka='$klasa'")) {
+   if ($result1 = $wynik->query("SELECT * FROM wywiadowka WHERE aktywna='1'"))
+   {
+    while($w=$result1->fetch_assoc()){
+			 
+			 ?>
+			 <div style="margin-left:84%; background-color:#9E9E9E" class="uwagii" ><?php
+      
+				
+				echo $w['data'];
+				echo " w sali ";
+				echo $w['sala'];
+				?>
+				</br>
+	
+	 <div style="padding-left:17%;; background-color:#616161" class="uwagii" ><?php
+      
+				
+				echo $w['tytul'];
+				?>
+				</br>
+	 
+	 
+			 
+			 
+			 </div>
+			 
+			 
+			 </div>
+			 
+			 <?php
+      
+	  
+	}
+    }
+	}
+		?>
 		</div>
 		
 		
