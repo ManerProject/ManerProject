@@ -51,38 +51,21 @@ session_start();
  </form>
 </div>
 <div style="float:left;width:85%" id="content">
-
-
-Semestr 1
+Semestr 2
 <form method="POST" action="index1.php">
 
-  <input  type="submit" name="seme" value="semestr2" >
+  <input  type="submit" name="seme" value="semestr1" >
   </form>
-  <form method="POST" action="wiadomosci.php">
 
-  <input  type="submit" name="seme" value="wiadomosc" >
-  </form>
+
  <?php  
 $login= $_SESSION['login'];
 require "baza.php";
 if(!isset($_SESSION['zaloguj']))
 {
-	header ('Location:../login.php');
+	header ('Location:login.php');
 	exit();
 }
-
-if ($result89 = $wynik->query("SELECT * FROM `loginy` where login='$login'")) {
-   
-    while($s=$result89->fetch_assoc()){
-      
-       $_SESSION['uczenid']=$s['id'];
-      $uczenid=$s['id'];
-    }
-	
-	
-}
-echo  $uczenid;
-
 $result69 = $wynik->query("select typ from loginy where login='$login' and typ='admin'");
 	if($result69->num_rows==1 )
 	{
@@ -114,7 +97,7 @@ $result69 = $wynik->query("select typ from loginy where login='$login' and typ='
 echo $login;
 $sumat=0;
 $poms=0;
-if ($result89 = $wynik->query("SELECT `oceny` FROM `ocenys2` where idlogin='$uczenid'")) {
+if ($result89 = $wynik->query("SELECT `oceny` FROM `oceny` where nick='$login'")) {
    
     while($s=$result89->fetch_assoc()){
       $sumat=$sumat + $s['oceny'];
@@ -130,7 +113,7 @@ if ($result89 = $wynik->query("SELECT `oceny` FROM `ocenys2` where idlogin='$ucz
 
 $poms=0;
 $suma=0;
-if ($result891 = $wynik->query("SELECT `oceny` FROM `ocenys2` ")) {
+if ($result891 = $wynik->query("SELECT `oceny` FROM `oceny` ")) {
    
     while($s=$result891->fetch_assoc()){
       $suma=$suma + $s['oceny'];
@@ -157,7 +140,7 @@ if ($result1 = $wynik->query("SELECT klasa FROM loginy WHERE login='$login'")) {
       
     }
 	}
-if ($result11 = $wynik->query("SELECT ocenys2.oceny from loginy,oceny where loginy.id=oceny.kl and loginy.Klasa='$id' ")) {
+if ($result11 = $wynik->query("SELECT oceny.oceny from loginy,oceny where loginy.id=oceny.kl and loginy.Klasa='$id' ")) {
    
     while($s=$result11->fetch_assoc()){
       $sua=$sua + $s['oceny'];
@@ -169,7 +152,9 @@ if ($result11 = $wynik->query("SELECT ocenys2.oceny from loginy,oceny where logi
 }
  $sua=round($sua,2); 
 
+$result1->close();
 
+$result11->close();
 
  ?></h1>
  
@@ -182,14 +167,13 @@ if ($result11 = $wynik->query("SELECT ocenys2.oceny from loginy,oceny where logi
 
 
 <?php
-
+$lekcja;
 
 if ($result1 = $wynik->query("SELECT * FROM `lekcje` WHERE id!=0")) {
    
     while($w=$result1->fetch_assoc()){
 			 
 			$lekcja= $w['lekcja'];
-			$lekcjaid=$w['id'];
 			 
 			 
 			 
@@ -205,7 +189,7 @@ if ($result1 = $wynik->query("SELECT * FROM `lekcje` WHERE id!=0")) {
  
  
  
-if ($result131 = $wynik->query("SELECT * FROM `ocenys2`,loginy where idlogin='$uczenid' and idlekcja='$lekcjaid' and `ocenys2`.idnauczyciel=loginy.id")) {
+if ($result131 = $wynik->query("SELECT * FROM `ocenys2` where nick='$login' and lekcja='$lekcja'")) {
   
     while($s=$result131->fetch_assoc()){
 		?>
@@ -220,12 +204,9 @@ if ($result131 = $wynik->query("SELECT * FROM `ocenys2`,loginy where idlogin='$u
 		
 			<ul style=" list-style-type:none;padding:0;
   margin:0;">
-		<li id="d<?php echo $s['id'] ?>" style="width:200px;height:90px;background-color:#BDBDBD;z-index:1;font-size:19px;line-height:1.5em;border:2px white solid;border-radius:10px;text-align: center;margin-top:5px;">
+		<li id="d<?php echo $s['id'] ?>" style="width:100px;height:30px;background-color:#BDBDBD;z-index:1;font-size:19px;line-height:1.5em;border:2px white solid;border-radius:10px;text-align: center;margin-top:5px;">
 		
-		<?php  echo "Zaco "; echo '"';echo $s['zaco'] ;echo '"'; echo "</br>" ;
-
-		echo "Nauczyciel "; echo '"';echo $s['login'] ;echo '"'; echo "</br>" ;
-		echo "Data "; echo '"';echo $s['Data'] ;echo '"'; echo "</br>" ;   ?>
+		<?php  echo $s['zaco'] ;   ?>
 		
 		 
 		</li>
@@ -370,61 +351,6 @@ ol > li:hover > ul {
 	}
 		?>
 		
-		tu bendom wywiadowek
-		<?php
-  if ($result69 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
-			
-				 
-    while($w=$result69->fetch_assoc()){
-			 $klasa=$w['Klasa'];
-      
-    }
-  }
-			 if ($result1 = $wynik->query("SELECT * FROM wywiadowka WHERE klasa='$klasa'")) {
-				
-				 
-    while($w=$result1->fetch_assoc()){
-			 $wywiadowka=$w['klasa'];
-    }
-	}
-	
-		 if ($result1 = $wynik->query("SELECT * FROM wywiadowka WHERE $wywiadowka='$klasa'")) {
-   if ($result1 = $wynik->query("SELECT * FROM wywiadowka WHERE aktywna='1'"))
-   {
-    while($w=$result1->fetch_assoc()){
-			 
-			 ?>
-			 <div style="margin-left:84%; background-color:#9E9E9E" class="uwagii" ><?php
-      
-				
-				echo $w['data'];
-				echo " w sali ";
-				echo $w['sala'];
-				?>
-				</br>
-	
-	 <div style="padding-left:17%;; background-color:#616161" class="uwagii" ><?php
-      
-				
-				echo $w['tytul'];
-				?>
-				</br>
-	 
-	 
-			 
-			 
-			 </div>
-			 
-			 
-			 </div>
-			 
-			 <?php
-      
-	  
-	}
-    }
-	}
-		?>
 		</div>
 		
 		
