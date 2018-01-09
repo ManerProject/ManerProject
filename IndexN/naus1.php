@@ -89,6 +89,22 @@ SEMESTR 2
 
   <input  type="submit" name="obecnosc" value="obecnosc" >
   </form>
+  
+  <form method="POST" action="panel_dodawania_wywiadowki2.php">
+  <input  type="submit" name="wywiadowek" value="wywiadowek" >
+  </form>
+  
+  <form method="POST" action="panel_wywiadowki_aktywna.php">
+  <input  type="submit" name="wywiadowek" value="wywiadowek aktywna" >
+  </form>
+  
+  <form method="POST" action="wiadomosci.php">
+  <input  type="submit" name="wiadomosci" value="zobacz se wiadomosci" >
+  </form>
+  
+  <form method="POST" action="panel_wywiadowki_nie_aktywna.php">
+  <input  type="submit" name="wywiadowek" value="oznacz wywiadowke jako nie aktywna" >
+  </form>
  
  </div>
 
