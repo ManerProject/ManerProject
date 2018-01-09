@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 07 Sty 2018, 14:40
--- Wersja serwera: 10.1.29-MariaDB
--- Wersja PHP: 7.2.0
+-- Czas generowania: 09 Sty 2018, 14:04
+-- Wersja serwera: 10.1.28-MariaDB
+-- Wersja PHP: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -356,6 +356,54 @@ INSERT INTO `uwagi` (`id`, `id_login`, `id_nau`, `tytul`, `tresc`) VALUES
 (6, 33, 30, 'pong', 'foty'),
 (7, 35, 30, 'palenie', 'jest w gronie palaczy');
 
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wiadomosci`
+--
+
+CREATE TABLE `wiadomosci` (
+  `ID` int(11) NOT NULL,
+  `ID_nauczyciela` int(11) NOT NULL,
+  `Autor` text NOT NULL,
+  `nazwa` text NOT NULL,
+  `tresc` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `wiadomosci`
+--
+
+INSERT INTO `wiadomosci` (`ID`, `ID_nauczyciela`, `Autor`, `nazwa`, `tresc`) VALUES
+(1, 25, 'uczenkl12', 'tes', 'tseteset'),
+(2, 30, 'uczenkl12', 'rfgr', 'trtegdgf');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wywiadowka`
+--
+
+CREATE TABLE `wywiadowka` (
+  `ID` int(11) NOT NULL,
+  `klasa` text NOT NULL,
+  `tytul` text NOT NULL,
+  `data` date NOT NULL,
+  `sala` int(11) NOT NULL,
+  `aktywna` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `wywiadowka`
+--
+
+INSERT INTO `wywiadowka` (`ID`, `klasa`, `tytul`, `data`, `sala`, `aktywna`) VALUES
+(1, '', 'test', '2018-01-12', 15, 0),
+(2, '', 'cvx', '2017-12-29', 3, 0),
+(3, '', 'gds', '2017-12-27', 0, 0),
+(4, '', 'gds', '2017-12-27', 0, 0),
+(5, '9', 'fgfgn', '2018-01-18', 3, 1);
+
 --
 -- Indeksy dla zrzutów tabel
 --
@@ -415,6 +463,18 @@ ALTER TABLE `uwagi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `wiadomosci`
+--
+ALTER TABLE `wiadomosci`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `wywiadowka`
+--
+ALTER TABLE `wywiadowka`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -471,6 +531,18 @@ ALTER TABLE `planlekcji`
 --
 ALTER TABLE `uwagi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT dla tabeli `wiadomosci`
+--
+ALTER TABLE `wiadomosci`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT dla tabeli `wywiadowka`
+--
+ALTER TABLE `wywiadowka`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
