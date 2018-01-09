@@ -76,10 +76,10 @@ $klasa=$_SESSION['kl'];
 
 	
 echo $klasa; 
-	    if ($result = $wynik->query("SELECT * FROM klasa")) {
+	    if ($result = $wynik->query("SELECT * FROM klasy")) {
    
     while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['ID'].">".$w['Rok']." ".$w['Nazwa']."</option>";      
+        echo "<option value=".$w['ID'].">".$w['klasa']."</option>";      
       
 		
        
