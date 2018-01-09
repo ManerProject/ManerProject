@@ -65,7 +65,8 @@ Panel Admina
 	<?php
 	//"SELECT lekcje.lekcja from lekcje,nau where nau.nau='$id' and nau.przedmiot1=lekcje.id"
 	$i=0;
-	if ($result1 = $wynik->query("SELECT `id`, `login`, `haslo`, `email`, `typ`, `id_loginy_klasy` FROM `loginy` WHERE 1")) {
+	require "baza.php";
+	if ($result1 = $wynik->query("SELECT `id`, `login`, `haslo`, `email`, `typ`, `Klasa` FROM `loginy` WHERE Klasa='0'")) {
    
     while($w=$result1->fetch_assoc()){
 			 $login=$w['login'];

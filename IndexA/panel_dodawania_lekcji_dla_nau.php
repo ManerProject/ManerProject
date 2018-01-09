@@ -90,38 +90,21 @@ if ($result = $wynik->query("SELECT * FROM loginy WHERE typ <> 'admin' and typ <
   $result->close();
  
 }
-?>
-
-</select>
-
- <select style="width:120px;height:30px;border-radius:400px;"  name='przedmiot'>
-    <?php
-
- 
- 
-
- 
- 
-if ($result = $wynik->query("SELECT * FROM `lekcje`")) {
+ 	$radio="radio";
+		$przedmiot="przedmiot";
+	if ($result = $wynik->query("SELECT * FROM `lekcje`")) {
    
     while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['id'].">".$w['lekcja']."</option>";      
-        
-		
+       
+	   echo $w['lekcja'];
+		echo "<input type=".$radio." name=".$przedmiot." value=".$w['id'].">";
        
     }
- 
- 
- 
- 
- 
-  $result->close();
- 
-}
+	
+	}
 ?>
-</select>
 
-    
+    </select>
 	
 	
 	

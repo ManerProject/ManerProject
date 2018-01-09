@@ -18,13 +18,12 @@ session_start()
  <?php
  require "baza.php";
   
-$kat=$_POST['logins'];
- echo $kat;
- $wynik->query("INSERT INTO `lekcje` (`lekcja`) VALUES ('$kat')");
- 
+$nau=$_POST['sele'];
+$klasa=$_POST['klas'];
+$wynik->query("INSERT INTO wychowawcy (`nauczyciel`, `klasa`) VALUES ('$nau', '$klasa')");
 
 $wynik->close();
-		 header ('Location:../IndexA/admin.php'); 
+header('Location: panel_dodania_wychowawcy.php');		
 		
  ?>
  

@@ -52,7 +52,7 @@ session_start();
 <div id="logo">
 Panel Admina 
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
-<form action="wyloguj.php" method="_POST" >
+<form action="../wyloguj.php" method="_POST" >
  
 
   <input style="float:right;background-color:#191919;:width:50px;height:98px;position:relative;
@@ -63,10 +63,43 @@ Panel Admina
 </div>
 </div>
 
-<form action="skrypt_dodawania_klas.php" method="POST" >
+<form action="skrypt_dodawania_wychowawcy.php" method="POST" >
 <form action="zaloguj.php" method="POST" >
- <input maxlength="20" type="text" placeholder="nazwij"  name="logins"/>
+    <select style="width:120px;height:30px;border-radius:400px;" name='sele'>
+    <?php
+require "baza.php";
+ 
+if ($result = $wynik->query("SELECT * FROM loginy WHERE typ <> 'admin' and typ <> 'uczen'")) {
+   
+    while($w=$result->fetch_assoc()){
+        echo "<option value=".$w['id'].">".$w['login']."</option>";      
+        $_SESSION['login']=$w['login'];
+		
+       
+	}
+ 
+  $result->close();
+ 
+}
+?>
+ </select>
+<select style="width:120px;height:30px;border-radius:400px;" name='klas'>
+    <?php
+require "baza.php";
+ 
+if ($result = $wynik->query("SELECT * FROM klasy")) {
+   
+    while($w=$result->fetch_assoc()){
+        echo "<option value=".$w['id'].">".$w['numer']." ".$w['nazwa']."</option>";      
+        $_SESSION['login']=$w['login'];
 
+	}
+ 
+  $result->close();
+ 
+}
+?>
+ </select>
 
   <input type="submit" value="Dodaj"/>
  </div>
