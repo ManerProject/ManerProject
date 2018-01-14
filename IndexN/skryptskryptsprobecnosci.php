@@ -29,7 +29,7 @@ $i=0;
 	 if($_POST['obecnosc'][$i]=="2 Usprawliwione")
 	 {
 		 
-		 $wynik->query("UPDATE `obeconsc` SET `obecnosc`=1 WHERE `id`=$id");
+		 $wynik->query("UPDATE `obeconsc` SET `obecnosc`=11 WHERE `id`=$id");
 	 }
 	 
 	 	

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 09 Sty 2018, 14:12
+-- Czas generowania: 09 Sty 2018, 14:04
 -- Wersja serwera: 10.1.28-MariaDB
 -- Wersja PHP: 7.1.10
 
@@ -330,20 +330,6 @@ INSERT INTO `planlekcji` (`id`, `klasa`, `lekcja1`, `lekcja2`, `lekcja3`, `lekcj
 (23, 10, 'Matma', 'W-f', 'hejakj', 'nic', 'Matma', 'nic', 'W-f', 'Filozofia', 'Nazwa', 3),
 (24, 10, 'nic', 'nic', 'nic', 'nic', 'nic', 'nic', 'nic', 'nic', 'nic', 4),
 (25, 10, 'nic', 'nic', 'nic', 'nic', 'nic', 'nic', 'nic', 'nic', 'nic', 5);
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `tematy`
---
-
-CREATE TABLE `tematy` (
-  `id` int(11) NOT NULL,
-  `idklasa` int(11) NOT NULL,
-  `idlekcja` int(11) NOT NULL,
-  `data` date NOT NULL,
-  `temat` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 

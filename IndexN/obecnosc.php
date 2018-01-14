@@ -2,12 +2,6 @@
 session_start();
 $klasa= $_SESSION['kl'];
 require "baza.php";
-if($result = $wynik->query("SELECT * from klasy WHERE id='$klasa'") ){
-   
-		$w=$result->fetch_assoc();
-			 $numer=$w['numer'];
-			 $nazwa=$w['nazwa'];
-     }
 $data= date('Y.m.d');
 
 for($j=0;$j<strlen($data);$j++)
@@ -97,17 +91,23 @@ SEMESTR1
 
   <input  type="submit" name="obecnosc" value="obecnosc" >
   </form>
+ <form method="POST" action="braklekcji.php">
 
+  <input  type="submit" name="brak lekcji" value="brak lekcji" >
+  </form>
 <form method="POST" action="obecnoscskrypt.php">
  
 <?php
 
 echo $data;
+
+
+
 $_SESSION['data']=$data;
 ?>
 <br>
- Data  <input type="date" value=""  style =""name="" > <br>
- Numer lekcji <input type="number" value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji">
+ 
+ Numer lekcji <input type="number" min="1" max="9" value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji">
  
  
 
@@ -130,7 +130,12 @@ $_SESSION['data']=$data;
  
  
 
- 
+ if ($result = $wynik->query("SELECT * FROM `klasy` WHERE id='$klasa'")) {
+   
+    while($w=$result->fetch_assoc()){
+		$klasssa=$w['klasa'];
+}
+}
 
  $i=0;
  if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$klasa'")) {
@@ -142,7 +147,7 @@ $_SESSION['data']=$data;
       ?>
 	  
 	  <div style="float:left;background-color:;width:19%;min-height:30px;border:1px dotted black" id="login"> <?php  echo $w['login']; ?>     </div>
-	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $numer;echo " ";echo $nazwa; ?>     </div>
+	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $klasssa ?>     </div>
 	   <div style="float:left;background-color:;width:25%;min-height:30px;border:1px dotted black" id="przedmiot">   <?php  echo $data ?>     </div>
 	  <div style="float:left;background-color;min-width:39%;min-height:40px;border:1px dotted black" id="Oceny">    <?php  require "skryptsprobecnosci.php"; ?>  </div>
 	  <div style="float:left;background-color;width:5.5%;min-height:30px;border:1px dotted black" id="Input">  <select name="obecnosc[]">
@@ -171,9 +176,7 @@ $_SESSION['data']=$data;
 </div>
 
    </form>
-<?php
-   
- ?>
+
  </div>
     
  </div>

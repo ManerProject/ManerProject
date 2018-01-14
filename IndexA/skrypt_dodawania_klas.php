@@ -19,13 +19,26 @@ session_start()
  require "baza.php";
   
 $kat=$_POST['logins'];
-$l=1;
-echo $l.' '.$kat;
-$wynik->query("INSERT INTO klasy (`id`, `numer`, `nazwa`) VALUES (NULL, '$l', '$kat')");
-
+ echo $kat;
+ 
+ 
+ if ($result1 = $wynik->query("SELECT * FROM klasy order by `id` DESC limit 1")) {
+   
+    while($w=$result1->fetch_assoc()){
+			 $id=$w['id'];
+      
+    }
+	}
+  $id++;
+ $wynik->query("INSERT INTO `klasy` (`id`,`klasa`) VALUES ('id','$kat')");
+ 
+for($i=1;$i<6;$i++)
+{
+	$wynik->query("INSERT INTO `planlekcji`(`id`, `klasa`, `dzien`) VALUES (null,'$id','$i')");
+}
 $wynik->close();
 		
-		
+		header ('Location:panel_dodawania_klas.php'); 
  ?>
  
  

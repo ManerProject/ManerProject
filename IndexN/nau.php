@@ -1,6 +1,11 @@
 <?php 
 session_start();
 
+
+
+
+
+
  ?>
 <!DOCTYPE html>
 
@@ -80,6 +85,26 @@ SEMESTR1
 
   <input  type="submit" name="obecnosc" value="obecnosc" >
   </form>
+  <form method="POST" action="braklekcji.php">
+
+  <input  type="submit" name="brak lekcji" value="brak lekcji" >
+  </form>
+  
+  <form method="POST" action="panel_dodawania_wywiadowki2.php">
+  <input  type="submit" name="wywiadowek" value="wywiadowek" >
+  </form>
+  
+  <form method="POST" action="panel_wywiadowki_aktywna.php">
+  <input  type="submit" name="wywiadowek" value="wywiadowek aktywna" >
+  </form>
+  
+  <form method="POST" action="wiadomosci.php">
+  <input  type="submit" name="wiadomosci" value="zobacz se wiadomosci" >
+  </form>
+  
+  <form method="POST" action="panel_wywiadowki_nie_aktywna.php">
+  <input  type="submit" name="wywiadowek" value="oznacz wywiadowke jako nie aktywna" >
+  </form>
 
 <form method="POST" action="nau2.php">
  
@@ -100,30 +125,38 @@ SEMESTR1
     <div style="cleat:both" id="clear"> </div>
 <?php
 require "baza.php";
-$klasa=$_SESSION['kl'];
-	 if($result = $wynik->query("SELECT * from klasy WHERE id='$klasa'") ){
-   
-		$w=$result->fetch_assoc();
-			 $numer=$w['numer'];
-			 $nazwa=$w['nazwa'];
-     }	
+
+$klasa= $_SESSION['kl'];
 
  $lekcja=$_SESSION['xdlekcja'];
  
+if ($result = $wynik->query("SELECT * FROM `klasy` WHERE id='$klasa'")) {
+   
+    while($w=$result->fetch_assoc()){
+		$klasssa=$w['klasa'];
+}
+}
 
+
+if ($result = $wynik->query("SELECT * FROM `lekcje` WHERE id='$lekcja'")) {
+   
+    while($w=$result->fetch_assoc()){
+		$lekcjaaa=$w['lekcja'];
+}
+}
  
 
  $i=0;
  if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$klasa'")) {
    
     while($w=$result->fetch_assoc()){
-		$login=$w['login'];
-		$login=$w['login'];
+		
+		$login=$w['id'];
       ?>
 	  
 	  <div style="float:left;background-color:;width:19%;min-height:30px;border:1px dotted black" id="login"> <?php  echo $w['login']; ?>     </div>
-	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $numer; echo " "; echo $nazwa; ?>     </div>
-	   <div style="float:left;background-color:;width:25%;min-height:30px;border:1px dotted black" id="przedmiot"> <?php  echo $lekcja ?>     </div>
+	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $klasssa ?>     </div>
+	   <div style="float:left;background-color:;width:25%;min-height:30px;border:1px dotted black" id="przedmiot"> <?php  echo $lekcjaaa ?>     </div>
 	  <div style="float:left;background-color;min-width:39%;min-height:40px;border:1px dotted black" id="Oceny">  <?php $oceny="oceny"; require "Skryptocen.php"; ?>    </div>
 	  <div style="float:left;background-color;width:4%;min-height:30px;border:1px dotted black" id="Input">  <input maxlength="1" placeholder="0" style ="width:30px;"name="hej[]" >    </div>
 	
