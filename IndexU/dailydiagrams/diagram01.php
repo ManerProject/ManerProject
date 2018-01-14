@@ -163,7 +163,10 @@ var myChart = new Chart(ctx, {
                     beginAtZero:true
                 }
             }]
-        }
+        },
+		animation: {
+				duration:3000
+			},
     },
 	
 });

@@ -151,7 +151,10 @@ $oceny5=round($oceny5/$liczba, 0);
         },
         tooltips:{
           enabled:true
-        }
+        },
+		animation: {
+				duration:5000
+			},
 		
 	  
 	  

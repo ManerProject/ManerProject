@@ -135,6 +135,7 @@ if ($result1 = $wynik->query("SELECT klasa FROM loginy WHERE login='$login'")) {
    
     while($w=$result1->fetch_assoc()){
 			 $id=$w['klasa'];
+			 $idklasa=$id;
       
     }
 	}
@@ -361,7 +362,9 @@ ol > li:hover > ul {
 	}
     }
 	}
+	echo $idklasa;
 		?>
+		
 		</div>
 		<div id="diagrams" style="width:700px;height:900px; ">
 		
@@ -371,7 +374,7 @@ ol > li:hover > ul {
 		
 
 		$xd[21]=rand(0,0);
-		$xd[22]=rand(0,2);
+		$xd[22]=rand(0,3);
 		echo $xd;
 		 require  $xd;
 		?>
