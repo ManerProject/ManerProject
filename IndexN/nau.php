@@ -105,6 +105,9 @@ SEMESTR1
   <form method="POST" action="panel_wywiadowki_nie_aktywna.php">
   <input  type="submit" name="wywiadowek" value="oznacz wywiadowke jako nie aktywna" >
   </form>
+   <form method="POST" action="rozpiskaUczniow.php">
+  <input  type="submit" name="wywiadowek" value="RozpiskaUcznoiw" >
+  </form>
 
 <form method="POST" action="nau2.php">
  

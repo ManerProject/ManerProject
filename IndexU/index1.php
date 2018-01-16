@@ -367,6 +367,7 @@ ol > li:hover > ul {
 		
 		</div>
 		<div id="diagrams" style="width:700px;height:900px; ">
+		Daily  Diagram
 		
 		<?php
 		$xd="dailydiagrams/diagram11.php";
@@ -376,6 +377,10 @@ ol > li:hover > ul {
 		$xd[21]=rand(0,0);
 		$xd[22]=rand(0,3);
 		echo $xd;
+		?>
+		</br>
+		<span style="Margin-left:180px;font-size:35px;">Daily  Diagram </span>
+		<?php
 		 require  $xd;
 		?>
 		
