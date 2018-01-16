@@ -198,7 +198,7 @@ if ($result131 = $wynik->query("SELECT * FROM `oceny`,loginy where idlogin='$ucz
 					if($s['oceny']==4)echo "#388E3C";
 					if($s['oceny']==5)echo "#1B5E20";
 					if($s['oceny']==6)echo "#01579B";
-		?>; display:block;width:50px;height:50px;float:left;font-size:40px;border:2px white solid;border-radius:10px;"><?php  echo $s['oceny'] ;   ?>
+		?>;text-align:center; display:block;width:50px;height:50px;float:left;font-size:40px;border:2px white solid;border-radius:10px;"><?php  echo $s['oceny'] ;   ?>
 		
 			<ul style=" list-style-type:none;padding:0;
   margin:0;">
@@ -379,7 +379,7 @@ ol > li:hover > ul {
 		echo $xd;
 		?>
 		</br>
-		<span style="Margin-left:180px;font-size:35px;">Daily  Diagram </span>
+		<span style="Margin-left:180px;font-size:35px;">Daily  Diagram Beta</span>
 		<?php
 		 require  $xd;
 		?>

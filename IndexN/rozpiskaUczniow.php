@@ -169,7 +169,7 @@ if ($result = $wynik->query("SELECT * FROM `lekcje` WHERE id='$lekcja'")) {
 	  <div style="float:left;width:8%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="login"> <?php  echo $w['login']; ?>     </div>
 	  <div style="float:left;width:8%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="login"> <?php  echo $klasssa ?>     </div>
 	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="klasa"> <?php $lp=2; require "RozpiskaGNieuspr.php"; ?>     </div>
-	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;" id="przedmiot"> <?php $lp=11; require "RozpiskaGNieuspr.php"; ?>   </div>
+	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="przedmiot"> <?php $lp=11; require "RozpiskaGNieuspr.php"; ?>   </div>
 	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="przedmiot"> <?php $lp=3; require "RozpiskaGNieuspr.php"; ?>     </div>
 	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="przedmiot"> <?php $lp=1; require "RozpiskaOcen.php";   ?>     </div>
 	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="Oceny">  <?php $lp=2; require "RozpiskaOcen.php";   ?>    </div>

@@ -24,7 +24,7 @@ if ($result131 = $wynik->query("SELECT * FROM `$oceny`,loginy where idlogin='$lo
 					if($s['oceny']==4)echo "#388E3C";
 					if($s['oceny']==5)echo "#1B5E20";
 					if($s['oceny']==6)echo "#01579B";
-		?>; display:block;width:35px;height:35px;float:left;font-size:33px;border:2px white solid;border-radius:5px;"><?php  echo $s['oceny'] ;   ?>
+		?>; text-align:center;display:block;width:35px;height:35px;float:left;font-size:33px;border:2px white solid;border-radius:5px;"><?php  echo $s['oceny'] ;   ?>
 		
 			<ul style=" list-style-type:none;padding:0;
   margin:0;">
