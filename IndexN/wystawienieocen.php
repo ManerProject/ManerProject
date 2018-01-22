@@ -201,7 +201,7 @@ $klasa= $_SESSION['kl'];
 	 <div class="div-css" style="width:10%"><?php   echo $lekcjaaa; ?></div>
 	 
 			<div class="div-css" style="width:45%"><?php $oceny="oceny"; require "Skryptocen.php"; ?></div>
-			<div class="div-css"style="width:10%">><?php    ?></div>
+			<div class="div-css"style="width:10%"><?php  echo  round($suma/$lp, 1)  ?></div>
 	<div style="float:Left;width:3%"> <input maxlength="1"  class="input-css" name="ocenaS[]" placeholder="0"/> </div>
 	  <div style="cleat:both" id="clear">      </div>
 	  
@@ -230,7 +230,10 @@ $klasa= $_SESSION['kl'];
   
   
 </div>
- <div style="height:200px;width:100%;background-color:red;">
+ <div style="height:200px;width:100%">
+ 
+ </div>
+  <div style="height:200px;width:100%">
  
  </div>
 

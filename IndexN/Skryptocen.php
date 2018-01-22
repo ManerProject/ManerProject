@@ -6,6 +6,8 @@
  
  
  $i=2;
+ $lp=0;
+ $suma=0;
 if ($result131 = $wynik->query("SELECT * FROM `$oceny`,loginy where idlogin='$login' and idlekcja='$lekcja' and `$oceny`.idnauczyciel=loginy.id")) {
   
     while($s=$result131->fetch_assoc()){
@@ -15,8 +17,13 @@ if ($result131 = $wynik->query("SELECT * FROM `$oceny`,loginy where idlogin='$lo
 		{
 					$i=2; 
 					echo '</br>';
+					
 		
-		}?>
+		}
+		$suma=$suma+$s['oceny'];
+					$lp++;
+		
+		?>
 		<li id="c<?php echo $s['id'] ?>"style="background-color:<?php 
 					if($s['oceny']==1)echo "#D50000";
 					if($s['oceny']==2)echo "#E53935";
