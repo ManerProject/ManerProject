@@ -50,8 +50,11 @@ session_start();
 
 <div id="all">
 <div id="logo">
-Kurde wiadomość
-
+Panel wicedyrektora
+<?php
+$id=$_SESSION['id'];
+$_SESSION['id']=$id;
+?>
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
 <form action="../wyloguj.php" method="_POST" >
  
@@ -63,52 +66,14 @@ Kurde wiadomość
  </form>
 </div>
 
- 
- </div>
- <div id="con">
-   <form method="post" action="skryptwiadomosci.php" style="font-size:15px;">
-    <select style="width:120px;height:30px;border-radius:400px;" name='sele'>
-<?php
-require "baza.php";
+ 	<div style="margin-left:9%;font-size:25px;float:left;">Obserwacja w klasie</div>
+	 </br>
+<form   method="post" action="obserwacja.php" style="font-size:25px;">
+<input type='submit' style="width:100px; height:30px;margin-left:15%"value="Wprowadź dane">
 
-$klasa=$_SESSION['kl'];
-
-
-	
-echo $klasa; 
-	    if ($result = $wynik->query("SELECT * FROM loginy WHERE typ='teacher'")) {
-   
-    while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['id'].">".$w['login']."</option>";      
-      
-		
-       
-    }
- 
- 
-  $result->close();
-  $wynik->close();
-}
-		 
-		  
-	
-	
-?>
-
-    </select>
-	
-   <input name="tytul" style="width:90px; height:25px;border-radius:4px;" placeholder="tytul"value="">
-	<input name="tresc"style="width:200px; height:150px;border-radius:400px;" placeholder="tresc">
-	
-	<input type='submit' style="width:100px; height:50px;border-radius:400px;"value="ok ">
-
-    </form>
-
-</br>
-
-
+</form>	
 
 </div>
- 
+    
 </body>
 </html>

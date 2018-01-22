@@ -74,6 +74,38 @@ if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
 			 $id=$w['id'];
       
     }
+}
+if ($result = $wynik->query("SELECT * FROM dyrektorzy WHERE nauczyciel='$id'")) {
+	if($wynik=$result->fetch_assoc()){
+			 if($wynik>0)
+			 {
+				 $pozycja=$wynik['pozycja'];
+				 if($pozycja==0)
+				 {
+					 echo "<form action='panel_dyrektora.php' method='post'>
+						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='panel dyrektora'>
+						</form>";
+				 }
+				 else
+				 {
+					 echo "<form action='panel_wicedyrektora.php' method='post'>
+						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='panel wicedyrektora'>
+						</form>";
+				 }
+			 }
+	}
+ }
+ $_SESSION['id']=$id;
+?>
+<?php
+require "baza.php";
+$login= $_SESSION['login'];
+if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
+   
+    while($w=$result1->fetch_assoc()){
+			 $id=$w['id'];
+      
+    }
 	}
  echo "<br>";
  if ($resultt = $wynik->query("SELECT * FROM wychowawcy WHERE nauczyciel='$id'")) {
@@ -106,6 +138,10 @@ if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
 						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='dodaj uczniow'>
 						</form>
 </div>
+<hr>
+<form action='opinie_wicedyrektorow.php' method='post'>
+		<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='opinie o klasach'>
+</form>
 <hr>
 		<form   method="post" action="tonau.php" style="font-size:15px;">
 			<br>
@@ -183,7 +219,6 @@ echo "</br>";
 	 
  }
 	?>
-
 </form>
 		
 	

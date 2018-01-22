@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 15 Sty 2018, 21:47
+-- Czas generowania: 22 Sty 2018, 22:15
 -- Wersja serwera: 10.1.16-MariaDB
 -- Wersja PHP: 5.6.24
 
@@ -19,6 +19,26 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `maneeee`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `dyrektorzy`
+--
+
+CREATE TABLE `dyrektorzy` (
+  `id` int(11) NOT NULL,
+  `nauczyciel` int(11) NOT NULL,
+  `pozycja` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `dyrektorzy`
+--
+
+INSERT INTO `dyrektorzy` (`id`, `nauczyciel`, `pozycja`) VALUES
+(1, 31, 0),
+(3, 25, 1);
 
 -- --------------------------------------------------------
 
@@ -94,7 +114,7 @@ CREATE TABLE `loginy` (
 
 INSERT INTO `loginy` (`id`, `login`, `imie`, `nazwisko`, `haslo`, `email`, `typ`, `Klasa`) VALUES
 (1, 'admin', '', '', 'admin', 'admin', 'admin', NULL),
-(25, 'maner', '', '', 'jamanewr', 'sasa@wp.pl', 'teacher', NULL),
+(25, 'maner', 'Maner', 'JA', 'jamanewr', 'sasa@wp.pl', 'teacher', NULL),
 (30, 'monika', '', '', 'kuba10', 'bogusiam74@wp.pl', 'teacher', NULL),
 (31, 'twojstary', '', '', 'jamanewr', 'nwm@wp.pl', 'teacher', NULL),
 (32, 'uczenkl1', '', '', 'jamanewr', 'uczenkl1@wp.pl', 'uczen', 9),
@@ -436,6 +456,36 @@ INSERT INTO `wiadomosci` (`ID`, `ID_nauczyciela`, `Autor`, `nazwa`, `tresc`) VAL
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `wizyty_wicedyrektorow`
+--
+
+CREATE TABLE `wizyty_wicedyrektorow` (
+  `id` int(11) NOT NULL,
+  `klasa` int(11) NOT NULL,
+  `lekcja` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `opis` text NOT NULL,
+  `wicedyrektor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `wizyty_wicedyrektorow`
+--
+
+INSERT INTO `wizyty_wicedyrektorow` (`id`, `klasa`, `lekcja`, `data`, `opis`, `wicedyrektor`) VALUES
+(4, 5, 7, '0000-00-00', 'opinia o klasie 1TI', 25),
+(9, 9, 3, '0000-00-00', '1TE opinia', 25),
+(10, 8, 6, '0000-00-00', '1TH', 25),
+(11, 7, 7, '0000-00-00', 'opinia na temat klasy 1TOR', 25),
+(12, 9, 3, '0000-00-00', 'ddd', 25),
+(13, 0, 0, '0000-00-00', '', 25),
+(14, 9, 4, '0000-00-00', 'sss', 25),
+(15, 10, 3, '2018-01-30', 'sss', 25),
+(16, 10, 3, '2018-01-30', 'sss', 25);
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `wychowawcy`
 --
 
@@ -481,6 +531,12 @@ INSERT INTO `wywiadowka` (`ID`, `klasa`, `tytul`, `data`, `sala`, `aktywna`) VAL
 --
 -- Indeksy dla zrzutów tabel
 --
+
+--
+-- Indexes for table `dyrektorzy`
+--
+ALTER TABLE `dyrektorzy`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `klasy`
@@ -549,6 +605,12 @@ ALTER TABLE `wiadomosci`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `wizyty_wicedyrektorow`
+--
+ALTER TABLE `wizyty_wicedyrektorow`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `wychowawcy`
 --
 ALTER TABLE `wychowawcy`
@@ -564,6 +626,11 @@ ALTER TABLE `wywiadowka`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT dla tabeli `dyrektorzy`
+--
+ALTER TABLE `dyrektorzy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT dla tabeli `klasy`
 --
@@ -619,6 +686,11 @@ ALTER TABLE `uwagi`
 --
 ALTER TABLE `wiadomosci`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT dla tabeli `wizyty_wicedyrektorow`
+--
+ALTER TABLE `wizyty_wicedyrektorow`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT dla tabeli `wychowawcy`
 --

@@ -30,11 +30,11 @@ session_start();
   {
  
 	width:100%;
-	height:100px;
+	min-height:102px;
 	background-color:black;
 	float:right
 	text-align: center;
-	pading:10px;
+	pading:9px;
 	color:white;
 	
   }
@@ -45,43 +45,41 @@ session_start();
 	height:100px;
 	margin-left:15%;
 }
-  
+
   </style>
 
 <div id="all">
 <div id="logo">
-Uwagi
-
+plan lekcji
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
+
 <form action="../wyloguj.php" method="_POST" >
- 
+
 
   <input style="float:right;background-color:#191919;:width:50px;height:100px;position:relative;
-    bottom: 40px;cursor:pointer;color:white;font-family: 'Audiowide', cursive;border-left:2px dotted #1F1F1F;border-top:0;border-right:0;border-bottom:0" type="submit" value="WYLOGUJ"/>
+    bottom: 40px;cursor:pointer;color:white;font-family: 'Audiowide', cursive;border-left:0px dotted #1F1F1F;border-top:0;border-right:0;border-bottom:0" type="submit" value="WYLOGUJ"/>
  
  
  </form>
 </div>
 
- 
- </div>
- <div id="con">
-   <form method="post" action="skryptuwag.php" style="font-size:15px;">
+  
+  
+  
+   wybierz klase <form method="post"  action="wyborlekcjiplanulekcji.php" style="font-size:15px;">
     <select style="width:120px;height:30px;border-radius:400px;" name='sele'>
-<?php
+    <?php
 require "baza.php";
+ 
+ 
 
-$klasa=$_SESSION['kl'];
-
-// test
-// test2
-	
-echo $klasa; 
-	    if ($result = $wynik->query("SELECT * FROM loginy WHERE typ <> 'admin' and typ <> 'teacher' and klasa='$klasa'")) {
+ 
+ 
+if ($result = $wynik->query("SELECT * FROM `klasy` ")) {
    
     while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['login'].">".$w['login']."</option>";      
-      
+        echo "<option value=".$w['id'].">".$w['klasa']."</option>";      
+        
 		
        
     }
@@ -90,26 +88,27 @@ echo $klasa;
   $result->close();
   $wynik->close();
 }
-		 
-		  
-	
-	
+ 
 ?>
 
     </select>
 	
-   <input name="tytul" style="width:90px; height:25px;border-radius:4px;" placeholder="tytuł"value="">
-	<input name="tresc"style="width:200px; height:150px;border-radius:400px;" placeholder="tresc"value="">
 	
-	<input type='submit' style="width:100px; height:50px;border-radius:400px;"value="ok ">
-
-    </form>
-
-</br>
-
-
-
-</div>
+	
+	
+	
+    
+	
+	
+	
+	
+	<input type='submit' style="width:40px; height:30px;"value="ok ">
+  
+ </form>
+   
+ 
+ 
+ </div>
  
 </body>
 </html>

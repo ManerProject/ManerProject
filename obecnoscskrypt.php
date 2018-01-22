@@ -8,9 +8,10 @@ require "baza.php";
 
 $data=$_SESSION['data'];
 $nl=$_POST['numer_lekcji'];
-$temat=$_POST['temat'];
+
 
 $kl= $_SESSION['kl'];
+
 
 $login= $_SESSION['loginy'];
 
@@ -40,10 +41,10 @@ $i=0;
 	
 
 	 	 $wynik->query("INSERT INTO `obeconsc` (`id`, `data`, `obecnosc`, `numer_lekcji`,`uczen`,`klasa`) VALUES (NULL, '$data', '$obecnosc', '$nl', '$uczen',$kl)");
-		
+	 
+
 $i++;
 	 }
-	 $wynik->query("INSERT INTO `tematy` (`id`, `idklasa`, `idlekcja`, `data`,`temat`) VALUES (NULL, '$kl', '$nl', '$data', '$temat')");
    }
    
  header ('Location:obecnosc.php');
