@@ -69,26 +69,9 @@ session_start();
  </form>
 </div>
 
-<form method="POST" action="naus1.php">
-
-  <input  type="submit" name="seme" value="semestr2" >
-  </form>
-   <form method="POST" action="nau.php">
-
-  <input  type="submit" name="seme" value="semestr1" >
-  </form>
-  <form method="POST" action="paneluwag.php">
-
-  <input  type="submit" name="uwagi" value="uwagi" >
-  </form>
-   <form method="POST" action="braklekcji.php">
-
-  <input  type="submit" name="brak lekcji" value="brak lekcji" >
-  </form>
-  <form method="POST" action="obecnosc.php">
-
-  <input  type="submit" name="obecnosc" value="obecnosc" >
-  </form>
+<?php
+require "odnosiki.php";
+?>
  
  
  

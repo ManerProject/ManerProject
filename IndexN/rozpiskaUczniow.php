@@ -52,6 +52,35 @@ session_start();
 	height:100px;
 	margin-left:15%;
 }
+.enjoy-css {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 9%;
+  height: 30px;
+  padding: 12px 0 0;
+  overflow: hidden;
+  border: none;
+  font: normal 20px/1 Arial Black, Gadget, sans-serif;
+  color: rgba(12,12,12,1);
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: -webkit-linear-gradient(-90deg, rgba(255,255,255,1) 0, rgba(255,255,255,1) 49%, rgba(255,0,0,1) 49%, rgba(255,0,0,1) 100%), rgba(160,9,17,0.82);
+  background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 0, rgba(255,255,255,1) 49%, rgba(255,0,0,1) 49%, rgba(255,0,0,1) 100%), rgba(160,9,17,0.82);
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0, rgba(255,255,255,1) 49%, rgba(255,0,0,1) 49%, rgba(255,0,0,1) 100%), rgba(160,9,17,0.82);
+  background-position: 50% 50%;
+  -webkit-background-origin: padding-box;
+  background-origin: padding-box;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-background-size: auto auto;
+  background-size: auto auto;
+  -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+  box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+  float:left;
+}
   
   </style>
 
@@ -69,45 +98,9 @@ SEMESTR1
  </form>
 </div>
 
-<form method="POST" action="naus1.php">
-
-  <input  type="submit" name="seme" value="semestr2" >
-  </form>
-  <form method="POST" action="nau.php">
-
-  <input  type="submit" name="seme" value="semestr1" >
-  </form>
-  <form method="POST" action="paneluwag.php">
-
-  <input  type="submit" name="uwagi" value="uwagi" >
-  </form>
-  <form method="POST" action="obecnosc.php">
-
-  <input  type="submit" name="obecnosc" value="obecnosc" >
-  </form>
-  <form method="POST" action="braklekcji.php">
-
-  <input  type="submit" name="brak lekcji" value="brak lekcji" >
-  </form>
-  
-  <form method="POST" action="panel_dodawania_wywiadowki2.php">
-  <input  type="submit" name="wywiadowek" value="wywiadowek" >
-  </form>
-  
-  <form method="POST" action="panel_wywiadowki_aktywna.php">
-  <input  type="submit" name="wywiadowek" value="wywiadowek aktywna" >
-  </form>
-  
-  <form method="POST" action="wiadomosci.php">
-  <input  type="submit" name="wiadomosci" value="zobacz se wiadomosci" >
-  </form>
-  
-  <form method="POST" action="panel_wywiadowki_nie_aktywna.php">
-  <input  type="submit" name="wywiadowek" value="oznacz wywiadowke jako nie aktywna" >
-  </form>
-   <form method="POST" action="rozpiskaUczniow.php">
-  <input  type="submit" name="wywiadowek" value="RozpiskaUcznoiw" >
-  </form>
+<?php
+require "odnosiki.php";
+?>
 
 
  
@@ -166,18 +159,18 @@ if ($result = $wynik->query("SELECT * FROM `lekcje` WHERE id='$lekcja'")) {
 		$login=$w['id'];
       ?>
 	  
-	  <div style="float:left;width:8%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="login"> <?php  echo $w['login']; ?>     </div>
-	  <div style="float:left;width:8%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="login"> <?php  echo $klasssa ?>     </div>
-	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="klasa"> <?php $lp=2; require "RozpiskaGNieuspr.php"; ?>     </div>
-	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="przedmiot"> <?php $lp=11; require "RozpiskaGNieuspr.php"; ?>   </div>
-	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="przedmiot"> <?php $lp=3; require "RozpiskaGNieuspr.php"; ?>     </div>
-	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="przedmiot"> <?php $lp=1; require "RozpiskaOcen.php";   ?>     </div>
-	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="Oceny">  <?php $lp=2; require "RozpiskaOcen.php";   ?>    </div>
-	  <div style="float:left;width:9%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="Oceny">    <?php $lp=3; require "RozpiskaOcen.php";   ?>  </div>
-	  <div style="float:left;width:8%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="Oceny">    <?php $lp=4; require "RozpiskaOcen.php";   ?>  </div>
-	  <div style="float:left;width:10%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="Oceny">   <?php $lp=5; require "RozpiskaOcen.php";   ?>   </div>
-	  <div style="float:left;width:10%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="Input">    <?php $lp=6; require "RozpiskaOcen.php";   ?>  </div>
-	
+	 <div class="enjoy-css"><?php  echo $w['login']; ?></div>
+	  <div class="enjoy-css"><?php  echo $klasssa ?> </div>
+	   <div class="enjoy-css"><?php $lp=2; require "RozpiskaGNieuspr.php"; ?>  </div>
+	    <div class="enjoy-css"><?php $lp=11; require "RozpiskaGNieuspr.php"; ?></div>
+		 <div class="enjoy-css"><?php $lp=3; require "RozpiskaGNieuspr.php"; ?></div>
+		  <div class="enjoy-css"><?php $lp=1; require "RozpiskaOcen.php";   ?></div>
+		   <div class="enjoy-css"><?php $lp=2; require "RozpiskaOcen.php";   ?></div>
+		    <div class="enjoy-css"><?php $lp=3; require "RozpiskaOcen.php";   ?></div>
+			 <div class="enjoy-css"><?php $lp=4; require "RozpiskaOcen.php";   ?></div>
+			  <div class="enjoy-css"><?php $lp=5; require "RozpiskaOcen.php";   ?></div>
+			 
+	<div class="enjoy-css"><?php $lp=6; require "RozpiskaOcen.php";?></div>
 	  <div style="cleat:both" id="clear">      </div>
 	 <?php 
 		
