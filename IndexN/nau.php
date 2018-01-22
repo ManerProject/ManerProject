@@ -151,6 +151,9 @@ if ($result = $wynik->query("SELECT * FROM `lekcje` WHERE id='$lekcja'")) {
    
  ?>
  </div>
+ <div style="height:200px;width:100%;">
+ 
+ </div>
     
  </div>
 </body>

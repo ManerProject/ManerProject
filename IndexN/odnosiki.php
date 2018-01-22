@@ -40,3 +40,6 @@
    <form method="POST" action="RozpiskaPodrecznikow.php">
   <input  type="submit" name="wywiadowek" value="Rozpiska Podrecznikow" >
   </form>
+     <form method="POST" action="wystawienieocen.php">
+  <input  type="submit" name="w" value="Wystawienie ocen" >
+  </form>
