@@ -56,7 +56,7 @@ session_start();
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  width: 9%;
+  width: 8.7%;
   height: 30px;
   padding: 12px 0 0;
   overflow: hidden;
@@ -80,6 +80,7 @@ session_start();
   box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
   float:left;
+  border:1px solid;
 }
   
   </style>
@@ -192,6 +193,9 @@ if ($result = $wynik->query("SELECT * FROM `lekcje` WHERE id='$lekcja'")) {
 
    
 
+ </div>
+  <div style="height:200px;width:100%;">
+ 
  </div>
     
  
