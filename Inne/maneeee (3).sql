@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Sty 2018, 19:36
+-- Czas generowania: 24 Sty 2018, 20:46
 -- Wersja serwera: 10.1.29-MariaDB
 -- Wersja PHP: 7.2.0
 
@@ -395,12 +395,6 @@ INSERT INTO `oceny` (`id`, `oceny`, `idlekcja`, `idlogin`, `zaco`, `idklasa`, `D
 (218, 2, '3', '33', '', '9', '2018-01-09', '30'),
 (219, 3, '3', '33', 'a', '9', '2018-01-09', '30'),
 (220, 4, '3', '33', '', '9', '2018-01-09', '30'),
-(221, 1, '3', '33', '', '9', '2018-01-13', '30'),
-(222, 1, '3', '33', '', '9', '2018-01-13', '30'),
-(223, 1, '3', '33', '', '9', '2018-01-13', '30'),
-(224, 1, '3', '33', '', '9', '2018-01-13', '30'),
-(225, 1, '1', '33', '', '9', '2018-01-13', '30'),
-(226, 1, '1', '33', '', '9', '2018-01-13', '30'),
 (227, 6, '3', '35', '', '10', '2018-01-13', '30'),
 (228, 6, '3', '36', '', '10', '2018-01-13', '30'),
 (229, 6, '3', '37', '', '10', '2018-01-13', '30'),
@@ -492,7 +486,30 @@ INSERT INTO `oceny` (`id`, `oceny`, `idlekcja`, `idlogin`, `zaco`, `idklasa`, `D
 (315, 2, '19', '33', '', '9', '2018-01-14', '30'),
 (316, 4, '19', '33', '', '9', '2018-01-14', '30'),
 (317, 4, '19', '33', '', '9', '2018-01-14', '30'),
-(318, 2, '21', '36', '', '10', '2018-01-19', '30');
+(318, 2, '21', '36', '', '10', '2018-01-19', '30'),
+(319, 1, '3', '33', '', '9', '2018-01-22', '30'),
+(320, 2, '3', '33', '', '9', '2018-01-22', '30'),
+(321, 2, '3', '33', '', '9', '2018-01-23', '30'),
+(322, 3, '3', '33', '', '9', '2018-01-23', '30'),
+(323, 4, '3', '33', '', '9', '2018-01-23', '30'),
+(324, 5, '3', '33', '', '9', '2018-01-23', '30'),
+(325, 6, '3', '33', '', '9', '2018-01-23', '30'),
+(326, 2, '3', '33', '', '9', '2018-01-23', '30'),
+(327, 3, '3', '33', '', '9', '2018-01-23', '30'),
+(328, 2, '3', '33', '', '9', '2018-01-23', '30'),
+(329, 1, '3', '33', '', '9', '2018-01-23', '30'),
+(330, 1, '3', '33', '', '9', '2018-01-23', '30'),
+(331, 1, '3', '32', '', '9', '2018-01-23', '30'),
+(332, 2, '3', '32', '', '9', '2018-01-23', '30'),
+(333, 3, '3', '32', '', '9', '2018-01-23', '30'),
+(334, 4, '3', '32', '', '9', '2018-01-23', '30'),
+(335, 5, '3', '32', '', '9', '2018-01-23', '30'),
+(336, 6, '3', '32', '', '9', '2018-01-23', '30'),
+(337, 5, '3', '32', '', '9', '2018-01-23', '30'),
+(338, 6, '3', '32', '', '9', '2018-01-23', '30'),
+(339, 1, '1', '32', '', '9', '2018-01-24', '30'),
+(340, 2, '1', '33', '', '9', '2018-01-24', '30'),
+(341, 3, '1', '34', '', '9', '2018-01-24', '30');
 
 -- --------------------------------------------------------
 
@@ -574,8 +591,25 @@ CREATE TABLE `ocenysemestralne` (
   `idlekcja` int(11) NOT NULL,
   `Semestr` int(11) NOT NULL,
   `Ocena` int(11) NOT NULL,
-  `iducznia` int(11) NOT NULL
+  `iducznia` int(11) NOT NULL,
+  `Data` date NOT NULL,
+  `idnauczyciela` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `ocenysemestralne`
+--
+
+INSERT INTO `ocenysemestralne` (`id`, `idklasy`, `idlekcja`, `Semestr`, `Ocena`, `iducznia`, `Data`, `idnauczyciela`) VALUES
+(11, 10, 3, 1, 3, 37, '0000-00-00', 30),
+(12, 10, 3, 1, 1, 35, '0000-00-00', 30),
+(13, 10, 3, 1, 2, 36, '0000-00-00', 30),
+(14, 9, 3, 1, 1, 32, '2018-01-24', 30),
+(15, 9, 3, 1, 2, 33, '2018-01-24', 30),
+(16, 9, 3, 1, 3, 34, '2018-01-24', 30),
+(17, 9, 1, 1, 2, 33, '2018-01-24', 30),
+(18, 9, 1, 1, 3, 32, '2018-01-24', 30),
+(19, 9, 1, 1, 2, 34, '2018-01-24', 30);
 
 -- --------------------------------------------------------
 
@@ -636,7 +670,8 @@ CREATE TABLE `podreczniki` (
 INSERT INTO `podreczniki` (`idPodrcznikow`, `idklasy`, `idlekcja`, `idnauczyciel`, `NazwaPodrecznika`, `NazwaCzwiczen`) VALUES
 (1, 10, 21, 30, 'Dobra Jd', 'Jechac Disa Zwisa'),
 (12, 9, 3, 30, 'no', 'czesc'),
-(13, 10, 3, 30, 'Wf dla ludu', 'tttttttttttwwwwwwwwwwwwwwwwwwwwwwwwwwwaaaaaaaaaaaaaaattttttttwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwttttt');
+(13, 10, 3, 30, 'Wf dla ludu', 'tttttttttttwwwwwwwwwwwwwwwwwwwwwwwwwwwaaaaaaaaaaaaaaattttttttwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwttttt'),
+(14, 9, 21, 30, 'Bob Marek', 'ha nwm');
 
 -- --------------------------------------------------------
 
@@ -831,7 +866,7 @@ ALTER TABLE `obeconsc`
 -- AUTO_INCREMENT dla tabeli `oceny`
 --
 ALTER TABLE `oceny`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=319;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=342;
 
 --
 -- AUTO_INCREMENT dla tabeli `ocenys2`
@@ -843,7 +878,7 @@ ALTER TABLE `ocenys2`
 -- AUTO_INCREMENT dla tabeli `ocenysemestralne`
 --
 ALTER TABLE `ocenysemestralne`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT dla tabeli `planlekcji`
@@ -855,7 +890,7 @@ ALTER TABLE `planlekcji`
 -- AUTO_INCREMENT dla tabeli `podreczniki`
 --
 ALTER TABLE `podreczniki`
-  MODIFY `idPodrcznikow` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idPodrcznikow` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT dla tabeli `uwagi`

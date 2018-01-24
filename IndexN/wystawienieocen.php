@@ -54,17 +54,15 @@ session_start();
 }
 
 .div-css {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  width: 18%;
-  height: 40px;
-  padding: 20px 0 0;
-  overflow: hidden;
+  
+ 
+  
+ font: normal 10px/normal "Times New Roman", Times, serif;
+ 
   border: 1px solid;
   -webkit-border-radius: 10px / 2px;
   border-radius: 10px / 2px;
-  font: normal 16px/1 "Times New Roman", Times, serif;
+  font-size:1em;
   color: rgba(255,255,255,1);
   text-align: center;
   -o-text-overflow: ellipsis;
@@ -72,13 +70,10 @@ session_start();
   background: -webkit-linear-gradient(-126deg, rgba(203,96,179,0.41) 0, rgba(173,18,131,0.52) 50%, rgba(70,196,221,0.58) 100%), #557582;
   background: -moz-linear-gradient(216deg, rgba(203,96,179,0.41) 0, rgba(173,18,131,0.52) 50%, rgba(70,196,221,0.58) 100%), #557582;
   background: linear-gradient(216deg, rgba(203,96,179,0.41) 0, rgba(173,18,131,0.52) 50%, rgba(70,196,221,0.58) 100%), #557582;
-  background-position: 50% 50%;
-  -webkit-background-origin: padding-box;
-  background-origin: padding-box;
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
-  -webkit-background-size: auto auto;
-  background-size: auto auto;
+  
+
+
+ 
   -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
@@ -96,7 +91,7 @@ session_start();
  
   -webkit-border-radius: 10px / 2px;
   border-radius: 10px / 2px;
-  font: normal 85px/normal "Times New Roman", Times, serif;
+  font: normal 2.5em/normal "Times New Roman", Times, serif;
   color: rgba(0,114,155,1);
   -o-text-overflow: clip;
   text-overflow: clip;
@@ -118,12 +113,12 @@ session_start();
   -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
   -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
   transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-  height:60px;
+  height:74px;
 }
   
   </style>
 
-<div id="all">
+
 <div id="logo">
 SEMESTR1
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
@@ -143,24 +138,29 @@ require "odnosiki.php";
 
 
 
-  <br>
+
 
 
  
 
-<div>
- <div style="float:left;background-color:;width:15%;min-height:30px;font-size:15px;text-align:center; font: normal 20px/1 black-ops-one, Helvetica, sans-serif;" > Login  </div>
- <div style="float:left;background-color:;min-width:10%;min-height:30px;font-size:15px;text-align:center;font: normal 20px/1 black-ops-one, Helvetica, sans-serif;" >  klasa   </div>
-	  <div style="float:left;background-color:;width:10%;min-height:30px;font-size:15px;text-align:center;font: normal 20px/1 black-ops-one, Helvetica, sans-serif;" >    lekcja</div>
-	  <div style="float:left;background-color:;min-width:43%;min-height:30px;font-size:15px;text-align:center;font: normal 20px/1 black-ops-one, Helvetica, sans-serif;" > oceny   </div>
-	    <div style="float:left;background-color:;min-width:15%;min-height:30px;font-size:15px;text-align:center;font: normal 20px/1 black-ops-one, Helvetica, sans-serif;" > Srednia Ocen   </div>
-	  
+<form method="POST" action="OcenySmestralne.php">
+ 
 
+  
+ 
+ 
+
+<br>
+
+<div style="background-color:;"id="panel">
+
+ <div style="float:left;background-color:;width:20%;min-height:30px;text-align:center;" > Login    </div>
+	  <div style="float:left;background-color:;width:12%;min-height:30px" >    Klasa  </div>
+	  <div style="float:left;background-color:;min-width:24%;min-height:30px" > Przedmiot   </div>
+	  <div style="float:left;background-color:;width:19.5%;min-height:30px;" >   Oceny   </div>
+	   <div style="float:left;background-color:;width:10%;min-height:30px;text-align:center;" >    srednia  </div>
+ <div style="float:left;background-color:;width:10%;min-height:30px;text-align:center;" >    Ocena Wys  </div>
     <div style="cleat:both" id="clear"> </div>
-	
-	 </div>
-	  <form method="POST" action="SkryptRozpiskaPodrecznikow.php">
-	  <div>
 <?php
 require "baza.php";
 
@@ -176,67 +176,65 @@ if ($result = $wynik->query("SELECT * FROM `klasy` WHERE id='$klasa'")) {
 }
 
 
-
- if ($result = $wynik->query("SELECT * FROM `lekcje` WHERE id='$lekcja'")) {
+if ($result = $wynik->query("SELECT * FROM `lekcje` WHERE id='$lekcja'")) {
    
     while($w=$result->fetch_assoc()){
 		$lekcjaaa=$w['lekcja'];
 }
 }
-$klasa= $_SESSION['kl'];
- $i=0;
+ 
 
-
-  if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$klasa'")) {
+ $j=0;
+ if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$klasa'")) {
    
     while($w=$result->fetch_assoc()){
+		
 		$login=$w['id'];
+	$_SESSION['pompom'][$j]=0;
       ?>
 	  
-	  
-	 
-	 
-	 <div class="div-css" style="width:15%"><?php  echo $w['login']; ?></div>
-	  	 <div class="div-css" style="width:10%"><?php   echo $klasssa; ?></div>
-	 <div class="div-css" style="width:10%"><?php   echo $lekcjaaa; ?></div>
-	 
-			<div class="div-css" style="width:45%"><?php $oceny="oceny"; require "Skryptocen.php"; ?></div>
-			<div class="div-css"style="width:10%"><?php  echo  round($suma/$lp, 1)  ?></div>
-	<div style="float:Left;width:3%"> <input maxlength="1"  class="input-css" name="ocenaS[]" placeholder="0"/> </div>
-	  <div style="cleat:both" id="clear">      </div>
-	  
+	  <div class="div-css" style="float:left;background-color:;width:19%;min-height:80px;border:1px dotted black" id="login"> <?php  echo $w['login']; ?>     </div>
+	  <div class="div-css" style="float:left;background-color:;width:8%;min-height:80px;border:1px dotted black" id="klasa"> <?php  echo $klasssa ?>     </div>
+	   <div class="div-css" style="float:left;background-color:;width:20%;min-height:80px;border:1px dotted black" id="przedmiot"> <?php  echo $lekcjaaa ?>     </div>
+	  <div class="div-css" style="float:left;background-color;min-width:30%;min-height:80px;border:1px dotted black" id="Oceny">  <?php $oceny="oceny"; require "Skryptocen.php"; ?>    </div>
+	  	   <div class="div-css" style="float:left;background-color:;width:8%;min-height:80px;border:1px dotted black" id="klasa"> <?php  echo round($suma/$lp,1) ?>     </div>
+	   <div class="div-css" style="float:left;background-color:;width:8%;min-height:80px;border:1px dotted black" id="klasa"> <?php require "UkazanieOcenSemestralnych.php";  ?>     </div>
+	  <div  style="float:left;background-color;width:3.5%;min-height:80px;border:1px dotted black" id="Input">  <input  class="input-css" maxlength="1" placeholder="0" name="hej[]" >    </div>
 	
-	  
-	  
+	  <div style="cleat:both" id="clear">      </div>
 	 <?php 
 		
-  }}
 	 
 	
 	 ?>
 	 <br>
-	 </div>
+	 
 	 <?php 
-		
-       
-    
- 
+		//echo $_SESSION['pompom'][$j];
+	$j++;
+    }
+ }
 
 ?>
-
-</form>
-
-  
-  
-  
+<input type='submit' style="height:100px" class="input-css" style=""value="wyslij">
 </div>
- <div style="height:200px;width:100%">
- 
- </div>
-  <div style="height:200px;width:100%">
- 
- </div>
 
+   </form>
+
+  
+  
+  <div style="height:200px;width:100%;">
+ 
+ </div>
+ 
+
+  
+<?php
+
+//for($i=0;$i<3;$i++)
+	//  echo $d[1];
+
+?>
  
 
     

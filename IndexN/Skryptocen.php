@@ -35,7 +35,7 @@ if ($result131 = $wynik->query("SELECT * FROM `$oceny`,loginy where idlogin='$lo
 		
 			<ul style=" list-style-type:none;padding:0;
   margin:0;">
-		<li id="d<?php echo $s['id'] ?>" style="width:200px;height:90px;background-color:#BDBDBD;font-size:19px;line-height:1.5em;border:2px white solid;border-radius:10px;text-align: center;margin-top:5px;">
+		<li id="d<?php echo $s['id'] ?>" style="width:200px;height:90px;background-color:#BDBDBD;font-size:19px;line-height:1.5em;border:2px white solid;border-radius:10px;text-align: center;margin-top:5px; z-index: 1;">
 		
 		<?php echo "Za co "; echo '"';echo $s['zaco'] ;echo '"'; echo "</br>" ;
 
