@@ -188,8 +188,8 @@ if ($result = $wynik->query("SELECT * FROM `klasy` WHERE id='$klasa'")) {
 	 <form method="POST" action="SkryptRozpiskaPodrecznikow.php">
 	  <div style="float:left;width:24%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="login"> <?php  echo $klasssa; ?>     </div>
 	   <div style="float:left;width:24%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="login"> <?php   echo $lekcjaaa; ?>     </div>
-	  <div style="float:left;width:24%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="login">  <input name="pdr" class="enjoy-css" value="<?php  $pom="NazwaPodrecznika"; require"PlaceholderdPodreczniki.php" ?>" />   </div>
-	  <div style="float:left;width:24%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="klasa"> <input name="czw" class="enjoy-css" value="<?php  $pom="NazwaCzwiczen"; require"PlaceholderdPodreczniki.php" ?>" />    </div>
+	  <div style="float:left;width:24%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="login">  <input name="pdr" class="enjoy-css" placeholder="<?php  $pom="NazwaPodrecznika"; require"PlaceholderdPodreczniki.php" ?>" />   </div>
+	  <div style="float:left;width:24%;min-height:40px;border:1px dotted black;font-size:18px;text-align:center;" id="klasa"> <input name="czw" class="enjoy-css" placeholder="<?php  $pom="NazwaCzwiczen"; require"PlaceholderdPodreczniki.php" ?>" />    </div>
 
 	
 	  <div style="cleat:both" id="clear">      </div>
