@@ -9,8 +9,20 @@ $data=$_SESSION['data'];
 $nl=$_POST['numer_lekcji'];
 
 
+$kurde=0;
 $kl= $_SESSION['kl'];
 
+if($result=$wynik->query("SELECT * FROM `obeconsc` WHERE data='$data' and numer_lekcji='$nl' and klasa='$kl'"))
+{
+	if($result->num_rows>=1)
+	{ 
+		$kurde=1;
+	}
+	else
+	{
+		$kurde=0;
+	}
+}
 
 $login= $_SESSION['loginy'];
 
@@ -50,15 +62,25 @@ if ($result = $wynik->query("SELECT * FROM `planlekcji` WHERE klasa='$kl' and dz
 	 $uczen=$w['id'];
 	
 
-
-	 	 $wynik->query("INSERT INTO `obeconsc` (`id`, `data`, `obecnosc`, `numer_lekcji`,`uczen`,`klasa`,`dzienTygodnia`) VALUES (NULL, '$data', '$obecnosc', '$nl', '$uczen','$kl','$xd')");
+if($kurde==1)
+ {
+	 header('location:obecnosc.php');
+ }
+ else
+ {
+	 $wynik->query("INSERT INTO `obeconsc` (`id`, `data`, `obecnosc`, `numer_lekcji`,`uczen`,`klasa`,`dzienTygodnia`) VALUES (NULL, '$data', '$obecnosc', '$nl', '$uczen','$kl','$xd')");
+	$i++;
+	header('location:obecnosc.php');
+ }
+	 	 
 	 
 
-$i++;
+
 	 }
    }
-   
- header ('Location:obecnosc.php');
+  
+ 
+ 
 
 
 
