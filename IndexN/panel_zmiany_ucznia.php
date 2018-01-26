@@ -53,11 +53,17 @@ if ($result = $wynik->query("SELECT * FROM `loginy` WHERE typ='uczen'")) {
    
     while($w=$result->fetch_assoc()){
 		?>
-		login: <input type=text name ="login[]" value="<?php echo $w['login'];?>">
-		haslo: <input type=text name ="haslo[]" value="<?php echo $w['haslo'];?>">
-		email: <input type=text name ="email[]" value="<?php echo $w['email'];?>">
-		klasa: <input type=text name ="klasa[]" value="<?php echo $w['klasa'];?>">
-		typ: <input type=text name ="typ[]" value="<?php echo $w['typ'];?>">
+		<br>
+		<div>login: <input type=text name ="login[]" value="<?php echo $w['login'];?>"></div>
+		
+		<div>haslo: <input type=text name ="haslo[]" value="<?php echo $w['haslo'];?>"></div>
+		
+		<div>email: <input type=text name ="email[]" value="<?php echo $w['email'];?>"></div>
+		
+		<div>klasa: <input type=text name ="klasa[]" value="<?php echo $w['klasa'];?>"></div>
+		
+		<div>typ: <input type=text name ="typ[]" value="<?php echo $w['typ'];?>"></div>
+		
 <?php		
 	}
 	
@@ -67,6 +73,7 @@ if ($result = $wynik->query("SELECT * FROM `loginy` WHERE typ='uczen'")) {
 	
     //$row = mysql_fetch_array($result);
 	?>
+	
 		<input type=submit value=aktualizuj>
     </form>
 </body>
