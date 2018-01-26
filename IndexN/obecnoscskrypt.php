@@ -64,6 +64,7 @@ if ($result = $wynik->query("SELECT * FROM `planlekcji` WHERE klasa='$kl' and dz
 
 if($kurde==1)
  {
+	 $wynik->query("UPDATE `obeconsc` SET obecnosc='$obecnosc' WHERE data='$data' and numer_lekcji='$nl' and klasa='$kl'");
 	 header('location:obecnosc.php');
  }
  else
