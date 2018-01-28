@@ -66,6 +66,9 @@ Semestr 2
 
   <input  type="submit" name="seme" value="obecnosc" >
   </form>
+  <form method="POST" action="haslo1.php">
+  <input  type="submit" name="zmiana hasła" value="Zmiana hasła" >
+  </form>
  <?php  
 $login= $_SESSION['login'];
 require "baza.php";
