@@ -43,3 +43,9 @@
      <form method="POST" action="wystawienieocen.php">
   <input  type="submit" name="w" value="Wystawienie ocen" >
   </form>
+  <form method="POST" action="haslo1.php">
+  <input  type="submit" name="zmiana hasła" value="Zmiana hasła" >
+  </form>
+  <form method="POST" action="panel_dodawania_zastepstwa.php">
+  <input  type="submit" name="Dodaj zastępstwo" value="Dodaj zastępstwo" >
+  </form>
