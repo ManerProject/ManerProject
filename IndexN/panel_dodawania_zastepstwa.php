@@ -108,11 +108,11 @@ echo $klasa;
 	<select style="width:120px;height:30px;border-radius:400px;" name='sele2'>
 
 
-        <option value=".$w['1'].">poniedziałek</option> 
-		<option value=".$w['2'].">wtorek</option> 
-		<option value=".$w['3'].">środa</option> 
-		<option value=".$w['4'].">czwartek</option> 
-		<option value=".$w['5'].">piątek</option> 
+        <option value="1">poniedziałek</option> 
+		<option value="2">wtorek</option> 
+		<option value="3">środa</option> 
+		<option value="4">czwartek</option> 
+		<option value="5">piątek</option> 
   
 		
        

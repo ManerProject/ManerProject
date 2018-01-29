@@ -10,6 +10,8 @@ for ($j=0; $j<strlen($data); $j++)
 	if ($data[$j]=='.')
 		$data[$j]='-';
 }
+$sele=$_POST['sele'];
+$sele2=$_POST['sele2'];
 ?>
 <html>
 
@@ -74,21 +76,30 @@ Kurde wywiadówka
  
  </div>
  <div id="con">
-   <form method="post" action="panel_doawania_zastepstwa2.php" style="font-size:15px;">
+   <form method="post" action="skrypt_zastepstwo.php" style="font-size:15px;">
     <select style="width:120px;height:30px;border-radius:400px;" name='sele'>
 <?php
 require "baza.php";
 $_SESSION['data']=$data;
+$_SESSION['sele2']=$sele;
 
 $klasa=$_SESSION['kl'];
 
 
 	
 echo $klasa; 
-	    if ($result = $wynik->query("SELECT * FROM klasy")) {
+	    if ($result = $wynik->query("SELECT * FROM planlekcji WHERE klasa='$sele' AND dzien='$sele2'")) {
    
     while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['id'].">".$w['klasa']."</option>";      
+        echo "<option value='1'>".$w['lekcja1']."</option>";  
+		echo "<option value='2'>".$w['lekcja2']."</option>"; 
+		echo "<option value='3'>".$w['lekcja3']."</option>"; 
+		echo "<option value='4'>".$w['lekcja4']."</option>"; 
+		echo "<option value='5'>".$w['lekcja5']."</option>"; 
+		echo "<option value='6'>".$w['lekcja6']."</option>"; 
+		echo "<option value='7'>".$w['lekcja7']."</option>"; 
+		echo "<option value='8'>".$w['lekcja8']."</option>"; 
+		echo "<option value='9'>".$w['lekcja9']."</option>"; 		
       
 		
        
@@ -103,6 +114,8 @@ echo $klasa;
 	
 	
 ?>
+<input type="text" placeholder="lekcja" name="lekcja"/>
+<input type="number" placeholder="Numer sali" name="numer_sali"/>
 
     </select>
 

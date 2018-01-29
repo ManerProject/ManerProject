@@ -78,6 +78,17 @@ SEMESTR1
 <?php
 require "odnosiki.php";
 ?>
+ <?php
+if ($_SESSION['numer']>1)
+{
+	?>
+	<br><br>
+	<form method="POST" action="brak_zmian.php">
+		<input type='submit' style=""value="brak zmian">
+	</form>
+	<?php
+}
+?>
 <form method="POST" action="obecnoscskrypt.php">
  
 <?php
@@ -90,10 +101,10 @@ $_SESSION['data']=$data;
 ?>
 <br>
  
- Numer lekcji <input type="number" min="1" max="9" value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji">
- 
- 
-
+ Numer lekcji <input type="number" min="1" max="9"   value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji">
+ <?php
+$_SESSION['numer']=$numer;
+?>
 <br>
 
 <div style="background-color:;"id="panel">
