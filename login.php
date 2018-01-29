@@ -8,10 +8,8 @@
 	<title>CKZiU w Brodnicy</title>
 	<link rel="stylesheet" href="CSS/login.css"/>	
 </head>
-<body onload="RunAction()">
-	<div id="hej1" >
-		<img  id="hej" src="Grafika/logo.png"> </img>
-		<form action="zaloguj.php" method="POST" >
+<?php require('skrypt_logo.php'); ?>
+<form action="zaloguj.php" method="POST" >
 	<div id=uno>
 		Login <input type="text" placeholder="login"name="login"/>
 		Haslo <input type="password" placeholder="haslo" name="haslo"/>
@@ -24,23 +22,5 @@
 			<input type="submit" value="Zarejestruj"/>
 		</form>
 	</div>
- <script language="JavaScript">
-
-var i = 0;
-function RunAction()
-{
-
-i=i+0.008;
-document.getElementById("hej").style.opacity=i;
-if(i>1)
-{
-i=1;
-}
-setTimeout("RunAction()",50);
-}
-
-</script>
- 
- 
-  </body>
+ </body>
  </html>
