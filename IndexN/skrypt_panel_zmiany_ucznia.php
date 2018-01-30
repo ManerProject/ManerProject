@@ -1,12 +1,12 @@
 <?php
 session_start();  
 require "baza.php";
-$email=$_POST['email'];
-$haslo=$_POST['haslo'];
-$klasa=$_POST['klasa'];
-$login=$_POST['login'];
-$typ=$_POST['typ'];
-if ($result = $wynik->query("update loginy set (`email={$_POST["email"]},haslo={$_POST["haslo"]},klasa={$_POST["klasa"]},login={$_POST["login"]},typ={$_POST["typ"]}`)")) {
+$email=$_POST['email[]'];
+$haslo=$_POST['haslo[]'];
+$klasa=$_POST['klasa[]'];
+$login=$_POST['login[]'];
+$typ=$_POST['typ[]'];
+if ($result = $wynik->query("update loginy set (`email=$email,haslo=$haslo,klasa=$klasa,login=$login,typ=$typ`)")) {
    
     while($w=$result->fetch_assoc()){
 	
