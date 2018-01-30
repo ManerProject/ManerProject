@@ -28,7 +28,11 @@ echo "</br>";
 
 require "baza.php";
 
-
+//$typ="nieprzydzielony";
+//if ($result = $wynik->query("SELECT `typ` FROM `loginy` WHERE `typ`='$typ'"))
+//{	
+//	header ('Location:pierwsze_logowanie.php');
+//}
 
 
 if ($result = $wynik->query("SELECT * FROM loginy where login='$login' and haslo='$haslo'"))
