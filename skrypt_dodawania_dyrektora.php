@@ -19,16 +19,7 @@ session_start()
  require "baza.php";
   
 $nau=$_POST['nauc'];
-$dyre=$_POST['dyrektor'];
-if($dyre=="d")
-{
-	$poz=0;
-}
-else
-{
-	$poz=1;
-}
-$wynik->query("INSERT INTO dyrektorzy (`nauczyciel`, `pozycja`) VALUES ('$nau', '$poz')");
+$wynik->query("INSERT INTO dyrektorzy (`nauczyciel`) VALUES ('$nau')");
 
 $wynik->close();
 header('Location: panel_dodania_dyrektora.php');		

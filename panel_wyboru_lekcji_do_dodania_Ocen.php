@@ -79,19 +79,9 @@ if ($result = $wynik->query("SELECT * FROM dyrektorzy WHERE nauczyciel='$id'")) 
 	if($wynik=$result->fetch_assoc()){
 			 if($wynik>0)
 			 {
-				 $pozycja=$wynik['pozycja'];
-				 if($pozycja==0)
-				 {
-					 echo "<form action='panel_dyrektora.php' method='post'>
-						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='panel dyrektora'>
-						</form>";
-				 }
-				 else
-				 {
-					 echo "<form action='panel_wicedyrektora.php' method='post'>
-						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='panel wicedyrektora'>
-						</form>";
-				 }
+				 echo "<form action='panel_dyrektora.php' method='post'>
+					<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='panel dyrektora'>
+					</form>";
 			 }
 	}
  }
@@ -137,9 +127,12 @@ if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
 						<form action='panel_dodawania_ucznia_do_klas.php' method='post'>
 						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='dodaj uczniow'>
 						</form>
+						<form action='panel_dodawania_wycieczek.php' method='post'>
+						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='dodaj wycieczke'>
+						</form>
 </div>
 <hr>
-<form action='opinie_wicedyrektorow.php' method='post'>
+<form action='opinie_dyrektorow.php' method='post'>
 		<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='opinie o klasach'>
 </form>
 <hr>

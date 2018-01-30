@@ -64,7 +64,6 @@ Panel Admina
 </div>
 
 <form action="skrypt_dodawania_dyrektora.php" method="POST" >
-<form action="zaloguj.php" method="POST" >
     <select style="width:120px;height:30px;border-radius:400px;" name='nauc'>
     <?php
 require "baza.php";
@@ -83,15 +82,9 @@ if ($result = $wynik->query("SELECT * FROM loginy WHERE typ <> 'admin' and typ <
 }
 ?>
  </select>
-<select style="width:120px;height:30px;border-radius:400px;" name='dyrektor'>
-<option value="d">dyrektor</option>
-<option value="wd">wicedyrektor</option>
- </select>
-
   <input type="submit" value="Dodaj"/>
  </div>
 
- </form>
  
  
  </form>

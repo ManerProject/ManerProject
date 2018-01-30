@@ -6,19 +6,19 @@ session_start();
 <html>
 
 <head>
+	<script src="../JS/jquery-2.1.4.min.js"></script>
+		<script src="../JS/Chart.js"></script>
 <meta lang="pl"/>
 <meta charset="utf-8"/>
-<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
 </head>
 <body>
-  <style>
+ <style>
   body
   {
 	background-color:#E6E6E6;
 	margin:0px;
-	
-	font-size:35px;
+	font-size:25px;
 	font-family: 'Acme', sans-serif;
   }
   #all
@@ -33,82 +33,62 @@ session_start();
 	height:100px;
 	background-color:black;
 	float:right
-	text-align: center;
-	pading:10px;
-	color:white;
-	
   }
-#okno
-{
-	width:100px;
-	
-	height:100px;
-	margin-left:15%;
-}
   
   </style>
 
-<div id="all">
-<div id="logo">
-Kurde wiadomość
-
-<img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
-<form action="../wyloguj.php" method="_POST" >
- 
-
-  <input style="float:right;background-color:#191919;:width:50px;height:100px;position:relative;
-    bottom: 40px;cursor:pointer;color:white;font-family: 'Audiowide', cursive;border-left:2px dotted #1F1F1F;border-top:0;border-right:0;border-bottom:0" type="submit" value="WYLOGUJ"/>
- 
- 
- </form>
-</div>
-
- 
- </div>
- <div id="con">
-   <form method="post" action="skryptwiadomosci.php" style="font-size:15px;">
-    <select style="width:120px;height:30px;border-radius:400px;" name='sele'>
-<?php
-require "baza.php";
-
-$klasa=$_SESSION['kl'];
-
-
-	
-echo $klasa; 
-	    if ($result = $wynik->query("SELECT * FROM loginy WHERE typ='teacher'")) {
-   
-    while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['id'].">".$w['login']."</option>";      
+<div style=" background-color: red; class="uwagii" >tu som prowizorka wiadomosci</div>
+		<?php
+		require "baza.php";
+		$login= $_SESSION['login'];
+  if ($result69 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
+			
+				 
+    while($w=$result69->fetch_assoc()){
+			 $id=$w['id'];
       
-		
-       
     }
- 
- 
-  $result->close();
-  $wynik->close();
-}
+  }
+			 if ($result1 = $wynik->query("SELECT * FROM wiadomosci WHERE ID_nauczyciela='$id'")) {
+				
+				 
+   
+	
+    while($w=$result1->fetch_assoc()){
+			 
+			 ?>
+			 <center><div style="margin-left:0%; background-color:#FFEB3B" class="uwagii" ><?php
+      
+				
+				echo $w['Autor'];
+				?></center>
+				<div style="text-align:center; background-color:green;"><?php
+				echo $w['nazwa'];
+				?>
+				</div>
+				
+	
+	 <center><div style=" background-color: purple; class="uwagii" ><?php
+      
+				
+				echo $w['tresc'];
+				?></center>
+				
+				</br>
+	<?php
+      
+	  
+	}
+    }
+		?>
+		</div>
+		
+		
+		</div>
 		 
-		  
-	
-	
-?>
-
-    </select>
-	
-   <input name="tytul" style="width:90px; height:25px;border-radius:4px;" placeholder="tytul"value="">
-	<input name="tresc"style="width:200px; height:150px;border-radius:400px;" placeholder="tresc">
-	
-	<input type='submit' style="width:100px; height:50px;border-radius:400px;"value="ok ">
-
-    </form>
-
-</br>
-
-
-
-</div>
- 
-</body>
+		 
+		 
+				</body>
 </html>
+
+

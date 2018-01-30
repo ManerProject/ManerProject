@@ -141,7 +141,7 @@ if ($result = $wynik->query("SELECT * FROM loginy WHERE typ <> 'admin'")) {
 <input type='submit' style="width:100px; height:30px;;margin-left:15%"value="Dodaj">
 
 </form>	
- 	<div style="margin-left:9%;font-size:25px;float:left;">Dodaj dyrektora, wicedyrektora</div>
+ 	<div style="margin-left:9%;font-size:25px;float:left;">Dodaj dyrektora</div>
 	 </br>
 <form   method="post" action="panel_dodania_dyrektora.php" style="font-size:25px;">
 <input type='submit' style="width:100px; height:30px;;margin-left:15%"value="Dodaj">
