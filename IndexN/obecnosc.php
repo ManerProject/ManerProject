@@ -78,17 +78,7 @@ SEMESTR1
 <?php
 require "odnosiki.php";
 ?>
- <?php
-if ($_SESSION['numer']>1)
-{
-	?>
-	<br><br>
-	<form method="POST" action="brak_zmian.php">
-		<input type='submit' style=""value="brak zmian">
-	</form>
-	<?php
-}
-?>
+ 
 <form method="POST" action="obecnoscskrypt.php">
  
 <?php
@@ -102,10 +92,18 @@ $_SESSION['data']=$data;
 <br>
  
  Numer lekcji <input type="number" min="1" max="9"   value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji">
- <?php
+
+<?php
 $_SESSION['numer']=$numer;
+if ($result = $wynik->query("SELECT * FROM `obeconsc` WHERE data='$data' AND numer_lekcji>=1")) {
+	if($result->num_rows>0 )
+	{
+		?>
+		<input type="button" value="Brak zmian" onclick="window.location.href='brak_zmian2.php'" />
+		<?php
+	}
+}
 ?>
-<br>
 
 <div style="background-color:;"id="panel">
 
