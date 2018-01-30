@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Sty 2018, 22:15
--- Wersja serwera: 10.1.16-MariaDB
--- Wersja PHP: 5.6.24
+-- Czas generowania: 30 Sty 2018, 15:13
+-- Wersja serwera: 10.1.28-MariaDB
+-- Wersja PHP: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,17 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `dyrektorzy` (
   `id` int(11) NOT NULL,
-  `nauczyciel` int(11) NOT NULL,
-  `pozycja` int(11) NOT NULL
+  `nauczyciel` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `dyrektorzy`
 --
 
-INSERT INTO `dyrektorzy` (`id`, `nauczyciel`, `pozycja`) VALUES
-(1, 31, 0),
-(3, 25, 1);
+INSERT INTO `dyrektorzy` (`id`, `nauczyciel`) VALUES
+(1, 31),
+(3, 25),
+(4, 31);
 
 -- --------------------------------------------------------
 
@@ -49,21 +51,21 @@ INSERT INTO `dyrektorzy` (`id`, `nauczyciel`, `pozycja`) VALUES
 CREATE TABLE `klasy` (
   `id` int(11) NOT NULL,
   `numer` int(11) NOT NULL,
-  `nazwa` text NOT NULL
+  `nazwa` text NOT NULL,
+  `profil` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `klasy`
 --
 
-INSERT INTO `klasy` (`id`, `numer`, `nazwa`) VALUES
-(4, 1, 'TL'),
-(5, 1, 'TI'),
-(6, 1, 'TM'),
-(7, 1, 'TOR'),
-(8, 1, 'TH'),
-(9, 1, 'TE'),
-(10, 1, 'TR');
+INSERT INTO `klasy` (`id`, `numer`, `nazwa`, `profil`) VALUES
+(4, 1, 'TL', 'technikum logistyczne'),
+(5, 1, 'TI', 'technikum informatyczne'),
+(6, 1, 'TM', 'technikum mechatroniczne'),
+(7, 1, 'TOR', 'technikum organizacji reklamy'),
+(8, 1, 'TH', 'technikum handlowe'),
+(9, 1, 'TE', 'technikum ekonomiczne');
 
 -- --------------------------------------------------------
 
@@ -115,8 +117,8 @@ CREATE TABLE `loginy` (
 INSERT INTO `loginy` (`id`, `login`, `imie`, `nazwisko`, `haslo`, `email`, `typ`, `Klasa`) VALUES
 (1, 'admin', '', '', 'admin', 'admin', 'admin', NULL),
 (25, 'maner', 'Maner', 'JA', 'jamanewr', 'sasa@wp.pl', 'teacher', NULL),
-(30, 'monika', '', '', 'kuba10', 'bogusiam74@wp.pl', 'teacher', NULL),
-(31, 'twojstary', '', '', 'jamanewr', 'nwm@wp.pl', 'teacher', NULL),
+(30, 'monika', 'abc', 'aaa', 'kuba10', 'bogusiam74@wp.pl', 'teacher', NULL),
+(31, 'twojstary', 'ass', 'tw', 'jamanewr', 'nwm@wp.pl', 'teacher', NULL),
 (32, 'uczenkl1', '', '', 'jamanewr', 'uczenkl1@wp.pl', 'uczen', 9),
 (33, 'uczenkl12', '', '', '', 'uczenkl1@wp.pl', 'uczen', 9),
 (34, 'uczenkl2', '', '', 'jamanewr', 'uczenkl1@wp.pl', 'uczen', 9),
@@ -385,6 +387,41 @@ INSERT INTO `planlekcji` (`id`, `klasa`, `lekcja1`, `lekcja2`, `lekcja3`, `lekcj
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `rady_rodzicow`
+--
+
+CREATE TABLE `rady_rodzicow` (
+  `id` int(11) NOT NULL,
+  `rodzic` int(11) NOT NULL,
+  `pozycja` int(11) NOT NULL,
+  `klasa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `samorzady`
+--
+
+CREATE TABLE `samorzady` (
+  `id` int(11) NOT NULL,
+  `uczen` int(11) NOT NULL,
+  `pozycja` int(11) NOT NULL,
+  `klasa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `samorzady`
+--
+
+INSERT INTO `samorzady` (`id`, `uczen`, `pozycja`, `klasa`) VALUES
+(4, 39, 0, 4),
+(5, 40, 1, 4),
+(6, 41, 2, 4);
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `tematy`
 --
 
@@ -456,23 +493,23 @@ INSERT INTO `wiadomosci` (`ID`, `ID_nauczyciela`, `Autor`, `nazwa`, `tresc`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `wizyty_wicedyrektorow`
+-- Struktura tabeli dla tabeli `wizyty_dyrektorow`
 --
 
-CREATE TABLE `wizyty_wicedyrektorow` (
+CREATE TABLE `wizyty_dyrektorow` (
   `id` int(11) NOT NULL,
   `klasa` int(11) NOT NULL,
   `lekcja` int(11) NOT NULL,
   `data` date NOT NULL,
   `opis` text NOT NULL,
-  `wicedyrektor` int(11) NOT NULL
+  `dyrektor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Zrzut danych tabeli `wizyty_wicedyrektorow`
+-- Zrzut danych tabeli `wizyty_dyrektorow`
 --
 
-INSERT INTO `wizyty_wicedyrektorow` (`id`, `klasa`, `lekcja`, `data`, `opis`, `wicedyrektor`) VALUES
+INSERT INTO `wizyty_dyrektorow` (`id`, `klasa`, `lekcja`, `data`, `opis`, `dyrektor`) VALUES
 (4, 5, 7, '0000-00-00', 'opinia o klasie 1TI', 25),
 (9, 9, 3, '0000-00-00', '1TE opinia', 25),
 (10, 8, 6, '0000-00-00', '1TH', 25),
@@ -501,6 +538,32 @@ CREATE TABLE `wychowawcy` (
 
 INSERT INTO `wychowawcy` (`id`, `nauczyciel`, `klasa`) VALUES
 (2, 25, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wycieczki`
+--
+
+CREATE TABLE `wycieczki` (
+  `id` int(11) NOT NULL,
+  `klasa` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `czas_dni` int(11) NOT NULL,
+  `czas_godz` int(11) NOT NULL,
+  `liczba_uczniow` int(11) NOT NULL,
+  `cel` text NOT NULL,
+  `program` text NOT NULL,
+  `nauczyciel` int(11) NOT NULL,
+  `opiekun` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `wycieczki`
+--
+
+INSERT INTO `wycieczki` (`id`, `klasa`, `data`, `czas_dni`, `czas_godz`, `liczba_uczniow`, `cel`, `program`, `nauczyciel`, `opiekun`) VALUES
+(22, 4, '2018-01-17', 2, 55, 21, 'torun', 'zwiedzanie miasta', 25, '30,31,');
 
 -- --------------------------------------------------------
 
@@ -587,6 +650,18 @@ ALTER TABLE `planlekcji`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rady_rodzicow`
+--
+ALTER TABLE `rady_rodzicow`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `samorzady`
+--
+ALTER TABLE `samorzady`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tematy`
 --
 ALTER TABLE `tematy`
@@ -605,15 +680,21 @@ ALTER TABLE `wiadomosci`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `wizyty_wicedyrektorow`
+-- Indexes for table `wizyty_dyrektorow`
 --
-ALTER TABLE `wizyty_wicedyrektorow`
+ALTER TABLE `wizyty_dyrektorow`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `wychowawcy`
 --
 ALTER TABLE `wychowawcy`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wycieczki`
+--
+ALTER TABLE `wycieczki`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -630,77 +711,111 @@ ALTER TABLE `wywiadowka`
 -- AUTO_INCREMENT dla tabeli `dyrektorzy`
 --
 ALTER TABLE `dyrektorzy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT dla tabeli `klasy`
 --
 ALTER TABLE `klasy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT dla tabeli `lekcje`
 --
 ALTER TABLE `lekcje`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT dla tabeli `loginy`
 --
 ALTER TABLE `loginy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
 --
 -- AUTO_INCREMENT dla tabeli `nau`
 --
 ALTER TABLE `nau`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
 --
 -- AUTO_INCREMENT dla tabeli `obeconsc`
 --
 ALTER TABLE `obeconsc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=416;
+
 --
 -- AUTO_INCREMENT dla tabeli `oceny`
 --
 ALTER TABLE `oceny`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+
 --
 -- AUTO_INCREMENT dla tabeli `ocenys2`
 --
 ALTER TABLE `ocenys2`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT dla tabeli `planlekcji`
 --
 ALTER TABLE `planlekcji`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT dla tabeli `rady_rodzicow`
+--
+ALTER TABLE `rady_rodzicow`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `samorzady`
+--
+ALTER TABLE `samorzady`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT dla tabeli `tematy`
 --
 ALTER TABLE `tematy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT dla tabeli `uwagi`
 --
 ALTER TABLE `uwagi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT dla tabeli `wiadomosci`
 --
 ALTER TABLE `wiadomosci`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT dla tabeli `wizyty_wicedyrektorow`
+-- AUTO_INCREMENT dla tabeli `wizyty_dyrektorow`
 --
-ALTER TABLE `wizyty_wicedyrektorow`
+ALTER TABLE `wizyty_dyrektorow`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT dla tabeli `wychowawcy`
 --
 ALTER TABLE `wychowawcy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT dla tabeli `wycieczki`
+--
+ALTER TABLE `wycieczki`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
 -- AUTO_INCREMENT dla tabeli `wywiadowka`
 --
 ALTER TABLE `wywiadowka`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
