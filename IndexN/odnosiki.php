@@ -49,3 +49,6 @@
   <form method="POST" action="panel_dodawania_zastepstwa.php">
   <input  type="submit" name="Dodaj zastępstwo" value="Dodaj zastępstwo" >
   </form>
+    <form method="POST" action="kalendarz.php">
+  <input  type="submit" name="Dodaj zastępstwo" value="kalendarz" >
+  </form>
