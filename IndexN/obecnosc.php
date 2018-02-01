@@ -2,12 +2,6 @@
 session_start();
 $klasa= $_SESSION['kl'];
 require "baza.php";
-if($result = $wynik->query("SELECT * from klasy WHERE id='$klasa'") ){
-   
-		$w=$result->fetch_assoc();
-			 $numer=$w['numer'];
-			 $nazwa=$w['nazwa'];
-     }
 $data= date('Y.m.d');
 
 for($j=0;$j<strlen($data);$j++)
@@ -16,7 +10,6 @@ for($j=0;$j<strlen($data);$j++)
 		$data[$j]='-';
 	
 }
-
 
  ?>
 <!DOCTYPE html>
@@ -81,37 +74,43 @@ SEMESTR1
  </form>
 </div>
 
-<form method="POST" action="naus1.php">
-
-  <input  type="submit" name="seme" value="semestr2" >
-  </form>
-  <form method="POST" action="nau.php">
-
-  <input  type="submit" name="seme" value="semestr1" >
-  </form>
-  <form method="POST" action="paneluwag.php">
-
-  <input  type="submit" name="uwagi" value="uwagi" >
-  </form>
-  <form method="POST" action="obecnosc.php">
-
-  <input  type="submit" name="obecnosc" value="obecnosc" >
-  </form>
-
+<?php
+require "odnosiki.php";
+?>
+ 
 <form method="POST" action="obecnoscskrypt.php">
  
 <?php
 
 echo $data;
+
+
+
 $_SESSION['data']=$data;
 ?>
 <br>
- Data  <input type="date" value=""  style =""name="" > <br>
- Numer lekcji <input type="number" value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji">
  
- 
+ Numer lekcji <input type="number" min="1" max="9"   value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji">
 
-<br>
+<?php
+$_SESSION['numer']=$numer;
+if ($result = $wynik->query("SELECT * FROM `obeconsc` WHERE data='$data' AND numer_lekcji>=1")) {
+	if($result->num_rows>0 )
+	{
+		?>
+		<input type="button" value="Brak zmian" onclick="window.location.href='brak_zmian2.php'" />
+		<?php
+	}
+}
+if ($result = $wynik->query("SELECT * FROM `obeconsc` WHERE data='$data' AND numer_lekcji>=1")) {
+	if($result->num_rows>0 )
+	{
+		?>
+		<input type="button" value="Brak zmian -spoźnienia" onclick="window.location.href='brak_zmian.php'" />
+		<?php
+	}
+}
+?>
 
 <div style="background-color:;"id="panel">
 
@@ -130,7 +129,12 @@ $_SESSION['data']=$data;
  
  
 
- 
+ if ($result = $wynik->query("SELECT * FROM `klasy` WHERE id='$klasa'")) {
+   
+    while($w=$result->fetch_assoc()){
+		$klasssa=$w['klasa'];
+}
+}
 
  $i=0;
  if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$klasa'")) {
@@ -142,7 +146,7 @@ $_SESSION['data']=$data;
       ?>
 	  
 	  <div style="float:left;background-color:;width:19%;min-height:30px;border:1px dotted black" id="login"> <?php  echo $w['login']; ?>     </div>
-	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $numer;echo " ";echo $nazwa; ?>     </div>
+	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $klasssa ?>     </div>
 	   <div style="float:left;background-color:;width:25%;min-height:30px;border:1px dotted black" id="przedmiot">   <?php  echo $data ?>     </div>
 	  <div style="float:left;background-color;min-width:39%;min-height:40px;border:1px dotted black" id="Oceny">    <?php  require "skryptsprobecnosci.php"; ?>  </div>
 	  <div style="float:left;background-color;width:5.5%;min-height:30px;border:1px dotted black" id="Input">  <select name="obecnosc[]">
@@ -171,9 +175,7 @@ $_SESSION['data']=$data;
 </div>
 
    </form>
-<?php
-   
- ?>
+
  </div>
     
  </div>
