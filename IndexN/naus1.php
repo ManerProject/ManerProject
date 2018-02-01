@@ -1,5 +1,5 @@
 <?php
-require('somefile.php');
+require('reqnau.php');
 ?>
 SEMESTR 2
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>

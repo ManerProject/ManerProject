@@ -1,56 +1,6 @@
-<?php 
-session_start();
- ?>
-<!DOCTYPE html>
-
-<html>
-
-<head>
-<meta lang="pl"/>
-<meta charset="utf-8"/>
-<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-
-</head>
-<body>
-  <style>
-  body
-  {
-	background-color:#E6E6E6;
-	margin:0px;
-	
-	font-size:35px;
-	font-family: 'Acme', sans-serif;
-  }
-  #all
-  {
-	  width:100%;
-	  height:100%;
-  }
- #logo
-  {
- 
-	width:100%;
-	height:100px;
-	background-color:black;
-	float:right
-	text-align: center;
-	pading:10px;
-	color:white;
-	
-  }
-#okno
-{
-	width:100px;
-	
-	height:100px;
-	margin-left:15%;
-}
-  
-  </style>
-
-<div id="all">
-<div id="logo">
-
+<?php
+require('reqnau.php');
+?>
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
 <form action="../wyloguj.php" method="_POST" >
  
@@ -85,45 +35,9 @@ echo $login;
 			<br>
 
  <?php
-	$i=0;
-
-		 if ($result134 = $wynik->query("SELECT * from klasy")) {
-   
-    while($w=$result134->fetch_assoc()){
-			 $przedmiot1=$w['id'];
-     
-  ?>
-		<br>
-<input type='radio' name="KL" style="width:100px; height:50px;border-radius:400px;margin-left:15%"value="<?php 
-
-
-echo $przedmiot1;
-
-
- ?>">
-<?php
-
-	 
-	 
-	 echo   $w['klasa'];
-    }
-	
-	?>
-
-
-		
 	
 
-	    
-		 
-		  
-	
-	
-<?php
-
-	$result134->close();
-}
- ?>
+		?>
 <select style="width:120px;height:30px;border-radius:400px;" name='tak'>
     <?php
 require "baza.php";
@@ -132,10 +46,10 @@ require "baza.php";
 
  
  
-if ($result = $wynik->query("SELECT lekcje.lekcja,lekcje.id from lekcje,nau where nau.nau='$id' and nau.przedmiot1=lekcje.id")) {
+if ($result = $wynik->query("SELECT `klasy`.`klasa`,`lekcje`.`lekcja`,`lekcje`.`id` as idlekcji, `klasy`.`id` AS idklasy from `nau`,`lekcje`,`klasy` where `nau`.`przedmiot1`=`lekcje`.`id` and `klasy`.`id`=`nau`.`idklasa` AND `nau`.`nau`=30 ")) {
    
     while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['id'].">".$w['lekcja']."</option>";      
+        echo "<option value=".$w['idklasy']."-".$w['idlekcji'].">".$w['lekcja']." klasa ".$w['klasa']."</option>";      
         
 		
        
