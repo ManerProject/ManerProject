@@ -55,7 +55,7 @@ if ($result = $wynik->query("SELECT * FROM `planlekcji` WHERE klasa='$kl' and dz
 	 
 	 if($_POST['obecnosc'][$i]=="1 Obecny")
 		 $obecnosc=1;
-	 	 if($_POST['obecnosc'][$i]=="2 Nie obecny")
+	 if($_POST['obecnosc'][$i]=="2 Nie obecny")
 		 $obecnosc=2;
 	  if($_POST['obecnosc'][$i]=="3 Spoznienie")
 		 $obecnosc=3;
@@ -64,7 +64,8 @@ if ($result = $wynik->query("SELECT * FROM `planlekcji` WHERE klasa='$kl' and dz
 
 if($kurde==1)
  {
-	 $wynik->query("UPDATE `obeconsc` SET obecnosc='$obecnosc' WHERE data='$data' and numer_lekcji='$nl' and klasa='$kl'");
+	 $wynik->query("UPDATE `obeconsc` SET obecnosc='$obecnosc' WHERE data='$data' and numer_lekcji='$nl' and klasa='$kl' and uczen='$uczen'");
+	 $i++;
 	 header('location:obecnosc.php');
  }
  else
