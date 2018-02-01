@@ -17,47 +17,54 @@ $numer2++;
 <?php
  
 require "baza.php";
-?>
- <br>
- <?php
- echo $data;
- ?>
- <br>
- <?php
- echo $klasa;
- ?>
- <br>
- <?php
- echo $_SESSION['numer'];
+
  
  $numer=$_SESSION['numer'];
+ $numer2=$numer;
+ $numer2++;
  if ($result = $wynik->query("SELECT * FROM obeconsc WHERE data='$data' AND klasa='$klasa' AND numer_lekcji='$numer'")) {
    
     while($w=$result->fetch_assoc()){
-	
+		
+		
 		?>
  <br>
  <?php
  echo $w['data'];
+ $data=$w['data'];
  ?>
  <br>
  <?php
  echo $w['obecnosc'];
+ $obecnosc=$w['obecnosc'];
  ?>
  <br>
  <?php
  echo $w['uczen'];
+ $uczen=$w['uczen'];
  ?>
  <br>
  <?php
  echo $w['klasa'];
+ $klasa=$w['klasa'];
  ?>
  <br>
  <?php
  echo $w['dzienTygodnia'];
-   
+ $dzien=$w['dzienTygodnia'];
+ ?>
+ <br>
+ <?php
+ echo $numer2;
+ ?>
+ <br>
+ <?php
+   $wynik-> query("INSERT INTO `obeconsc`
+   (`data`, `obecnosc`, `numer_lekcji`, `uczen`, `klasa`, `dzienTygodnia`)
+   VALUES 
+   ('$data', '$obecnosc', '$numer2', '$uczen', '$klasa', '$dzien')");
 	
-		/$wynik-> query("INSERT INTO `obeconsc` ( `data`, `obecnosc`, `numer_lekcji`, `uczen`, `klasa`, `dzienTygodnia`,) VALUES ( '$w['data']', '$w['obecnosc']', '$numer2', '$w['uczen']', '$w['klasa']', '$w['dzienTygodnia']')");
+		
 	
 	
 	
@@ -67,7 +74,7 @@ require "baza.php";
 
   
   
-  //header ("Location:nau.php");
+  header ("Location:obecnosc.php");
   
-
+ }
 ?>
