@@ -19,12 +19,12 @@ session_start();
 	margin:0%;
 	font-size:35px;
 	font-family: 'Acme', sans-serif;
- }
+  }
   #all
- {
+  {
 	  width:100%;
 	  height:100%;
- }
+  }
  #logo
   {
 	width:100%;
@@ -46,12 +46,25 @@ session_start();
 		margin-right:20%;
 }  
   </style>
-  <form action="skrypt_panel_dodania_ucznia1.php" method=post>
+  <form action="skrypt_panel_zmiany_ucznia1.php" method=post>
     <?php
 	require "baza.php";
-	?>
+if ($result = $wynik->query("SELECT * FROM `loginy` WHERE typ='uczen'")) {
+   
+    while($w=$result->fetch_assoc()){
+		?>
 		<br>
-		<div>Ilosc uczni do dodania: <input type=text name ="ilosc" value=""></div>
+		<div>login: <input type=text name ="login[]" value="<?php echo $w['login'];?>"></div>
+<?php		
+	}
+	
+}
+	
+	//$result = mysql_query("SELECT * FROM `loginy` WHERE typ='uczen'");
+	
+    //$row = mysql_fetch_array($result);
+	?>
+	
 		<input type=submit value=aktualizuj>
     </form>
 </body>
