@@ -127,8 +127,11 @@ if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
 						<form action='panel_dodawania_ucznia_do_klas.php' method='post'>
 						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='dodaj uczniow'>
 						</form>
-						<form action='panel_dodawania_wycieczek.php' method='post'>
-						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='dodaj wycieczke'>
+						<form action='panel_wycieczek.php' method='post'>
+						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='wycieczki'>
+						</form>
+						<form action='panel_wydarzen.php' method='post'>
+						<input type='submit' style='height:50px;border-radius:400px;' value='wydarzenia w klasie'>
 						</form>
 </div>
 <hr>

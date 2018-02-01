@@ -64,22 +64,40 @@ session_start();
 </div>
 
 
-
+<form   method="post" action="panel_wyboru_lekcji_do_dodania_Ocen.php" style="font-size:25px;">
+<input type='submit' style="width:100px; height:30px;margin-left:15%"value="Powrot do glownego panelu">
+</form>
    
     
-<form action="skrypt.dodawania_lecji_do_ocen.php" method="POST" >
-<form action="../zaloguj.php" method="POST" >
- <input type="text" placeholder="nazwij" name="logins"/>
-
-
-  <input type="submit" value="Wyslij"/>
+<form action="panel_dodawania_wydarzen.php" method="POST" >
+  <input type="submit" value="Dodaj wydarzenie"/>
+ </form>
  </div>
 
- </form>
- 
- 
- </form>
-	
+Wydarzenia klasowe
+
+<table border="1">
+<tr>
+<td>nr</td>
+<td>data</td>
+<td>wydarzenie</td>
+</tr>
+<?php
+ require "baza.php";
+$klasa=$_SESSION['klasa'];
+if($rezultat=$wynik->query("SELECT * FROM `wydarzenia` WHERE klasa='$klasa' OR klasa='0'")){
+$i=1;
+while($w=$rezultat->fetch_assoc()){
+echo "<tr>";
+echo "<td>".$i."</td>";
+$i++;
+echo "<td>".$w['data']."</td>";
+echo "<td>".$w['wydarzenie']."</td>";
+echo "</tr>";
+}
+}
+?>
+</table>	
 	
 	
 

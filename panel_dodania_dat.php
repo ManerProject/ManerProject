@@ -64,21 +64,34 @@ session_start();
 </div>
 
 
-
+<form   method="post" action="admin.php" style="font-size:25px;">
+<input type='submit' style="width:100px; height:30px;margin-left:15%"value="Powrot do glownego panelu">
+</form>
    
     
-<form action="skrypt.dodawania_lecji_do_ocen.php" method="POST" >
-<form action="../zaloguj.php" method="POST" >
- <input type="text" placeholder="nazwij" name="logins"/>
-
-
+<form action="skrypt_dodawania_dat.php" method="POST" >
+ data<input type="date" placeholder="data" name="data"/><br>
+wydarzenie w szkole
+<select name="wyd">
+<?php
+require "baza.php";
+$a="0000-00-00";
+if ($result1 = $wynik->query("SELECT * FROM `wydarzenia_stale` WHERE `data`='$a'")) {
+   
+    while($w=$result1->fetch_assoc()){
+			 $wydarzenie=$w['wydarzenie'];
+			echo "<option value='$wydarzenie'>";
+			echo $wydarzenie;
+			echo "</option>";
+    }
+}
+?>
+</select><br>
   <input type="submit" value="Wyslij"/>
- </div>
 
  </form>
  
- 
- </form>
+  </div>
 	
 	
 	

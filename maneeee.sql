@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 30 Sty 2018, 15:13
+-- Czas generowania: 01 Lut 2018, 12:55
 -- Wersja serwera: 10.1.28-MariaDB
 -- Wersja PHP: 7.1.10
 
@@ -563,7 +563,52 @@ CREATE TABLE `wycieczki` (
 --
 
 INSERT INTO `wycieczki` (`id`, `klasa`, `data`, `czas_dni`, `czas_godz`, `liczba_uczniow`, `cel`, `program`, `nauczyciel`, `opiekun`) VALUES
-(22, 4, '2018-01-17', 2, 55, 21, 'torun', 'zwiedzanie miasta', 25, '30,31,');
+(22, 4, '2018-01-17', 2, 55, 21, 'torun', 'zwiedzanie miasta', 25, '30,31,'),
+(23, 4, '2018-02-15', 4, 22, 22, 'brodnica-muzeum', 'zwiedzanie muzeum - ogladanie obrazow', 25, '30,30,');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wydarzenia`
+--
+
+CREATE TABLE `wydarzenia` (
+  `id` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `wydarzenie` text NOT NULL,
+  `klasa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `wydarzenia`
+--
+
+INSERT INTO `wydarzenia` (`id`, `data`, `wydarzenie`, `klasa`) VALUES
+(2, '2018-02-09', 'studniÃ³wka szkolna - U Bosmana', 4),
+(3, '2017-12-21', 'wigilia klasowa', 4),
+(6, '2018-01-02', 'rozpoczecie roku szkolnego', 0),
+(7, '2017-12-06', 'mikolajki', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wydarzenia_stale`
+--
+
+CREATE TABLE `wydarzenia_stale` (
+  `id` int(11) NOT NULL,
+  `wydarzenie` text NOT NULL,
+  `data` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `wydarzenia_stale`
+--
+
+INSERT INTO `wydarzenia_stale` (`id`, `wydarzenie`, `data`) VALUES
+(1, 'rozpoczecie roku szkolnego', '2018-01-02'),
+(3, 'mikolajki', '2017-12-06'),
+(4, 'walentynki', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -698,6 +743,18 @@ ALTER TABLE `wycieczki`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `wydarzenia`
+--
+ALTER TABLE `wydarzenia`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wydarzenia_stale`
+--
+ALTER TABLE `wydarzenia_stale`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `wywiadowka`
 --
 ALTER TABLE `wywiadowka`
@@ -807,7 +864,19 @@ ALTER TABLE `wychowawcy`
 -- AUTO_INCREMENT dla tabeli `wycieczki`
 --
 ALTER TABLE `wycieczki`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT dla tabeli `wydarzenia`
+--
+ALTER TABLE `wydarzenia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT dla tabeli `wydarzenia_stale`
+--
+ALTER TABLE `wydarzenia_stale`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT dla tabeli `wywiadowka`
