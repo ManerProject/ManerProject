@@ -50,8 +50,9 @@ session_start();
     <?php
 	require "baza.php";
 if ($result = $wynik->query("SELECT * FROM `loginy` WHERE typ='uczen'")) {
-   
+   $licz=0;
     while($w=$result->fetch_assoc()){
+		$licz++;
 		?>
 		<br>
 		<div>login: <input type=text name ="login[]" value="<?php echo $w['login'];?>"></div>
@@ -68,7 +69,7 @@ if ($result = $wynik->query("SELECT * FROM `loginy` WHERE typ='uczen'")) {
 	}
 	
 }
-	
+	$_SESSION['licz']=$licz;
 	//$result = mysql_query("SELECT * FROM `loginy` WHERE typ='uczen'");
 	
     //$row = mysql_fetch_array($result);

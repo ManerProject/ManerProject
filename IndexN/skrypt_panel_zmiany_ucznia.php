@@ -1,24 +1,22 @@
 <?php
 session_start();  
 require "baza.php";
-$email=$_POST['email[]'];
-$haslo=$_POST['haslo[]'];
-$klasa=$_POST['klasa[]'];
-$login=$_POST['login[]'];
-$typ=$_POST['typ[]'];
-if ($result = $wynik->query("update loginy set (`email=$email,haslo=$haslo,klasa=$klasa,login=$login,typ=$typ`)")) {
+$licz=$_SESSION['licz'];
+$email=array();
+$haslo=array();
+$klasa=array();
+$login=array();
+$typ=array();
+for($i=0;$i<$licz;$i++){
+$email[$i]=$_POST['email'];
+$haslo[$i]=$_POST['haslo'];
+$klasa[$i]=$_POST['klasa'];
+$login[$i]=$_POST['login'];
+$typ[$i]=$_POST['typ'];
+$wynik->query("UPDATE `loginy` SET login='$login[$i]',haslo='$haslo[$i]',email='$email[$i]',typ='$typ[$i]',klasa='$klasa[$i]' WHERE typ='uczen'");
    
-    while($w=$result->fetch_assoc()){
-	
-	}
-	
 }
-	
-	//$result = mysql_query("SELECT * FROM `loginy` WHERE typ='uczen'");
-	
-    //$row = mysql_fetch_array($result);
-	
-//mysql_query=("update loginy set (`email={$_POST["email"]},haslo={$_POST["haslo"]},klasa={$_POST["klasa"]},login={$_POST["login"]},typ={$_POST["typ"]}`)");
-header('Location: panel_zmiany_ucznia.php');
+
+
     
 ?>
