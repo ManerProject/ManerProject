@@ -11,7 +11,6 @@ for($j=0;$j<strlen($data);$j++)
 	
 }
 
-
  ?>
 <!DOCTYPE html>
 
@@ -94,12 +93,21 @@ $_SESSION['data']=$data;
  Numer lekcji <input type="number" min="1" max="9"   value="<?php require"placeholderdoobecnosc.php"?>" name="numer_lekcji">
 
 <?php
+
 $_SESSION['numer']=$numer;
 if ($result = $wynik->query("SELECT * FROM `obeconsc` WHERE data='$data' AND numer_lekcji>=1")) {
 	if($result->num_rows>0 )
 	{
 		?>
 		<input type="button" value="Brak zmian" onclick="window.location.href='brak_zmian2.php'" />
+		<?php
+	}
+}
+if ($result = $wynik->query("SELECT * FROM `obeconsc` WHERE data='$data' AND numer_lekcji>=1")) {
+	if($result->num_rows>0 )
+	{
+		?>
+		<input type="button" value="Brak zmian -spoźnienia" onclick="window.location.href='brak_zmian.php'" />
 		<?php
 	}
 }

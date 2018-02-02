@@ -12,6 +12,12 @@ for($j=0;$j<strlen($data);$j++)
 }
 
 $numer2=$_SESSION['numer'];
+
+if ($_SESSION['antyspam']==0)
+{
+	$_SESSION['antyspam']=1;
+if ($numer2<9)
+{
 $numer2++;
  ?>
 <?php
@@ -77,4 +83,14 @@ require "baza.php";
   header ("Location:obecnosc.php");
   
  }
+}
+else
+{
+	header ("Location:obecnosc.php");
+}
+}
+else
+{
+	header ("Location:nau.php");
+}
 ?>
