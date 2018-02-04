@@ -64,14 +64,14 @@ session_start();
 </div>
 
 
-
+<form   method="post" action="panel_wyboru_lekcji_do_dodania_Ocen.php" style="font-size:25px;">
+<input type='submit' style="width:100px; height:30px;margin-left:15%"value="Powrot do glownego panelu">
+</form>
    
     
-<form action="skrypt.dodawania_lecji_do_ocen.php" method="POST" >
-<form action="../zaloguj.php" method="POST" >
- <input type="text" placeholder="nazwij" name="logins"/>
-
-
+<form action="skrypt_dodawania_wydarzen.php" method="POST" >
+ data<input type="date" placeholder="data" name="data"/><br>
+wydarzenie<input type="text" name="wydarzenie"/><br>
   <input type="submit" value="Wyslij"/>
  </div>
 

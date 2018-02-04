@@ -20,7 +20,6 @@ session_start();
 	
 	font-size:35px;
 	font-family: 'Acme', sans-serif;
-	
   }
   #all
   {
@@ -51,7 +50,11 @@ session_start();
 
 <div id="all">
 <div id="logo">
-
+Panel wicedyrektora
+<?php
+$id=$_SESSION['id'];
+$_SESSION['id']=$id;
+?>
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
 <form action="../wyloguj.php" method="_POST" >
  
@@ -63,28 +66,14 @@ session_start();
  </form>
 </div>
 
+ 	<div style="margin-left:9%;font-size:25px;float:left;">Obserwacja w klasie</div>
+	 </br>
+<form   method="post" action="obserwacja.php" style="font-size:25px;">
+<input type='submit' style="width:100px; height:30px;margin-left:15%"value="Wprowadź dane">
 
+</form>	
 
-   
+</div>
     
-<form action="skrypt.dodawania_lecji_do_ocen.php" method="POST" >
-<form action="../zaloguj.php" method="POST" >
- <input type="text" placeholder="nazwij" name="logins"/>
-
-
-  <input type="submit" value="Wyslij"/>
- </div>
-
- </form>
- 
- 
- </form>
-	
-	
-	
-
- </div>
-    
- </div>
 </body>
 </html>

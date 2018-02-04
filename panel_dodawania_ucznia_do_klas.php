@@ -50,9 +50,9 @@ session_start();
 
 <div id="all">
 <div id="logo">
-Panel Admina 
+Panel Nauczyciela
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
-<form action="wyloguj.php" method="_POST" >
+<form action="../wyloguj.php" method="_POST" >
  
 
   <input style="float:right;background-color:#191919;:width:50px;height:98px;position:relative;
@@ -62,19 +62,6 @@ Panel Admina
  </form>
 </div>
 
-<?php
-if(isset($_SESSION['admin1']))
-{
-	echo $_SESSION['admin1'];
-	unset($_SESSION['admin1']);
-}
-
-if(!isset($_SESSION['admin']))
-{
-	header ('Location:login.php');
-	exit();
-}
-?>
 
  
 
@@ -82,10 +69,9 @@ if(!isset($_SESSION['admin']))
 
 </br>
 
-
-  <div id=tekst><span style="margin-left:9%;">Wybierz klase</span></div>
+<form action="skrypt_dodawania_uczniow_do_klasy.php" method="post">	
+<div id=tekst>Wybierz ucznia</div>
   <div id="okno">
-    <form method="post" action="skrypt_panel_dodawania_ucznia_do_klas.php" style="font-size:15px;">
     <select style="width:85%;height:30px;border-radius:400px;" name='sele'>
  </div>
     <?php
@@ -93,41 +79,13 @@ require "baza.php";
  
  
 
- 
- 
-if ($result = $wynik->query("SELECT * FROM `klasy`  ")) {
-   
-    while($klasa=$result->fetch_assoc()){
-        echo "<option value=".$klasa['id_klasy'].">".$klasa['klasy']."</option>";      
-        $_SESSION['klasy']=$klasa['id_klasy'];
-		
-       
-    }
- 
- 
-  $result->close();
-  $wynik->close();
-}
- 
-?>
-
-    </select>	
-	
-<div id=tekst>Wybierz ucznia</div>
-  <div id="okno">
-    <select style="width:85%;height:30px;border-radius:400px;" name='sele1'>
- </div>
-    <?php
-require "baza.php";
- 
- 
-
- 
- 
-if ($result = $wynik->query("SELECT * FROM loginy WHERE typ = 'uczen'")) {
+$klasa=$_SESSION['klasa'];
+$_SESSION['klasa']=$klasa;
+$k=0;
+if ($result = $wynik->query("SELECT * FROM loginy WHERE typ = 'uczen' AND klasa='$k'")) {
    
     while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['login'].">".$w['login']."</option>";      
+        echo "<option value=".$w['id'].">".$w['imie'].' '.$w['nazwisko']."</option>";      
         $_SESSION['login']=$w['login'];
 		
        
@@ -139,10 +97,10 @@ if ($result = $wynik->query("SELECT * FROM loginy WHERE typ = 'uczen'")) {
 }
  
 ?>
-	<input type='submit'>
-	</form>
     </select>	
-  <input type='button' onclick="window.location.href='admin.php'" id="cofnijdopaneluadmina" value="Cofnij do panelu">
+	<input type='submit' value="dodaj ucznia do swojej klasy">
+	</form>
+  <input type='button' onclick="window.location.href='panel_wyboru_lekcji_do_dodania_Ocen.php'" id="cofnijdopanelunau" value="Cofnij do panelu">
 
 </body>
 </html>

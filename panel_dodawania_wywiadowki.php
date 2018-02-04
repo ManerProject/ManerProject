@@ -67,10 +67,10 @@ session_start();
 
    
     
-<form action="skrypt.dodawania_lecji_do_ocen.php" method="POST" >
+<form action="skrypt.dodawania_wywiadowki.php" method="POST" >
 <form action="../zaloguj.php" method="POST" >
- <input type="text" placeholder="nazwij" name="logins"/>
-
+ <input type="date" placeholder="data" name="data"/>
+<input type="text" placeholder="nazwij" name="logins"/>
 
   <input type="submit" value="Wyslij"/>
  </div>

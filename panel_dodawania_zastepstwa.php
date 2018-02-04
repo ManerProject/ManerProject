@@ -2,7 +2,15 @@
 session_start();
  ?>
 <!DOCTYPE html>
+<?php
+$data= date('Y.m.d');
 
+for ($j=0; $j<strlen($data); $j++)
+{
+	if ($data[$j]=='.')
+		$data[$j]='-';
+}
+?>
 <html>
 
 <head>
@@ -20,7 +28,6 @@ session_start();
 	
 	font-size:35px;
 	font-family: 'Acme', sans-serif;
-	
   }
   #all
   {
@@ -51,6 +58,7 @@ session_start();
 
 <div id="all">
 <div id="logo">
+Kurde wywiadówka
 
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
 <form action="../wyloguj.php" method="_POST" >
@@ -63,28 +71,64 @@ session_start();
  </form>
 </div>
 
+ 
+ </div>
+ <div id="con">
+   <form method="post" action="panel_dodawania_zastepstwa2.php" style="font-size:15px;">
+    <select style="width:120px;height:30px;border-radius:400px;" name='sele'>
+<?php
+require "baza.php";
+
+$klasa=$_SESSION['kl'];
 
 
+	
+echo $klasa; 
+	    if ($result = $wynik->query("SELECT * FROM klasy")) {
    
-    
-<form action="skrypt.dodawania_lecji_do_ocen.php" method="POST" >
-<form action="../zaloguj.php" method="POST" >
- <input type="text" placeholder="nazwij" name="logins"/>
-
-
-  <input type="submit" value="Wyslij"/>
- </div>
-
- </form>
+    while($w=$result->fetch_assoc()){
+        echo "<option value=".$w['id'].">".$w['klasa']."</option>";      
+      
+		
+       
+    }
+	
  
  
- </form>
+  $result->close();
+  $wynik->close();
+}
+		 
+		  
 	
-	
-	
+?>
 
- </div>
-    
- </div>
+
+    </select>
+	<select style="width:120px;height:30px;border-radius:400px;" name='sele2'>
+
+
+        <option value="1">poniedziałek</option> 
+		<option value="2">wtorek</option> 
+		<option value="3">środa</option> 
+		<option value="4">czwartek</option> 
+		<option value="5">piątek</option> 
+  
+		
+       
+  
+	
+</select>
+
+	<input type='submit' style="width:100px; height:50px;border-radius:400px;"value="ok ">
+
+    </form>
+
+</br>
+
+
+
+</div>
+ 
 </body>
 </html>

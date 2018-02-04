@@ -46,30 +46,20 @@ session_start();
 		margin-right:20%;
 }  
   </style>
-  <form action="skrypt_panel_zmiany_ucznia.php" method=post>
+  <form action="skrypt_panel_zmiany_ucznia1.php" method=post>
     <?php
 	require "baza.php";
 if ($result = $wynik->query("SELECT * FROM `loginy` WHERE typ='uczen'")) {
-   $licz=0;
+   
     while($w=$result->fetch_assoc()){
-		$licz++;
 		?>
 		<br>
 		<div>login: <input type=text name ="login[]" value="<?php echo $w['login'];?>"></div>
-		
-		<div>haslo: <input type=text name ="haslo[]" value="<?php echo $w['haslo'];?>"></div>
-		
-		<div>email: <input type=text name ="email[]" value="<?php echo $w['email'];?>"></div>
-		
-		<div>klasa: <input type=text name ="klasa[]" value="<?php echo $w['klasa'];?>"></div>
-		
-		<div>typ: <input type=text name ="typ[]" value="<?php echo $w['typ'];?>"></div>
-		
 <?php		
 	}
 	
 }
-	$_SESSION['licz']=$licz;
+	
 	//$result = mysql_query("SELECT * FROM `loginy` WHERE typ='uczen'");
 	
     //$row = mysql_fetch_array($result);

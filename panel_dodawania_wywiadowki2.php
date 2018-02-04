@@ -20,7 +20,6 @@ session_start();
 	
 	font-size:35px;
 	font-family: 'Acme', sans-serif;
-	
   }
   #all
   {
@@ -51,6 +50,7 @@ session_start();
 
 <div id="all">
 <div id="logo">
+Kurde wywiadówka
 
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
 <form action="../wyloguj.php" method="_POST" >
@@ -63,28 +63,53 @@ session_start();
  </form>
 </div>
 
+ 
+ </div>
+ <div id="con">
+   <form method="post" action="skryptwywiadowek.php" style="font-size:15px;">
+    <select style="width:120px;height:30px;border-radius:400px;" name='sele'>
+<?php
+require "baza.php";
+
+$klasa=$_SESSION['kl'];
 
 
+	
+echo $klasa; 
+	    if ($result = $wynik->query("SELECT * FROM klasy")) {
    
-    
-<form action="skrypt.dodawania_lecji_do_ocen.php" method="POST" >
-<form action="../zaloguj.php" method="POST" >
- <input type="text" placeholder="nazwij" name="logins"/>
-
-
-  <input type="submit" value="Wyslij"/>
- </div>
-
- </form>
+    while($w=$result->fetch_assoc()){
+        echo "<option value=".$w['id'].">".$w['klasa']."</option>";      
+      
+		
+       
+    }
  
  
- </form>
+  $result->close();
+  $wynik->close();
+}
+		 
+		  
 	
 	
-	
+?>
 
- </div>
-    
- </div>
+    </select>
+	
+   <input name="tytul" style="width:90px; height:25px;border-radius:4px;" placeholder="tytuł"value="">
+	<input type="date" name="data"style="width:200px; height:150px;border-radius:400px;" >
+	<input type="number" name="sala" style="width:90px; height:25px;border-radius:4px;" placeholder="sala"value="">
+	
+	<input type='submit' style="width:100px; height:50px;border-radius:400px;"value="ok ">
+
+    </form>
+
+</br>
+
+
+
+</div>
+ 
 </body>
 </html>
