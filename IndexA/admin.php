@@ -70,11 +70,6 @@ if(isset($_SESSION['admin1']))
 	unset($_SESSION['admin1']);
 }
 
-if(!isset($_SESSION['admin']))
-{
-	header ('Location:../login.php');
-	exit();
-}
 ?>
 
  
