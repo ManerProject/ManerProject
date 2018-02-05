@@ -27,33 +27,37 @@ echo "</br>";
 
 
 require "baza.php";
-
-//$typ="nieprzydzielony";
-//if ($result = $wynik->query("SELECT `typ` FROM `loginy` WHERE `typ`='$typ'"))
-//{	
-//	header ('Location:pierwsze_logowanie.php');
-//}
-
-
-if ($result = $wynik->query("SELECT * FROM loginy where login='$login' and haslo='$haslo'"))
+if ($result = $wynik->query("SELECT * FROM `loginy` WHERE login='$login' and haslo='$haslo'"))
 {	
-	if($result->num_rows==1 )
-	{
-	     $_SESSION['zaloguj']=true;
-		 $result->close();
-		header ('Location:IndexU/index1.php');
-		
-		  
-	}
-else 
-{  
-	header ('Location:login.php');
-	session_unset();
-}
 
-	$result->close();
-}
-$mysqli->close();
+	$w=$result->fetch_assoc();
+	$t=$w['typ'];
+	if($t=="nieprzydzielony")
+	{
+	header ('Location:pierwsze_logowanie.php');
+	}
+	if($t=="uczen")
+	{
+	
+		header ('Location:IndexU/index1.php');
+			
+			  
+	}
+		else if($t=="teacher")
+		{
+			 
+			header ('Location:IndexN/panel_wyboru_lekcji_do_dodania_Ocen.php');
+			
+			
+			  
+		}
+		else if($t=="admin")
+		{  
+		header ('Location:IndexA/admin.php');
+		}
+	}
+
+
 ?>
  
  
