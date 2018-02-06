@@ -26,11 +26,71 @@ echo $login;
 			 $id=$w['id'];
       
     }
+}
+if ($result = $wynik->query("SELECT * FROM dyrektorzy WHERE nauczyciel='$id'")) {
+	if($wynik=$result->fetch_assoc()){
+			 if($wynik>0)
+			 {
+				 echo "<form action='panel_dyrektora.php' method='post'>
+					<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='panel dyrektora'>
+					</form>";
+			 }
 	}
-	echo $id;
+ }	
 	$_SESSION['nauczycielid']= $id;
 	?>
-	
+<?php
+require "baza.php";
+$login= $_SESSION['login'];
+if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
+   
+    while($w=$result1->fetch_assoc()){
+			 $id=$w['id'];
+      
+    }
+	}
+ echo "<br>";
+ if ($resultt = $wynik->query("SELECT * FROM wychowawcy WHERE nauczyciel='$id'")) {
+   $_SESSION['div']="none";
+    if($w=$resultt->fetch_assoc()){
+			 if($w>0)
+			 {
+				 $kl=$w['klasa'];
+				  if ($resultw = $wynik->query("SELECT * FROM klasy WHERE id='$kl'")) {
+   
+						if($ww=$resultw->fetch_assoc()){
+							echo "Jestes wychowawca klasy ".$ww['numer']." ".$ww['nazwa'];
+							$_SESSION['nr']=$ww['numer'];
+							$_SESSION['nazwa']=$ww['nazwa'];
+							$_SESSION['login']=$login;
+							$_SESSION['klasa']=$kl;
+							$_SESSION['div']="block";
+						}
+					}
+			 }
+      
+    }
+	}
+	?>
+	<div style="display: <?php echo $_SESSION['div']; ?>">
+<form action='klasa.php' method='post'>
+						<input type='submit' name='tak' style='width:100px; height:50px;border-radius:400px;' value='twoja klasa'>
+						</form>
+						<form action='panel_dodawania_ucznia_do_klas.php' method='post'>
+						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='dodaj uczniow'>
+						</form>
+						<form action='panel_wycieczek.php' method='post'>
+						<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='wycieczki'>
+						</form>
+						<form action='panel_wydarzen.php' method='post'>
+						<input type='submit' style='height:50px;border-radius:400px;' value='wydarzenia w klasie'>
+						</form>
+</div>
+<hr>
+<form action='opinie_dyrektorow.php' method='post'>
+		<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='opinie o klasach'>
+</form>
+<hr>	
 		<form   method="post" action="tonau.php" style="font-size:15px;">
 			<br>
 
