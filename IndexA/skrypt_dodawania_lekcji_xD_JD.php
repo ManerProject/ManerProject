@@ -45,7 +45,7 @@ if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$h'")) {
 $wynik->close();
 $result->close();
 
-header ('Location:../IndexA/admin.php'); 
+ header ('Location:../IndexA/admin.php'); 
 
 		
  ?>
