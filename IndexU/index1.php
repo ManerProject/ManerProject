@@ -74,10 +74,10 @@ Semestr 1
  <?php  
 $login= $_SESSION['login'];
 require "baza.php";
-if(!isset($_SESSION['zaloguj']))
-{
-	header ('Location:../login.php');
-	exit();
+//if(!isset($_SESSION['zaloguj']))
+//{
+	//header ('Location:../login.php');
+	//exit();
 }
 
 if ($result89 = $wynik->query("SELECT * FROM `loginy` where login='$login'")) {

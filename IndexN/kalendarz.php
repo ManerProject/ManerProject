@@ -60,7 +60,7 @@ SEMESTR1
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
 <form action="../wyloguj.php" method="_POST" >
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+   
     <style>
         .container {
             font-family: 'Noto Sans', sans-serif;
@@ -75,7 +75,7 @@ SEMESTR1
             height: 100px;
         }
         .today {
-            background: orange;
+            background: lightlue;
         }
 		.todays {
             background: red;
@@ -104,7 +104,11 @@ require "odnosiki.php";
 
 <input   name="tresc" placeholder="tersc" />
 <input   type="date" name="data" />
+zd dom <input   type="radio" name="typ"  value="1"/>
+spr <input   type="radio" name="typ" value="2"/>
+inne <input   type="radio" name="typ" value="3"/>
 <input   type="submit"  />
+
 </form>
 
 
@@ -147,39 +151,72 @@ $weeks = array();
 $week = '';
  $datam=date('n', $timestamp);;
  
-// Add empty cell
+$elo="xd";
 $week .= str_repeat('<td></td>', $str);
 $j=1;
-  if ($result = $wynik->query("SELECT * FROM `kalendarz` WHERE MONTH(data)=$datam and `idklasa`=10 ORDER by `data`")) {
+  if ($result = $wynik->query("SELECT * FROM `kalendarz` WHERE MONTH(data)=$datam and `idklasa`=10 and `typ`=1 ORDER by `data`")) {
   
     while($w=$result->fetch_assoc()){
 		
-		$dataK[$j]=$w['data'];
-		$trescK[$j]=$w['tresc'];
+		$dataK1[$j]=$w['data'];
+		$trescK1[$j]=$w['tresc'];
+		$j++;
+	}
+  }
+  $j=1;
+  if ($result = $wynik->query("SELECT * FROM `kalendarz` WHERE MONTH(data)=$datam and `idklasa`=10 and `typ`=2 ORDER by `data`")) {
+  
+    while($w=$result->fetch_assoc()){
+		
+		$dataK2[$j]=$w['data'];
+		$trescK2[$j]=$w['tresc'];
+		$j++;
+	}
+  }
+  $j=1;
+  if ($result = $wynik->query("SELECT * FROM `kalendarz` WHERE MONTH(data)=$datam and `idklasa`=10 and `typ`=3 ORDER by `data`")) {
+  
+    while($w=$result->fetch_assoc()){
+		
+		$dataK3[$j]=$w['data'];
+		$trescK3[$j]=$w['tresc'];
 		$j++;
 	}
   }
  
-  $i=1;
+  $i=1;$k=1;$c=1;
 for ( $day = 1; $day <= $day_count; $day++, $str++) {
-     echo $datam;
 	if($day<10)
 		 $date = $ym.'-0'.$day;
 else
     $date = $ym.'-'.$day;
 
-     if(@$dataK[$i] == $date)
+    if ($today == $date) 
+		 $week .= '<td class="today">'.$day;
+	 else
+	 $week .= '<td>'.$day;
+	
+
+     if(@$dataK1[$i] == $date)
 	 {
 		 
-		 $week .= '<td class="todays">'.$day.$trescK[$i];
+		 $week .= '<div style="background-color:orange;"  class="todays">'.$trescK1[$i].'</div>';
 		 $i++;
 	 }
-	 else
-    if ($today == $date) {
-        $week .= '<td class="today" >'.$day;
-    } else {
-        $week .= '<td>'.$day;
-    }
+	 if(@$dataK2[$k] == $date)
+	 {
+		 
+		 $week .= '<div style="background-color:red;" class="todays">'.$trescK2[$k].'</div>';
+		 $k++;
+	 }
+	 if(@$dataK3[$c] == $date)
+	 {
+		 
+		 $week .= '<div style="background-color:blue;" class="todays">'.$trescK3[$c].'</div>';
+		 $c++;
+	 }
+    
+    
     $week .= '</td>';
      
     // End of the week OR End of the month
