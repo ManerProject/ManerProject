@@ -50,7 +50,7 @@ session_start();
 
 <div id="all">
 <div id="logo">
-Panel Admina 
+Panel Admina s
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
 
 <form action="../wyloguj.php" method="_POST" >
@@ -70,11 +70,6 @@ if(isset($_SESSION['admin1']))
 	unset($_SESSION['admin1']);
 }
 
-if(!isset($_SESSION['admin']))
-{
-	header ('Location:../login.php');
-	exit();
-}
 ?>
 
  
@@ -135,13 +130,38 @@ if ($result = $wynik->query("SELECT * FROM loginy WHERE typ <> 'admin'")) {
 <input type='submit' style="width:100px; height:30px;;margin-left:15%"value="Dodaj">
 
 </form>	
+    
+ </div>
+ 	<div style="margin-left:9%;font-size:25px;float:left;">Edytuj ucznia</div>
+	 </br>
+<form   method="post" action="panel_zmiany_ucznia.php" style="font-size:25px;">
+<input type='submit' style="width:100px; height:30px;;margin-left:15%"value="Dodaj">
+
+</form>	
+    	<div style="margin-left:9%;font-size:25px;float:left;">Plan lekcji</div>
+	 </br>
+<form   method="post" action="planlekcji.php" style="font-size:25px;">
+<input type='submit' style="width:100px; height:30px;;margin-left:15%"value="Dodaj">
+</form>	
  	<div style="margin-left:9%;font-size:25px;float:left;">Nadaj nauczycielowi wychowawstwo</div>
 	 </br>
 <form   method="post" action="panel_dodania_wychowawcy.php" style="font-size:25px;">
 <input type='submit' style="width:100px; height:30px;;margin-left:15%"value="Dodaj">
 
 </form>	
-    
+ 	<div style="margin-left:9%;font-size:25px;float:left;">Dodaj dyrektora</div>
+	 </br>
+<form   method="post" action="panel_dodania_dyrektora.php" style="font-size:25px;">
+<input type='submit' style="width:100px; height:30px;;margin-left:15%"value="Dodaj">
+</form>	
+<div style="margin-left:9%;font-size:25px;float:left;">Dodaj date do wydarzenia szkolnego</div>
+<form   method="post" action="panel_dodania_dat.php" style="font-size:25px;">
+<input type='submit' style="width:100px; height:30px;;margin-left:15%"value="Dodaj">
+</form>	
+
  </div>
+ 
+ 
+ 
 </body>
 </html>
