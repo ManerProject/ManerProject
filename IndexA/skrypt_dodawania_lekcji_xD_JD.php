@@ -18,6 +18,7 @@ session_start()
  <?php
  require "baza.php";
   $h=$_POST['sele'];
+  $kl=$_POST['selekl'];
  $przedmiot=$_POST['przedmiot'];
  
   $id=0;
@@ -30,7 +31,7 @@ if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$h'")) {
 	}
 	
 	
-	if ($result = $wynik->query("SELECT `przedmiot1` FROM `nau` WHERE nau='$id' and przedmiot1='$przedmiot'"))
+	if ($result = $wynik->query("SELECT `przedmiot1` FROM `nau` WHERE nau='$id' and przedmiot1='$przedmiot' and idklasa='$kl'"))
 {	
 	if($result->num_rows==1 )
 	{
@@ -39,13 +40,13 @@ if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$h'")) {
 		
 	}
 	else
-		$wynik->query("INSERT INTO `nau`( `nau`, `przedmiot1`) VALUES ('$id','$przedmiot')");
+		$wynik->query("INSERT INTO `nau`( `nau`, `przedmiot1`,idklasa) VALUES ('$id','$przedmiot','$kl')");
 }
 
 $wynik->close();
 $result->close();
 
- header ('Location:../IndexA/admin.php'); 
+ header ('Location:panel_dodawania_lekcji_dla_nau.php'); 
 
 		
  ?>
