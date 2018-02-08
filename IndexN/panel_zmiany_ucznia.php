@@ -64,7 +64,7 @@ if ($result = $wynik->query("SELECT * FROM `loginy` WHERE typ='uczen'")) {
 		<div>klasa: <input type=text name ="klasa[]" value="<?php echo $w['klasa'];?>"></div>
 		
 		<div>typ: <input type=text name ="typ[]" value="<?php echo $w['typ'];?>"></div>
-		
+		<div><input type=hidden name ="id[]" value="<?php echo $w['id'];?>"></div>
 <?php		
 	}
 	
