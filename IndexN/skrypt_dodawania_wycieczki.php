@@ -23,6 +23,7 @@ session_start();
 		$liczba=$_POST['liczba'];
 		$nau=$_POST['nauczyciel'];
 		$ile=$_POST['ile'];
+		echo "Opiekunowie wycieczki: <br>";
 		for($i=1;$i<=$ile;$i++)
 		{
 			echo "<select name='opiekun$i'>";
@@ -38,7 +39,32 @@ session_start();
 			}
 			echo "</select>";
 			echo "<br>";
-}
+		}
+		}
+		echo "<hr>";
+		echo "Uczniowie będący na wycieczce: <br>";
+		for($i=1;$i<=$liczba;$i++)
+		{
+			echo "<select name='uczen$i'>";
+			if ($result = $wynik->query("SELECT * FROM loginy WHERE typ='uczen'")) {
+   
+			while($w=$result->fetch_assoc()){
+				 $imie=$w['imie'];
+				 $nazwisko=$w['nazwisko'];
+				 $klasa=$w['Klasa'];
+				 $id=$w['id'];
+				 if ($resultt = $wynik->query("SELECT * FROM klasy WHERE id='$klasa'")) {
+					 $ww=$resultt->fetch_assoc();
+					 $num=$ww['numer'];
+					 $naz=$ww['nazwa'];
+				 }
+				echo "<option value='$id'>";
+				echo $imie.' '.$nazwisko.' '.$num.''.$naz;
+				echo "</option>";
+			}
+			echo "</select>";
+			echo "<br>";
+		}
 		}
 		$_SESSION['ile']=$ile;
 		$_SESSION['dni']=$dni;

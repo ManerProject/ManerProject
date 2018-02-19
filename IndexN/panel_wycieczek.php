@@ -99,11 +99,41 @@ $i++;
 echo "<td>".$w['data']."</td>";
 echo "<td>".$w['czas_dni']."</td>";
 echo "<td>".$w['czas_godz']."</td>";
-echo "<td>".$w['liczba_uczniow']."</td>";
-echo "<td>".$w['cel']."</td>";
-echo "<td>".$w['program']."</td>";
 echo "<td>";
+$uczniowie=$w['uczniowie'];
 $opiekunowie=$w['opiekun'];
+$cel=$w['cel'];
+$program=$w['program'];
+$tab=explode(",",$uczniowie);
+$l=0;
+foreach($tab as $t)
+{
+	$l++;
+}
+for($k=0;$k<$l-1;$k++)
+{
+	$pom=$tab[$k];
+	if($rezult=$wynik->query("SELECT * FROM loginy WHERE id='$pom'"))
+	{
+		$w=$rezult->fetch_assoc();
+		echo $w['imie'];
+		echo " ";
+		echo $w['nazwisko'];
+		$klasa=$w['Klasa'];
+		if ($resultt = $wynik->query("SELECT * FROM klasy WHERE id='$klasa'")) {
+					 $ww=$resultt->fetch_assoc();
+					 $num=$ww['numer'];
+					 $naz=$ww['nazwa'];
+				 }
+		echo " ";
+		echo $num.' '.$naz;
+		echo "<br>";
+	}
+}
+echo "</td>";
+echo "<td>".$cel."</td>";
+echo "<td>".$program."</td>";
+echo "<td>";
 $tab=explode(",",$opiekunowie);
 $l=0;
 foreach($tab as $t)
