@@ -44,7 +44,9 @@ $klasa= $_SESSION['kl'];
 if ($result = $wynik->query("SELECT * FROM `klasy` WHERE id='$klasa'")) {
    
     while($w=$result->fetch_assoc()){
-		$klasssa=$w['klasa'];
+		$klasssa_num=$w['numer'];
+		$klasssa_naz=$w['nazwa'];
+		$klasssa=$w['id'];
 }
 }
 
@@ -66,7 +68,7 @@ if ($result = $wynik->query("SELECT * FROM `lekcje` WHERE id='$lekcja'")) {
       ?>
 	  
 	  <div style="float:left;background-color:;width:19%;min-height:30px;border:1px dotted black" id="login"> <?php  echo $w['login']; ?>     </div>
-	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $klasssa ?>     </div>
+	  <div style="float:left;background-color:;width:8%;min-height:30px;border:1px dotted black" id="klasa"> <?php  echo $klasssa_num.' '.$klasssa_naz ?>     </div>
 	   <div style="float:left;background-color:;width:25%;min-height:30px;border:1px dotted black" id="przedmiot"> <?php  echo $lekcjaaa ?>     </div>
 	  <div style="float:left;background-color;min-width:39%;min-height:40px;border:1px dotted black" id="Oceny">  <?php $oceny="oceny"; require "Skryptocen.php"; ?>    </div>
 	  <div style="float:left;background-color;width:4%;min-height:30px;border:1px dotted black" id="Input">  <input maxlength="1" placeholder="0" style ="width:30px;"name="hej[]" >    </div>

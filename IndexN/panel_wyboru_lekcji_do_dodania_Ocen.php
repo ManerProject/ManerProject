@@ -91,33 +91,38 @@ if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$login'")) {
 		<input type='submit' style='width:100px; height:50px;border-radius:400px;' value='opinie o klasach'>
 </form>
 <hr>	
-		<form   method="post" action="tonau.php" style="font-size:15px;">
+<form   method="post" action="tonau.php">
 			<br>
 
+<select name="tak">
  <?php
-	
-
-		?>
-<select style="width:120px;height:30px;border-radius:400px;" name='tak'>
-    <?php
-require "baza.php";
+$nauczyciel=$_SESSION['nauczycielid'];
+if ($result = $wynik->query("SELECT * from `nau` where `nau`='$nauczyciel' ")) {
+   $ile=$result->num_rows;
+   echo $ile;
+   for($i=0;$i<$ile;$i++)
+   {
+	   $w=$result->fetch_assoc();
+		$przedmiot=$w['przedmiot1'];
+		$klasa=$w['idklasa'];
+		if ($resultt = $wynik->query("SELECT * from `lekcje` where `id`='$przedmiot' ")) {
+			while($ww=$resultt->fetch_assoc()){
+				$lekcja=$ww['lekcja'];
+			}
+		}
+		if ($resultet = $wynik->query("SELECT * from `klasy` where `id`='$klasa' ")) {
+			while($www=$resultet->fetch_assoc()){
+				$numer=$www['numer'];
+				$nazwa=$www['nazwa'];
+			}
+		}
+		$kod="";
+		$kod=$kod.$klasa;
+		$kod=$kod.",";
+		$kod=$kod.$przedmiot;
+        echo "<option value='$kod'>".$lekcja.", klasa ".$numer.''.$nazwa."</option>";      
+   }
  
- 
-
- 
- 
-if ($result = $wynik->query("SELECT `klasy`.`klasa`,`lekcje`.`lekcja`,`lekcje`.`id` as idlekcji, `klasy`.`id` AS idklasy from `nau`,`lekcje`,`klasy` where `nau`.`przedmiot1`=`lekcje`.`id` and `klasy`.`id`=`nau`.`idklasa` AND `nau`.`nau`=30 ")) {
-   
-    while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['idklasy']."-".$w['idlekcji'].">".$w['lekcja']." klasa ".$w['klasa']."</option>";      
-        
-		
-       
-    }
- 
- 
-  $result->close();
-  $wynik->close();
 }
  
 ?>

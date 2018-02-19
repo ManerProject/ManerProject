@@ -13,7 +13,7 @@ echo $_POST['tak'];
 
 echo " ";
 
-$obrazki = explode('-', $_POST['tak']);
+$obrazki = explode(',', $_POST['tak']);
 
 echo $obrazki[0];
 
