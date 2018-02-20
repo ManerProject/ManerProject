@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 19 Lut 2018, 18:18
+-- Czas generowania: 20 Lut 2018, 20:59
 -- Wersja serwera: 10.1.16-MariaDB
 -- Wersja PHP: 5.6.24
 
@@ -19,6 +19,36 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `maneeee`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `dane_osobowe`
+--
+
+CREATE TABLE `dane_osobowe` (
+  `id_ucznia` int(11) NOT NULL,
+  `klasa` int(11) NOT NULL,
+  `numer_ewidencyjny` text NOT NULL,
+  `data_urodzenia` date NOT NULL,
+  `miejsce_urodzenia` text NOT NULL,
+  `PESEL` text NOT NULL,
+  `miejsce_zamieszkania` text NOT NULL,
+  `imie_matki` text NOT NULL,
+  `nazwisko_matki` text NOT NULL,
+  `imie_ojca` text NOT NULL,
+  `nazwisko_ojca` text NOT NULL,
+  `adres_rodzicow` text NOT NULL,
+  `telefon_kontaktowy` text NOT NULL,
+  `email_rodzicow` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `dane_osobowe`
+--
+
+INSERT INTO `dane_osobowe` (`id_ucznia`, `klasa`, `numer_ewidencyjny`, `data_urodzenia`, `miejsce_urodzenia`, `PESEL`, `miejsce_zamieszkania`, `imie_matki`, `nazwisko_matki`, `imie_ojca`, `nazwisko_ojca`, `adres_rodzicow`, `telefon_kontaktowy`, `email_rodzicow`) VALUES
+(34, 9, '3355', '2000-07-12', 'Brodnica', '00071298332', 'Brodnica, ul. Stroma 3', 'Magdalena', 'Szymkowska', 'Mariusz', 'Szymkowski', 'Brodnica, ul. Stroma 3', '552981285', 'szym123@wp.pl');
 
 -- --------------------------------------------------------
 
@@ -149,7 +179,7 @@ INSERT INTO `loginy` (`id`, `login`, `imie`, `nazwisko`, `haslo`, `email`, `typ`
 (31, 'twojstary', 'ass', 'tw', 'jamanewr', 'nwm@wp.pl', 'teacher', NULL),
 (32, 'uczenkl1', '', '', 'jamanewr', 'uczenkl1@wp.pl', 'uczen', 9),
 (33, 'uczenkl12', '', '', '', 'uczenkl1@wp.pl', 'uczen', 9),
-(34, 'uczenkl2', '', '', 'jamanewr', 'uczenkl1@wp.pl', 'uczen', 9),
+(34, 'uczenkl2', 'aaa', 'uczenkl2n', 'jamanewr', 'uczenkl1@wp.pl', 'uczen', 9),
 (35, 'uczenkl2id2', '', '', 'jamanewr', 'uczenkl1@wp.pl', 'uczen', 10),
 (36, 'uczenkl3', '', '', 'jamanewr', 'uczenkl1@wp.pl', 'uczen', 10),
 (37, 'uczenkl3id1', '', '', 'jamanewr', 'bogusiam74@wp.pl', 'uczen', 10),
@@ -166,23 +196,24 @@ INSERT INTO `loginy` (`id`, `login`, `imie`, `nazwisko`, `haslo`, `email`, `typ`
 CREATE TABLE `nau` (
   `id` int(11) NOT NULL,
   `nau` text,
-  `przedmiot1` text
+  `przedmiot1` text,
+  `idklasa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `nau`
 --
 
-INSERT INTO `nau` (`id`, `nau`, `przedmiot1`) VALUES
-(50, '30', '3'),
-(51, '30', '18'),
-(52, '25', '19'),
-(53, '30', '1'),
-(54, '30', '19'),
-(55, '25', '3'),
-(56, '30', '21'),
-(57, '25', '22'),
-(58, '30', '22');
+INSERT INTO `nau` (`id`, `nau`, `przedmiot1`, `idklasa`) VALUES
+(50, '30', '3', 9),
+(51, '30', '18', 10),
+(52, '25', '19', 4),
+(53, '30', '1', 9),
+(54, '30', '19', 10),
+(55, '25', '3', 9),
+(56, '30', '21', 4),
+(57, '25', '22', 10),
+(58, '30', '22', 9);
 
 -- --------------------------------------------------------
 
@@ -949,8 +980,7 @@ CREATE TABLE `wychowawcy` (
 
 INSERT INTO `wychowawcy` (`id`, `nauczyciel`, `klasa`) VALUES
 (2, 25, 4),
-(3, 30, 6),
-(4, 30, 6);
+(3, 30, 6);
 
 -- --------------------------------------------------------
 
@@ -1279,7 +1309,7 @@ ALTER TABLE `wizyty_dyrektorow`
 -- AUTO_INCREMENT dla tabeli `wychowawcy`
 --
 ALTER TABLE `wychowawcy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT dla tabeli `wycieczki`
 --
