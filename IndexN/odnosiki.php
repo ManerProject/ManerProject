@@ -52,3 +52,6 @@
     <form method="POST" action="kalendarz.php">
   <input  type="submit" name="Dodaj zastępstwo" value="kalendarz" >
   </form>
+  <form method="POST" action="dane_osobowe.php">
+  <input  type="submit" name="dane_os" value="Dane osobowe uczniów i rodziców" >
+  </form>
