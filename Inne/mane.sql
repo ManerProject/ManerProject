@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Lut 2018, 17:36
+-- Czas generowania: 22 Lut 2018, 20:49
 -- Wersja serwera: 10.1.16-MariaDB
 -- Wersja PHP: 5.6.24
 
@@ -34,6 +34,7 @@ CREATE TABLE `dane_osobowe` (
   `miejsce_urodzenia` text NOT NULL,
   `PESEL` text NOT NULL,
   `miejsce_zamieszkania` text NOT NULL,
+  `wies/miasto` int(11) NOT NULL,
   `imie_matki` text NOT NULL,
   `nazwisko_matki` text NOT NULL,
   `imie_ojca` text NOT NULL,
@@ -47,8 +48,8 @@ CREATE TABLE `dane_osobowe` (
 -- Zrzut danych tabeli `dane_osobowe`
 --
 
-INSERT INTO `dane_osobowe` (`id_ucznia`, `klasa`, `numer_ewidencyjny`, `data_urodzenia`, `miejsce_urodzenia`, `PESEL`, `miejsce_zamieszkania`, `imie_matki`, `nazwisko_matki`, `imie_ojca`, `nazwisko_ojca`, `adres_rodzicow`, `telefon_kontaktowy`, `email_rodzicow`) VALUES
-(34, 9, '3355', '2000-07-12', 'Brodnica', '00071298332', 'Brodnica, ul. Stroma 3', 'Magdalena', 'Szymkowska', 'Mariusz', 'Szymkowski', 'Brodnica, ul. Stroma 3', '552981285', 'szym123@wp.pl');
+INSERT INTO `dane_osobowe` (`id_ucznia`, `klasa`, `numer_ewidencyjny`, `data_urodzenia`, `miejsce_urodzenia`, `PESEL`, `miejsce_zamieszkania`, `wies/miasto`, `imie_matki`, `nazwisko_matki`, `imie_ojca`, `nazwisko_ojca`, `adres_rodzicow`, `telefon_kontaktowy`, `email_rodzicow`) VALUES
+(34, 9, '3354', '2000-07-12', 'Brodnica', '00071298332', 'Grazawy, ul. Stroma 3', 1, 'Magdalena', 'Szymkowska', 'Mariusz', 'Szymkowski', 'Grazawy, ul. Stroma 3', '552981285', 'szym123@wp.pl');
 
 -- --------------------------------------------------------
 
