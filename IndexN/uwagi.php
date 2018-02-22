@@ -1,6 +1,6 @@
-<?php 
-session_start();
- ?>
+<?php
+require('reqnau.php');
+?>
 <!DOCTYPE html>
 
 <html>
@@ -20,6 +20,7 @@ session_start();
 	
 	font-size:35px;
 	font-family: 'Acme', sans-serif;
+	
   }
   #all
   {
@@ -50,7 +51,6 @@ session_start();
 
 <div id="all">
 <div id="logo">
-Uwagi
 
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
 <form action="../wyloguj.php" method="_POST" >
@@ -61,63 +61,39 @@ Uwagi
  
  
  </form>
- 
- 
- 
 </div>
 
- <?php
-require "odnosiki.php";
-?>
- </div>
- <div id="con">
-   <form method="post" action="skryptuwag.php" style="font-size:15px;">
-    <select style="width:120px;height:30px;border-radius:400px;" name='sele'>
+
+Wybierz ucznia: 
+<br>
+<form action="panel_uwag.php" method="post">
+<select name="uczen">
 <?php
 require "baza.php";
-
-$klasa=$_SESSION['kl'];
-
-
-	
-echo $klasa; 
-	    if ($result = $wynik->query("SELECT * FROM loginy WHERE typ <> 'admin' and typ <> 'teacher' and klasa='$klasa'")) {
-   
+$klasa=$_SESSION['klasa'];
+ 
+ if ($result = $wynik->query("SELECT * FROM `loginy` WHERE klasa='$klasa'")) {
     while($w=$result->fetch_assoc()){
-        echo "<option value=".$w['login'].">".$w['imie'].' '.$w['nazwisko']."</option>";      
-      
-		
-       
+			 $i=$w['id'];
+			 $imie=$w['imie'];
+			 $nazwisko=$w['nazwisko'];
+			echo "<option value='$i'>".$imie.' '.$nazwisko."</option>";
     }
- 
- 
-  $result->close();
-  $wynik->close();
 }
-		 
-		  
-	
-	
+$_SESSION['klasa']=$klasa;
 ?>
-
-    </select>
+</select>
+<input type="submit" value="Pokaż pochwały i uwagi ucznia">
+</form>
+		
 	
-   <input name="tytul" style="width:90px; height:25px;border-radius:4px;" placeholder="tytuł"value="">
-	<input name="tresc"style="width:200px; height:150px;border-radius:400px;" placeholder="tresc"value="">
-	<select name="rodzaj">
-		<option value="1">pochwała</option>
-		<option value="2">uwaga</option>
-	</select>
-	<input type="date" placeholder="data" name="data"/>
-	<input type='submit' style="width:100px; height:50px;border-radius:400px;"value="ok ">
-
-    </form>
-
 </br>
 
 
 
-</div>
- 
+
+ </div>
+    
+ </div>
 </body>
 </html>

@@ -17,10 +17,13 @@ $_SESSION['klasa']=$klasa;
 ?>
  
  </div>
+ <br>
 <form action="jezyki.php" method="post">
 	<input type='submit' value="Języki, których uczą się uczniowie twojej klasy">
 </form>
-
+<form action="uwagi.php" method="post">
+	<input type='submit' value="Pochwały/Uwagi uczniów">
+</form>
 
 
 </br>

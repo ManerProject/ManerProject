@@ -9,6 +9,8 @@ require "baza.php";
 $tytuł=$_POST['tytul'];
 $tresc=$_POST['tresc'];
 $nau=$_SESSION['login'];
+$rodzaj=$_POST['rodzaj'];
+$data=$_POST['data'];
  if ($result1 = $wynik->query("SELECT * FROM loginy WHERE login='$nau'")) {
    
     while($w=$result1->fetch_assoc()){
@@ -23,14 +25,7 @@ $nau=$_SESSION['login'];
       
     }
 	}
- echo $nau;
- echo " ";
- echo $kto;
-  echo " ";
- echo $tytuł;
- echo " ";
- echo $tresc;
- $wynik-> query("INSERT INTO `uwagi` ( `id_login`, `id_nau`, `tytul`, `tresc`) VALUES ( '$kto', '$nau', '$tytuł', '$tresc')");
+ $wynik-> query("INSERT INTO `uwagi` ( `id_login`, `id_nau`, `tytul`, `tresc`, `rodzaj`, `data`) VALUES ( '$kto', '$nau', '$tytuł', '$tresc', '$rodzaj', '$data')");
  
   
   
