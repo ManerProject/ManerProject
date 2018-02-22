@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 20 Lut 2018, 20:59
+-- Czas generowania: 22 Lut 2018, 11:11
 -- Wersja serwera: 10.1.16-MariaDB
 -- Wersja PHP: 5.6.24
 
@@ -69,6 +69,29 @@ INSERT INTO `dyrektorzy` (`id`, `nauczyciel`) VALUES
 (1, 31),
 (3, 25),
 (4, 31);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `jezyki_obce`
+--
+
+CREATE TABLE `jezyki_obce` (
+  `klasa` int(11) NOT NULL,
+  `ilosc_uczniow` int(11) NOT NULL,
+  `jezyk1` int(11) NOT NULL,
+  `uczniowie1` text NOT NULL,
+  `jezyk2` int(11) NOT NULL,
+  `uczniowie2` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `jezyki_obce`
+--
+
+INSERT INTO `jezyki_obce` (`klasa`, `ilosc_uczniow`, `jezyk1`, `uczniowie1`, `jezyk2`, `uczniowie2`) VALUES
+(9, 3, 2, '32,33', 4, '34'),
+(4, 3, 2, '39,41', 21, '40');
 
 -- --------------------------------------------------------
 
