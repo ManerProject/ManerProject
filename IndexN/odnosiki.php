@@ -58,3 +58,6 @@
   <form method="POST" action="panel_oceny_z_zachowania.php">
   <input  type="submit" value="Oceny z zachowania uczniów" >
   </form>
+  <form method="POST" action="uczniowie_ze_wsi.php">
+  <input  type="submit" value="Uczniowie mieszkający na wsi">
+  </form>
