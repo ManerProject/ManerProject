@@ -24,7 +24,9 @@ $_SESSION['klasa']=$klasa;
 <form action="uwagi.php" method="post">
 	<input type='submit' value="Pochwały/Uwagi uczniów">
 </form>
-
+<form action="zachowanie.php" method="post">
+	<input type='submit' value="Wystaw oceny z zachowania">
+</form>
 
 </br>
 
