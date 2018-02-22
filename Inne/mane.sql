@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Lut 2018, 11:11
+-- Czas generowania: 22 Lut 2018, 14:27
 -- Wersja serwera: 10.1.16-MariaDB
 -- Wersja PHP: 5.6.24
 
@@ -918,19 +918,25 @@ CREATE TABLE `uwagi` (
   `id_login` int(11) NOT NULL,
   `id_nau` int(11) NOT NULL,
   `tytul` text NOT NULL,
-  `tresc` text NOT NULL
+  `tresc` text NOT NULL,
+  `rodzaj` int(11) NOT NULL,
+  `data` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `uwagi`
 --
 
-INSERT INTO `uwagi` (`id`, `id_login`, `id_nau`, `tytul`, `tresc`) VALUES
-(3, 33, 30, 'assa', 'assa'),
-(4, 31, 30, 'sa', 'saas'),
-(5, 33, 30, 'hejka', 'stulejka'),
-(6, 33, 30, 'pong', 'foty'),
-(7, 35, 30, 'palenie', 'jest w gronie palaczy');
+INSERT INTO `uwagi` (`id`, `id_login`, `id_nau`, `tytul`, `tresc`, `rodzaj`, `data`) VALUES
+(3, 33, 30, 'assa', 'assa', 0, '0000-00-00'),
+(4, 31, 30, 'sa', 'saas', 0, '0000-00-00'),
+(5, 33, 30, 'hejka', 'stulejka', 0, '0000-00-00'),
+(6, 33, 30, 'pong', 'foty', 0, '0000-00-00'),
+(7, 35, 30, 'palenie', 'jest w gronie palaczy', 0, '0000-00-00'),
+(8, 39, 30, 'pomoc w klasie', 'uczennica pomaga w porzadkach w klasie', 1, '0000-00-00'),
+(9, 39, 25, 'konkurs', 'uczennica wziela udzial w konkkursie recytatorskim', 1, '0000-00-00'),
+(10, 39, 25, 'wystep', 'uczennica braÅ‚a udziaÅ‚ w wystÄ™pie na DzieÅ„ Nauczyciela', 1, '0000-00-00'),
+(11, 39, 25, '', 'uczennica je na lekcji', 2, '2018-02-09');
 
 -- --------------------------------------------------------
 
@@ -1317,7 +1323,7 @@ ALTER TABLE `tematy`
 -- AUTO_INCREMENT dla tabeli `uwagi`
 --
 ALTER TABLE `uwagi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT dla tabeli `wiadomosci`
 --
