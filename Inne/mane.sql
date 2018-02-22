@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Lut 2018, 14:27
+-- Czas generowania: 22 Lut 2018, 17:36
 -- Wersja serwera: 10.1.16-MariaDB
 -- Wersja PHP: 5.6.24
 
@@ -783,6 +783,29 @@ INSERT INTO `ocenysemestralne` (`id`, `idklasy`, `idlekcja`, `Semestr`, `Ocena`,
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `oceny_z_zachowania`
+--
+
+CREATE TABLE `oceny_z_zachowania` (
+  `id` int(11) NOT NULL,
+  `id_ucznia` int(11) NOT NULL,
+  `klasa` int(11) NOT NULL,
+  `ocena` int(11) NOT NULL,
+  `semestr` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `oceny_z_zachowania`
+--
+
+INSERT INTO `oceny_z_zachowania` (`id`, `id_ucznia`, `klasa`, `ocena`, `semestr`) VALUES
+(1, 39, 4, 1, 1),
+(2, 40, 4, 3, 1),
+(3, 41, 4, 5, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `planlekcji`
 --
 
@@ -1168,6 +1191,12 @@ ALTER TABLE `ocenysemestralne`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `oceny_z_zachowania`
+--
+ALTER TABLE `oceny_z_zachowania`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `planlekcji`
 --
 ALTER TABLE `planlekcji`
@@ -1294,6 +1323,11 @@ ALTER TABLE `ocenys2`
 --
 ALTER TABLE `ocenysemestralne`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT dla tabeli `oceny_z_zachowania`
+--
+ALTER TABLE `oceny_z_zachowania`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT dla tabeli `planlekcji`
 --
