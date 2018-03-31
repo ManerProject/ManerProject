@@ -7,6 +7,7 @@ session_start();
 	<meta lang="pl"/>
 	<meta charset="utf-8"/>
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	<link rel="Stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
 <style>
@@ -30,6 +31,10 @@ body
 #okno
 {
 	margin-left:5%;
+}
+#tekst
+{
+	margin-right:20%;
 }  
 </style>
 <div id="all">
@@ -37,28 +42,23 @@ body
 Panel Admina 
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
 
-<form action="../wyloguj.php" method="_POST" >
-  <input style="float:right;background-color:#191919;:width:50px;height:100px;position:relative;
+<form action="wyloguj.php" method="_POST" >
+   <input style="float:right;background-color:#191919;:width:50px;height:98px;position:relative;
     bottom: 40px;cursor:pointer;color:white;font-family: 'Audiowide', cursive;border-left:2px dotted #1F1F1F;border-top:0;border-right:0;border-bottom:0" type="submit" value="WYLOGUJ"/>
 </form>
 
 </div>
+</div>
 <form method="post" action="admin.php">
 	<input type='submit' style="height:30px; margin:1%" value="Powrót do głównego panelu">
 </form>
-
 <div id="okno">
-   
-    
-<form action="skrypt.dodawania_lecji_do_ocen.php" method="POST" >
- <input type="text" placeholder="nazwa" name="logins"/>
-  <input type="submit" value="Dodaj"/> 
- 
- </form>
-	
-	
-	
 
- </div>
+<form action="skrypt_dodawania_klas.php" method="POST" >
+	<input maxlength="20" type="text" placeholder="nazwa" name="logins"/>
+	<input type="submit" value="Dodaj"/>
+</form>
+
+</div>
 </body>
 </html>
