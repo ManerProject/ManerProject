@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Lut 2018, 20:49
+-- Czas generowania: 31 Mar 2018, 17:38
 -- Wersja serwera: 10.1.16-MariaDB
 -- Wersja PHP: 5.6.24
 
@@ -146,6 +146,20 @@ INSERT INTO `klasy` (`id`, `numer`, `nazwa`, `profil`) VALUES
 (8, 1, 'TH', 'technikum handlowe'),
 (9, 1, 'TE', 'technikum ekonomiczne'),
 (10, 1, 'TMH', 'technikum mechatroniczno-handlowe');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `kontakty_rodzic_nauczyciel`
+--
+
+CREATE TABLE `kontakty_rodzic_nauczyciel` (
+  `id` int(11) NOT NULL,
+  `nauczyciel` int(11) NOT NULL,
+  `rodzice` text NOT NULL,
+  `data` date NOT NULL,
+  `opis` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1150,6 +1164,12 @@ ALTER TABLE `klasy`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `kontakty_rodzic_nauczyciel`
+--
+ALTER TABLE `kontakty_rodzic_nauczyciel`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `lekcje`
 --
 ALTER TABLE `lekcje`
@@ -1289,6 +1309,11 @@ ALTER TABLE `kalendarz`
 --
 ALTER TABLE `klasy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT dla tabeli `kontakty_rodzic_nauczyciel`
+--
+ALTER TABLE `kontakty_rodzic_nauczyciel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT dla tabeli `lekcje`
 --
