@@ -1,6 +1,15 @@
 <?php
 require('reqnau.php');
 ?>
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta lang="pl"/>
+<meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<body>
 SEMESTR1
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
 <form action="../wyloguj.php" method="_POST" >
@@ -38,6 +47,8 @@ require "odnosiki.php";
 require "baza.php";
 
 $klasa= $_SESSION['kl'];
+$id=$_SESSION['nauczycielid'];
+$_SESSION['nauczycielid']=$id;
 
  $lekcja=$_SESSION['xdlekcja'];
  
@@ -65,6 +76,9 @@ if ($result = $wynik->query("SELECT * FROM `lekcje` WHERE id='$lekcja'")) {
     while($w=$result->fetch_assoc()){
 		
 		$login=$w['id'];
+	}
+ }
+		$_SESSION['klasa']=$klasa;
       ?>
 	  
 	  <div style="float:left;background-color:;width:19%;min-height:30px;border:1px dotted black" id="login"> <?php  echo $w['login']; ?>     </div>
@@ -74,20 +88,10 @@ if ($result = $wynik->query("SELECT * FROM `lekcje` WHERE id='$lekcja'")) {
 	  <div style="float:left;background-color;width:4%;min-height:30px;border:1px dotted black" id="Input">  <input maxlength="1" placeholder="0" style ="width:30px;"name="hej[]" >    </div>
 	
 	  <div style="cleat:both" id="clear">      </div>
-	 <?php 
-		
-	 
-	 
-	
-	 ?>
 	 <br>
 	 
 	 <?php 
 		
-       
-    }
- }
-
 ?>
 <input type='submit' style=""value="wyslij">
 </div>
@@ -101,6 +105,5 @@ if ($result = $wynik->query("SELECT * FROM `lekcje` WHERE id='$lekcja'")) {
  
  </div>
     
- </div>
 </body>
 </html>

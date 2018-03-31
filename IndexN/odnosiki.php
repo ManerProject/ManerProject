@@ -26,7 +26,9 @@
   <form method="POST" action="panel_wywiadowki_aktywna.php">
   <input  type="submit" name="wywiadowek" value="wywiadowek aktywna" >
   </form>
-  
+  <form method="POST" action="panel_spotkania_z_rodzicami.php">
+  <input  type="submit" name="spotkania" value="spotkania z rodzicami" >
+  </form>
   <form method="POST" action="wiadomosci.php">
   <input  type="submit" name="wiadomosci" value="zobacz se wiadomosci" >
   </form>
