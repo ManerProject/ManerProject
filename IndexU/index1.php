@@ -65,7 +65,7 @@ Panel Ucznia
 </form>
 <br>
 
-Semestr 1
+Semestr 1<br>
 <?php  
 $login=$_SESSION['login'];
 require "baza.php";
@@ -77,10 +77,10 @@ if ($result89 = $wynik->query("SELECT * FROM `loginy` where login='$login'"))
 		$_SESSION['klasa']=$s['Klasa'];
 		$uczenid=$s['id'];
 		$_SESSION['uczenid']=$uczenid;
+		$imie=$s['imie'];
+		$nazwisko=$s['nazwisko'];
     }
 }
-echo  $uczenid;
-
 $result69 = $wynik->query("select typ from loginy where login='$login' and typ='admin'");
 if($result69->num_rows==1 )
 { 
@@ -95,7 +95,7 @@ if($result79->num_rows==1 )
 }
 $result69->close();
 $result79->close();
-echo $login;
+echo $imie." ".$nazwisko;
 
 $poms=0;
 $sua=0;
@@ -119,7 +119,7 @@ if ($result11 = $wynik->query("SELECT oceny.oceny from loginy,oceny where loginy
 }
 $sua=round($sua,2); 
 ?>
-</br>
+<hr>
 <?php
 if ($result1 = $wynik->query("SELECT * FROM `lekcje` WHERE id!=0"))
 {
