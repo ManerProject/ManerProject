@@ -2,79 +2,61 @@
 require('reqnau.php');
  ?>
 <!DOCTYPE html>
-
 <html>
-
 <head>
-<meta lang="pl"/>
-<meta charset="utf-8"/>
-<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-
+	<meta lang="pl"/>
+	<meta charset="utf-8"/>
+	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 </head>
 <body>
-  <style>
-  body
-  {
+<style>
+body
+{
 	background-color:#E6E6E6;
 	margin:0px;
-	
-	font-size:35px;
+	font-size:25px;
 	font-family: 'Acme', sans-serif;
-	
-  }
-  #all
-  {
-	  width:100%;
-	  height:100%;
-  }
- #logo
-  {
- 
+}
+#logo
+{
 	width:100%;
-	height:100px;
+	min-height:102px;
 	background-color:black;
+	padding: 9px 9px 9px 0px;
 	float:right
 	text-align: center;
-	pading:10px;
 	color:white;
-	
-  }
+}
 #okno
 {
-	width:100px;
-	
-	height:100px;
-	margin-left:15%;
+	margin-left:5%;
+	width: 95%;
 }
-  
-  </style>
+</style>
 
 <div id="all">
 <div id="logo">
+Panel Nauczyciela
+<img style="height:125px;width:200px;margin-top:-20px;float:left;"  src="../Grafika/logomm.png">
 
-<img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
-<form action="../wyloguj.php" method="_POST" >
- 
-
-  <input style="float:right;background-color:#191919;:width:50px;height:100px;position:relative;
-    bottom: 40px;cursor:pointer;color:white;font-family: 'Audiowide', cursive;border-left:2px dotted #1F1F1F;border-top:0;border-right:0;border-bottom:0" type="submit" value="WYLOGUJ"/>
- 
- 
- </form>
+<form action="../wyloguj.php" method="POST">
+  <input style="float:right;background-color:#191919;width:80px;height:70px;position:relative;
+    bottom:40px;cursor:pointer;color:white;font-family:'Audiowide', cursive;border-left:0px dotted #1F1F1F;border-top:0;border-right:0;border-bottom:0; margin-right:1%;" type="submit" value="WYLOGUJ"/> 
+</form>
 </div>
 
-
-<form   method="post" action="panel_wyboru_lekcji_do_dodania_Ocen.php" style="font-size:25px;">
-<input type='submit' style="width:100px; height:30px;margin-left:15%"value="Powrot do glownego panelu">
+<form method="post" action="panel_wyboru_lekcji_do_dodania_Ocen.php">
+	<input type='submit' style="height:30px; margin:1%" value="Powrót do głównego panelu">
 </form>
-   
+
+<div id="okno"> 
     
-<form action="panel_dane_osobowe.php" method="POST" >
-  <input type="submit" value="Zmień dane"/>
- </form>
- <br>
+<form action="panel_dane_osobowe.php" method="POST">
+	<input type="submit" value="Zmień dane"/>
+</form>
+<br>
  
- <table border="1px">
+<table border="1px">
 	<tr>
 		<td>lp.</td>
 		<td>imie i nazwisko ucznia</td>
@@ -92,9 +74,11 @@ require('reqnau.php');
 	<?php
 	require "baza.php";
 		$klasa=$_SESSION['klasa'];
-		if ($result = $wynik->query("SELECT * FROM dane_osobowe WHERE klasa='$klasa'")) {
+		if ($result = $wynik->query("SELECT * FROM dane_osobowe WHERE klasa='$klasa'")) 
+		{
 			$i=1;
-			while($w=$result->fetch_assoc()){
+			while($w=$result->fetch_assoc())
+			{
 				echo "<tr>";
 				$id=$w['id_ucznia'];
 				$numer=$w['numer_ewidencyjny'];
@@ -143,34 +127,36 @@ require('reqnau.php');
 		$_SESSION['klasa']=$klasa;
 	?>
 	</tr>
- </table>
- <br><hr><br>
- <table border="1">
+</table>
+<br><hr><br>
+<table border="1">
 	<tr>
 		<td>uczen</td>
 		<td>rok urodzenia</td>
 		<td>miesjce zamieszkania</td>
 		<td>wieś/miasto (miejse zamieszkania)</td>
 	</tr>
- <?php
- echo "Uczniowie według roku urodzenia: ";
- require "baza.php";
- $klasa=$_SESSION['klasa'];
- if ($result = $wynik->query("SELECT * FROM `dane_osobowe` WHERE klasa='$klasa'")) {
-	 $q=0;
-		while($w=$result->fetch_assoc()){
-				$id=$w['id_ucznia'];
-				$data=$w['data_urodzenia'];
-				$miejscowosc=$w['miejsce_zamieszkania'];
-				$aa=explode(",",$miejscowosc);
-				$miejsce=$aa[0];
-				$wm=$w['wies/miasto'];
-				$uczen[$q]=$id;
-				$wwmm[$q]=$wm;
-				$mieszkanie[$q]=$miejsce;
-				$da=strtotime($data);
-				$rok[$q]=date("Y", $da);
-				$q++;
+	<?php
+	echo "Uczniowie według roku urodzenia: ";
+	require "baza.php";
+	$klasa=$_SESSION['klasa'];
+	if ($result = $wynik->query("SELECT * FROM `dane_osobowe` WHERE klasa='$klasa'")) 
+	{
+		$q=0;
+		while($w=$result->fetch_assoc())
+		{
+			$id=$w['id_ucznia'];
+			$data=$w['data_urodzenia'];
+			$miejscowosc=$w['miejsce_zamieszkania'];
+			$aa=explode(",",$miejscowosc);
+			$miejsce=$aa[0];
+			$wm=$w['wies/miasto'];
+			$uczen[$q]=$id;
+			$wwmm[$q]=$wm;
+			$mieszkanie[$q]=$miejsce;
+			$da=strtotime($data);
+			$rok[$q]=date("Y", $da);
+			$q++;
 		}
 		for($i=0;$i<$q-1;$i++)
 		{
@@ -221,15 +207,17 @@ require('reqnau.php');
 				echo "</td>";
 			echo "</tr>";
 		}
- }
-echo "</table>";
-echo "<br>";
-echo "Ilość uczniów mieszkających na wsi:";
-echo $k;
-echo "<br>";
-echo "Ilość uczniów mieszkających w mieście:";
-echo $m;
-?>
-
+	}
+	echo "</table>";
+	echo "<br>";
+	echo "Ilość uczniów mieszkających na wsi:";
+	echo $k;
+	echo "<br>";
+	echo "Ilość uczniów mieszkających w mieście:";
+	echo $m;
+	?>
+	
+</div>
+</div>
 </body>
 </html>
