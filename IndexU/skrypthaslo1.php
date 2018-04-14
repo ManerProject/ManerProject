@@ -4,9 +4,9 @@ require "baza.php";
  
 $haslo=$_POST['haslo'];
 $nhaslo=$_POST['nhaslo'];
-$nau=$_SESSION['login'];
+$log=$_SESSION['login'];
 
-$wynik-> query("UPDATE `loginy` SET haslo='$nhaslo' WHERE haslo='$haslo' AND login='$nau'");
+$wynik-> query("UPDATE `loginy` SET haslo='$nhaslo' WHERE haslo='$haslo' AND login='$log'");
  
 header ("Location:haslo1.php");
 ?>

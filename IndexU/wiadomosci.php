@@ -35,7 +35,7 @@ body
 
 <div id="all">
 <div id="logo">
-Panel Admina
+Panel Ucznia
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png">
 
 <form action="../wyloguj.php" method="POST">
