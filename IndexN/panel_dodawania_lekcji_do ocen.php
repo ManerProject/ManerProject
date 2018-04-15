@@ -30,35 +30,33 @@ body
 #okno
 {
 	margin-left:5%;
-}  
+}
 </style>
+
 <div id="all">
 <div id="logo">
-Panel Admina 
-<img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png"> </img>
+Panel Nauczyciela
+<img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png">
 
-<form action="../wyloguj.php" method="_POST" >
-  <input style="float:right;background-color:#191919;:width:50px;height:100px;position:relative;
-    bottom: 40px;cursor:pointer;color:white;font-family: 'Audiowide', cursive;border-left:2px dotted #1F1F1F;border-top:0;border-right:0;border-bottom:0" type="submit" value="WYLOGUJ"/>
+<form action="../wyloguj.php" method="POST">
+  <input style="float:right;background-color:#191919;width:80px;height:70px;position:relative;
+    bottom:40px;cursor:pointer;color:white;font-family:'Audiowide', cursive;border-left:0px dotted #1F1F1F;border-top:0;border-right:0;border-bottom:0; margin-right:1%;" type="submit" value="WYLOGUJ"/> 
+</form>
+</div>
+
+<form method="post" action="panel_wyboru_lekcji_do_dodania_Ocen.php">
+	<input type='submit' style="height:30px; margin:1%" value="Powrót do głównego panelu">
+</form>
+<div id="okno">
+   
+<form action="skrypt.dodawania_lecji_do_ocen.php" method="POST">
+	<form action="../zaloguj.php" method="POST" >
+		<input type="text" placeholder="nazwij" name="logins">
+		<input type="submit" value="Wyslij"/>
+	</form>
 </form>
 
 </div>
-<form method="post" action="admin.php">
-	<input type='submit' style="height:30px; margin:1%" value="Powrót do głównego panelu">
-</form>
-
-<div id="okno">
-   
-    
-<form action="skrypt.dodawania_lecji_do_ocen.php" method="POST" >
- <input type="text" placeholder="nazwa" name="logins"/>
-  <input type="submit" value="Dodaj"/> 
- 
- </form>
-	
-	
-	
-
- </div>
+</div>
 </body>
 </html>

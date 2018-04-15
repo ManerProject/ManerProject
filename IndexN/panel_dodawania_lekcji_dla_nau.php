@@ -35,7 +35,7 @@ body
 
 <div id="all">
 <div id="logo">
-Panel Admina
+Panel
 <img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png">
 
 <form action="../wyloguj.php" method="POST">
@@ -44,13 +44,10 @@ Panel Admina
 </form>
 </div>
 
-<form method="post" action="admin.php">
-	<input type='submit' style="height:30px; margin:1%" value="Powrót do głównego panelu">
-</form>
+<input type='button' style="height:30px; margin:1%" onclick="window.location.href='admin.php'" id="cofnijdopaneluadmina" value="Cofnij do panelu">
 <div id="okno">
 
-<form method="post" action="skrypt_dodawania_lekcji_xD_JD.php">
-	Nauczyciel: 
+<form method="post" action="skrypt_dodawania_lekcji_xD_JD.php" style="font-size:15px;">
     <select style="width:120px;height:30px;border-radius:400px;" name='sele'>
     <?php
 	require "baza.php";
@@ -59,29 +56,43 @@ Panel Admina
 		while($w=$result->fetch_assoc())
 		{
 			echo "<option value=".$w['login'].">".$w['login']."</option>";      
-			$_SESSION['login']=$w['login'];
-		}
-		$result->close();
-	}
-	?>
-	</select><br>
-	Przedmiot: 
-	<select style="width:120px;height:30px;border-radius:400px;"  name='przedmiot'>
-    <?php
-	if ($result = $wynik->query("SELECT * FROM `lekcje`"))
-	{
-		while($w=$result->fetch_assoc())
-		{
-			echo "<option value=".$w['id'].">".$w['lekcja']."</option>";         
+			$_SESSION['login']=$w['login']; 
 		}
 		$result->close();
 	}
 	?>
 	</select>
-	<br>
-	<input type='submit' style="height:30px;" value="Dodaj">
+	<select style="width:120px;height:30px;border-radius:400px;" name='selekl'>
+    <?php
+	if($result = $wynik->query("SELECT * FROM klasy "))
+	{
+		while($w=$result->fetch_assoc())
+		{
+			echo "<option value=".$w['id'].">".$w['klasa']."</option>";      
+		}
+		$result->close();
+	}
+	?>
+	</select>
+	<select style="width:120px;height:30px;border-radius:400px;" name='przedmiot'>
+    <?php
+	if ($result = $wynik->query("SELECT * FROM `lekcje`"))
+	{
+		while($w=$result->fetch_assoc())
+		{
+			echo "<option value=".$w['id'].">".$w['lekcja']."</option>";       
+		}
+		$result->close();
+	}
+	?>
+	</select>
+	<!-- Polski 1<input type="radio" name="Przedmiot" value="1"> 
+	Matma 2<input type="radio" name="Przedmiot" value="2"> 
+	WF 3<input type="radio" name="Przedmiot" value="3"> 
+	Filozofia 4<input type="radio" name="Przedmiot" value="4"> 
+	-->
+	<input type='submit' style="width:100px; height:30px;background-color:white;border:1px solid black" value="ok">
 </form>
-</br>
 
 </div>
 </div>
