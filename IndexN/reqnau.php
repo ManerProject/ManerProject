@@ -32,19 +32,3 @@ body
 	margin-left:5%;
 }
 </style>
-
-<div id="all">
-<div id="logo">
-Panel Nauczyciela
-<img style="height:125px;width:200px;margin-top:-20px;float:left"  src="../Grafika/logomm.png">
-
-<form action="../wyloguj.php" method="POST">
-  <input style="float:right;background-color:#191919;width:80px;height:70px;position:relative;
-    bottom:40px;cursor:pointer;color:white;font-family:'Audiowide', cursive;border-left:0px dotted #1F1F1F;border-top:0;border-right:0;border-bottom:0; margin-right:1%;" type="submit" value="WYLOGUJ"/> 
-</form>
-</div>
-
-<form method="post" action="panel_wyboru_lekcji_do_dodania_Ocen.php">
-	<input type='submit' style="height:30px; margin:1%" value="Powrót do głównego panelu">
-</form>
-<div id="okno">
